@@ -5,26 +5,37 @@ import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
 function LoginPage() {
   const history = useHistory();
 
   return (
-    <Container>
-      <img src={'images/logo-cropped.jpg'} style={{width: 150, height: 100}}/>
-      <Typography variant="h4">Waffle's Spot</Typography>
-      <LoginForm />
-      <center>
-        <Button
-          variant="contained"
-          onClick={() => {
-            history.push('/registration');
-          }}
-        >
-          Register
-        </Button>
-      </center>
-    </Container>
+    <div style={{margin: 10, marginTop: 20}}>
+      <Grid 
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <img src={'images/logo-cropped.jpg'} style={{width: 150, height: 100}}/>
+        <br />
+        <Typography variant="h4">Waffle's Spot</Typography>
+        <br />
+        <LoginForm />
+        <center>
+          <Button
+            variant="contained"
+            onClick={() => {
+              history.push('/registration');
+            }}
+          >
+            Register
+          </Button>
+        </center>
+      </Grid>
+    </div>
   );
 }
 
