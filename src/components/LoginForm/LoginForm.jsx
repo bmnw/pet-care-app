@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import Container from '@mui/material/Container';
+import Textfield from '@mui/material/Textfield';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -25,41 +29,47 @@ function LoginForm() {
   }; // end login
 
   return (
-    <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
-      {errors.loginMessage && (
-        <h3 className="alert" role="alert">
-          {errors.loginMessage}
-        </h3>
-      )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
+    <Container>
+      <div className="formPanel" onSubmit={login}>
+        <Typography variant="h5">Login</Typography>
+        {errors.loginMessage && (
+          <h3 className="alert" role="alert">
+            {errors.loginMessage}
+          </h3>
+        )}
+        <br />
+        <div>
+          {/* <label htmlFor="username"> */}
+          <Typography>Username:</Typography>
+            <Textfield
+              type="text"
+              name="username"
+              required
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+          {/* </label> */}
+        </div>
+        <br />
+        <div>
+          {/* <label htmlFor="password"> */}
+            <Typography>Password:</Typography>
+            <Textfield
+              type="password"
+              name="password"
+              id="outline-required"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          {/* </label> */}
+        </div>
+        <br />
+        <div>
+          <Button onClick={login} variant="contained">LOGIN</Button>
+        </div>
       </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
-      </div>
-    </form>
+    </Container>
   );
 }
 
