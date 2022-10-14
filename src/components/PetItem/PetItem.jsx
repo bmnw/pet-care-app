@@ -8,7 +8,13 @@ import CardContent from '@mui/material/CardContent';
 
 const PetItem = ({pet}) => {
     return  <>
-                <Card elevation={10} sx={{margin: 2}}>
+                <Card elevation={10} sx={{margin: 2, width: 150}}>
+                    <CardMedia
+                        component="img"
+                        height="150"
+                        // image={"/images/rabbit-1-cropped.jpeg"}
+                        image={pet.image}
+                    />
                     <CardContent>
                         <Typography>{pet.pet_name}</Typography>
                     </CardContent>

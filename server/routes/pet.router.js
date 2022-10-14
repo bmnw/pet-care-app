@@ -9,9 +9,10 @@ router.get('/', (req, res) => {
     console.log('is authenticated?', req.isAuthenticated());
     console.log('user', req.user);
     if (req.isAuthenticated()) {
-        let queryText =     `SELECT "pet"."pet_name", "pet"."pet_type", "user_pet"."user_id" FROM "pet"
+        let queryText =     `SELECT "pet".*, "user_pet"."user_id" FROM "pet"
                             JOIN "user_pet" ON "pet"."id" = "user_pet"."pet_id" 
-                            WHERE "user_id" = $1;`
+                            WHERE "user_id" = $1
+                            ORDER BY "pet"."id";`
         pool.query(queryText, [req.user.id])
         .then((result) => {
             res.send(result.rows);
