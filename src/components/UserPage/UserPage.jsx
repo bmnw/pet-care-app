@@ -6,6 +6,8 @@ import {useSelector} from 'react-redux';
 import PetItem from '../PetItem/PetItem.jsx';
 import Nav from '../Nav/Nav.jsx';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -31,22 +33,34 @@ function UserPage() {
   return (
     <div>
       <Nav />
-      <div className="container">
-        <h2>Welcome, {user.username}!</h2>
-        {/* <p>Your ID is: {user.id}</p> */}
-        {/* <LogOutButton className="btn" /> */}
-        {
-          petList.map(pet => {
-            return (
-                <Grid>
-                  <PetItem 
-                    pet={pet}
-                  />
-                </Grid>
-            )
-          })
-        }
-      </div>
+      <Grid 
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+      >
+          <Grid item>
+            <h2>Welcome, {user.username}!</h2>
+          </Grid>
+          {/* <p>Your ID is: {user.id}</p> */}
+          {/* <LogOutButton className="btn" /> */}
+          {
+            petList.map(pet => {
+              return (
+                  <Grid item xs={6}>
+                    <PetItem 
+                      pet={pet}
+                    />
+                  </Grid>
+              )
+            })
+          }
+          <br />
+          <Grid item>
+            <Button variant="contained">ADD PET</Button>
+          </Grid>
+      </Grid>
     </div>
   );
 }

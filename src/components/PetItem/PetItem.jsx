@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent';
 
 const PetItem = ({pet}) => {
     return  <>
-                <Card elevation={10}>
+                <Card elevation={10} sx={{margin: 2}}>
                     <CardContent>
                         <Typography>{pet.pet_name}</Typography>
                     </CardContent>
