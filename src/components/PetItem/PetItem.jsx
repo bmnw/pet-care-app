@@ -16,7 +16,7 @@ const PetItem = ({pet}) => {
                         image={pet.image}
                     />
                     <CardContent>
-                        <Typography>{pet.pet_name}</Typography>
+                        <Typography variant="h5">{pet.pet_name}</Typography>
                     </CardContent>
                 </Card>
             </>

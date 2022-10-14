@@ -8,6 +8,7 @@ import Nav from '../Nav/Nav.jsx';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+import { Typography } from '@mui/material';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -41,7 +42,7 @@ function UserPage() {
           justifyContent="center"
       >
           <Grid item>
-            <h2>Welcome, {user.username}!</h2>
+            <Typography variant="h5">Welcome, {user.username}!</Typography>
           </Grid>
           {/* <p>Your ID is: {user.id}</p> */}
           {/* <LogOutButton className="btn" /> */}
