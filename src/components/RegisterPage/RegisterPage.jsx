@@ -23,6 +23,8 @@ function RegisterPage() {
         <Typography sx={{textAlign: 'center'}} variant="h4">Welcome to Waffle's Spot!</Typography>
         <br />
         <RegisterForm />
+        <br />
+        <br />
         <center>
           <Button
             variant="contained"
@@ -30,7 +32,7 @@ function RegisterPage() {
               history.push('/login');
             }}
           >
-            Login
+            RETURN TO LOGIN
           </Button>
         </center>
       </Grid>

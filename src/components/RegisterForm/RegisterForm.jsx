@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import Textfield from '@mui/material/Textfield';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -37,6 +38,7 @@ function RegisterForm() {
           {/* <label htmlFor="username"> */}
           <Typography>Username:</Typography>
             <Textfield
+              sx={{backgroundColor: 'white'}}
               type="text"
               name="username"
               value={username}
@@ -51,6 +53,7 @@ function RegisterForm() {
           <Typography>Password:</Typography>
             <Textfield
               type="password"
+              sx={{backgroundColor: 'white'}}
               name="password"
               value={password}
               required
