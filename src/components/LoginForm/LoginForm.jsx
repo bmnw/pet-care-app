@@ -30,7 +30,7 @@ function LoginForm() {
 
   return (
     <Container>
-      <div className="formPanel" onSubmit={login}>
+      <div className="formPanel">
         <Typography variant="h5">Login</Typography>
         {errors.loginMessage && (
           <h3 className="alert" role="alert">
