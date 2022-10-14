@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -10,18 +12,24 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <img src={'images/logo-cropped.jpg'} style={{width: 150, height: 75}}/>
-        <h2 className="nav-title">Waffle's Spot</h2>
+        <Grid container spacing={1}>
+          <Grid item><img src={'images/logo-cropped.jpg'} style={{width: 100, height: 75}}/></Grid>
+          <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}><h2 className="nav-title">Waffle's Spot</h2></Grid>
+        </Grid> 
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
           <Link className="navLink" to="/login">
-            Login / Register
+            <Typography>Login / Register</Typography>
           </Link>
         )}
-
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
@@ -33,7 +41,9 @@ function Nav() {
               Info Page
             </Link> */}
 
-            <LogOutButton className="navLink" />
+              <LogOutButton className="btn" />
+    
+
           </>
         )}
 
