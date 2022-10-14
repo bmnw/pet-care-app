@@ -10,7 +10,7 @@ function LoginPage() {
   const history = useHistory();
 
   return (
-    <Container sx={{}}>
+    <Container>
       <img src={'images/logo-cropped.jpg'} style={{width: 150, height: 100}}/>
       <Typography variant="h4">Waffle's Spot</Typography>
       <LoginForm />
