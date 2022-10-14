@@ -24,7 +24,11 @@ function LoginPage() {
         <Typography variant="h4">Waffle's Spot</Typography>
         <br />
         <LoginForm />
+        <br />
+        <br />
         <center>
+          <Typography>New to Waffle's Spot?</Typography>
+          <br />
           <Button
             variant="contained"
             onClick={() => {

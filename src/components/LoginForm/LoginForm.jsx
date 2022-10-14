@@ -42,6 +42,7 @@ function LoginForm() {
           {/* <label htmlFor="username"> */}
           <Typography>Username:</Typography>
             <Textfield
+              sx={{backgroundColor: 'white'}}
               type="text"
               name="username"
               required
@@ -55,6 +56,7 @@ function LoginForm() {
           {/* <label htmlFor="password"> */}
             <Typography>Password:</Typography>
             <Textfield
+              sx={{backgroundColor: 'white'}}
               type="password"
               name="password"
               id="outline-required"
