@@ -19,7 +19,7 @@ function LoginPage() {
         alignItems="center"
         justifyContent="center"
       >
-        <img src={'images/logo-cropped.jpg'} style={{width: 150, height: 100}}/>
+        <img src={'images/logo-cropped.jpg'} style={{width: 150, height: 100, border: 'solid'}}/>
         <br />
         <Typography variant="h4">Waffle's Spot</Typography>
         <br />
