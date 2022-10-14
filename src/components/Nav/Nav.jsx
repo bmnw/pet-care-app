@@ -10,6 +10,7 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
+        <img src={'images/logo-cropped.jpg'} style={{width: 150, height: 75}}/>
         <h2 className="nav-title">Waffle's Spot</h2>
       </Link>
       <div>
@@ -24,21 +25,21 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
+            {/* <Link className="navLink" to="/user">
               Home
-            </Link>
+            </Link> */}
 
-            <Link className="navLink" to="/info">
+            {/* <Link className="navLink" to="/info">
               Info Page
-            </Link>
+            </Link> */}
 
             <LogOutButton className="navLink" />
           </>
         )}
 
-        <Link className="navLink" to="/about">
+        {/* <Link className="navLink" to="/about">
           About
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
