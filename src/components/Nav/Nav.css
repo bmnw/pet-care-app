@@ -5,8 +5,10 @@
   align-items: center;
 
   margin: 0 0 30px;
-  background-color: #00acb0;
+  background-color: #f4bc87;
   overflow: hidden;
+  padding: 10px;
+  border-bottom: solid 3px #e27511;
 }
 
 .nav a {
@@ -14,9 +16,9 @@
 }
 
 .nav-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #f2f2f2;
+  font-size: 27px;
+  font-weight: 500;
+  color: black;
   padding-left: 10px;
   margin: 0;
 }
