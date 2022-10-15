@@ -5,15 +5,18 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import './PetProfile.css';
 
+
 const RemoveProfileButton = () => {
 
     const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const removeProfile = () => {
         console.log('in removeProfile');
         setOpen(true);
     } // end removeProfile
+
 
     const style = {
         position: 'absolute',
@@ -26,7 +29,7 @@ const RemoveProfileButton = () => {
         boxShadow: 24,
         p: 4,
       };
-
+      
     return  <>
                 <Button 
                     onClick={removeProfile} 
@@ -47,6 +50,7 @@ const RemoveProfileButton = () => {
                             <Button>Yes, I'm sure.</Button>
                         </Box>
                     </Modal>
+
             </>
 }
 
