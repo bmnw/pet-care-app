@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddPet from '../AddPet/AddPet.jsx';
+import PetProfile from '../PetProfile/PetProfile.jsx';
 
 import './App.css';
 
@@ -71,9 +72,17 @@ function App() {
           </ProtectedRoute>
         
           <ProtectedRoute 
-            // logged in show AddPet page, else shows LoginPage
+            // logged in shows AddPet page, else shows LoginPage
             exact path="/addpet">
             <AddPet />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows PetProfile for selected pet, else shows LoginPage
+            exact path="/petprofile/:petid"
+            element={<PetProfile/>}
+          >
+            <PetProfile />
           </ProtectedRoute>
 
           <Route
