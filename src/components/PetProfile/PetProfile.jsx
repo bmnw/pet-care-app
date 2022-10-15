@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
 import Nav from '../Nav/Nav.jsx';
+import RemoveProfileButton from './RemoveProfileButton.jsx';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -21,10 +22,6 @@ const PetProfile = () => {
         dispatch({type: 'REFRESH_PET_DETAILS', payload: petid});
     }, []);
 
-    const removeProfile = () => {
-        console.log('in removeProfile');
-
-    } // end removeProfile
 
     return  <div>
                 <Nav />
@@ -83,7 +80,7 @@ const PetProfile = () => {
                         justifyContent="right"
                     >
                         <Grid item>
-                            <Button onClick={removeProfile} className="remove-profile-btn" variant="contained" size="small">REMOVE PROFILE</Button>
+                            <RemoveProfileButton />
                         </Grid>
                     </Grid>
                 </Container>
