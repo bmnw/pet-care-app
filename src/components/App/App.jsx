@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import AddPet from '../AddPet/AddPet.jsx';
 
 import './App.css';
 
@@ -37,6 +38,7 @@ function App() {
         {/* <Nav /> */}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
+          {/* change this to go to "/login"? also change the second to last route?*/}
           <Redirect exact from="/" to="/home" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
@@ -66,6 +68,12 @@ function App() {
             path="/info"
           >
             <InfoPage />
+          </ProtectedRoute>
+        
+          <ProtectedRoute 
+            // logged in show AddPet page, else shows LoginPage
+            exact path="/addpet">
+            <AddPet />
           </ProtectedRoute>
 
           <Route
