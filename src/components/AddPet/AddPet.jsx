@@ -13,6 +13,17 @@ import './AddPet.css';
 import Nav from '../Nav/Nav.jsx';
 
 const AddPet = () => {
+
+    const history = useHistory();
+    const [petName, setPetName] = useState('');
+    const [petType, setPetType] = useState('');
+
+    const submitPet = () => {
+        console.log('in submitPet');
+        console.log(petName, petType);
+
+    } // end submitPet
+
     return  <div>
                 <Nav />
                 <Container>
@@ -30,7 +41,9 @@ const AddPet = () => {
                         <Grid item>
                             <Textfield 
                                 sx={{backgroundColor: 'white'}}
-                                required    
+                                required
+                                value={petName}
+                                onChange={(event) => setPetName(event.target.value)}    
                             />
                         </Grid>
                     </Grid>
@@ -42,16 +55,16 @@ const AddPet = () => {
                         justifyContent="center"
                     >
                         <Grid item>
-                            <Button className="add-pet-btn" size="large" variant="contained">CAT</Button>
+                            <Button onClick={(event) => setPetType('cat')} className="add-pet-btn" size="large" variant="contained">CAT</Button>
                         </Grid>
                         <Grid item>
-                            <Button className="add-pet-btn" size="large" variant="contained">DOG</Button>
+                            <Button onClick={(event) => setPetType('dog')} className="add-pet-btn" size="large" variant="contained">DOG</Button>
                         </Grid>
                         <Grid item>
-                            <Button className="add-pet-btn" size="large" variant="contained">RABBIT</Button>
+                            <Button onClick={(event) => setPetType('rabbit')} className="add-pet-btn" size="large" variant="contained">RABBIT</Button>
                         </Grid>
                         <Grid item>
-                            <Button className="add-pet-btn" size="large" variant="contained">OTHER</Button>
+                            <Button onClick={(event) => setPetType('other')} className="add-pet-btn" size="large" variant="contained">OTHER</Button>
                         </Grid>
                     </Grid>
                     <br />
@@ -62,10 +75,10 @@ const AddPet = () => {
                         justifyContent="center"
                     >
                          <Grid item>
-                            <Button className="add-pet-btn" size="large" variant="contained">CANCEL</Button>
+                            <Button onClick={() => history.push("/user")} className="add-pet-btn" size="large" variant="contained">CANCEL</Button>
                         </Grid>
                         <Grid item>
-                            <Button className="add-pet-btn" size="large" variant="contained">ADD PET</Button>
+                            <Button onClick={submitPet} className="add-pet-btn" size="large" variant="contained">ADD PET</Button>
                         </Grid>
                     </Grid>
                 </Container>
