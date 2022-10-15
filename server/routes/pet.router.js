@@ -26,6 +26,28 @@ router.get('/', (req, res) => {
     }
 });
 
+// GET by pet id
+router.get('/:petId', (req, res) => {
+    console.log('in /pet:petId GET route');
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('user', req.user);
+    if(req.isAuthenticated()) {
+        const queryText =   `SELECT "pet".*, "user_pet"."user_id" FROM "pet"
+                            JOIN "user_pet" ON "pet"."id" = "user_pet"."pet_id" 
+                            WHERE "pet_id" = $1 AND "user_id" = $2;`
+        pool.query(queryText, [req.params.petId, req.user.id])
+            .then(result => {
+                res.send(result.rows);
+            })
+            .catch(error => {
+                console.log(error);
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403);
+    }
+});
+
 // POST new pet
 router.post('/', (req, res) => {
     console.log('in /pet POST route');

@@ -8,6 +8,15 @@ const userPets = (state = [], action) => {
     return state;
 }
 
+const petDetails = (state = [], action) => {
+    console.log('in petDetails reducer');
+    if(action.type === 'SET_PET_DETAILS'){
+        return action.payload;
+    }
+    return state;
+}
+
 export default combineReducers({
-    userPets
+    userPets,
+    petDetails
   });
