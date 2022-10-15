@@ -43,7 +43,7 @@ const AddPet = () => {
         } else if(petInput === 'rabbit') {
             setPetImage('/images/rabbit-1-cropped.jpeg');
         } else {
-            setPetImage('/images/logo-cropped.jpeg'); // update with 'other' image
+            setPetImage('/images/logo-cropped.jpg'); // update with 'other' image
         }
     }
 
