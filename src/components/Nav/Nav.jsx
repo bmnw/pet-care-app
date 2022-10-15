@@ -13,7 +13,7 @@ function Nav() {
     <div className="nav">
       <Link to="/home">
         <Grid container spacing={1}>
-          <Grid item><img src={'images/logo-cropped.jpg'} style={{width: 100, height: 75}}/></Grid>
+          <Grid item><img src={'images/logo-cropped.jpg'} style={{width: 100, height: 75, border: 'solid'}}/></Grid>
           <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}><h2 className="nav-title">Waffle's Spot</h2></Grid>
         </Grid> 
       </Link>

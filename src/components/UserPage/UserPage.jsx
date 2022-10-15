@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import {useHistory} from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 import PetItem from '../PetItem/PetItem.jsx';
@@ -12,6 +13,8 @@ import { Typography } from '@mui/material';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
+  const history = useHistory();
+  
   const user = useSelector((store) => store.user);
   const [petList, setPetList] = useState([]);
 
@@ -29,7 +32,11 @@ function UserPage() {
         console.log(error);
         alert('Something went wrong. Sorry!');
       });
-  }
+  } // end fetchPets
+
+  const handleClick = () => {
+    console.log('in handleClick');
+  } // end handleClick
 
   return (
     <div>
@@ -59,7 +66,7 @@ function UserPage() {
           }
           <br />
           <Grid item>
-            <Button variant="contained">ADD PET</Button>
+            <Button onClick={handleClick} variant="contained">ADD PET</Button>
           </Grid>
       </Grid>
     </div>
