@@ -22,6 +22,7 @@ const AddPet = () => {
                         container
                         spacing={2}
                         direction="row"
+                        justifyContent="center"
                     >
                         <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                             <Typography>PET NAME:</Typography>
@@ -41,16 +42,30 @@ const AddPet = () => {
                         justifyContent="center"
                     >
                         <Grid item>
-                            <Button className="animal-type-btn" size="large" variant="contained">CAT</Button>
+                            <Button className="add-pet-btn" size="large" variant="contained">CAT</Button>
                         </Grid>
                         <Grid item>
-                            <Button className="animal-type-btn" size="large" variant="contained">DOG</Button>
+                            <Button className="add-pet-btn" size="large" variant="contained">DOG</Button>
                         </Grid>
                         <Grid item>
-                            <Button className="animal-type-btn" size="large" variant="contained">RABBIT</Button>
+                            <Button className="add-pet-btn" size="large" variant="contained">RABBIT</Button>
                         </Grid>
                         <Grid item>
-                            <Button className="animal-type-btn" size="large" variant="contained">OTHER</Button>
+                            <Button className="add-pet-btn" size="large" variant="contained">OTHER</Button>
+                        </Grid>
+                    </Grid>
+                    <br />
+                    <br />
+                    <Grid
+                        container
+                        spacing={2}
+                        justifyContent="center"
+                    >
+                         <Grid item>
+                            <Button className="add-pet-btn" size="large" variant="contained">CANCEL</Button>
+                        </Grid>
+                        <Grid item>
+                            <Button className="add-pet-btn" size="large" variant="contained">ADD PET</Button>
                         </Grid>
                     </Grid>
                 </Container>
