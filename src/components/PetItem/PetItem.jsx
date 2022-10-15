@@ -12,7 +12,6 @@ const PetItem = ({pet}) => {
                     <CardMedia
                         component="img"
                         height="150"
-                        // image={"/images/rabbit-1-cropped.jpeg"}
                         image={pet.image}
                     />
                     <CardContent>

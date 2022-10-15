@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import PetItem from '../PetItem/PetItem.jsx';
 import Nav from '../Nav/Nav.jsx';
 import Grid from '@mui/material/Grid';
@@ -14,25 +14,28 @@ import { Typography } from '@mui/material';
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const history = useHistory();
+  const dispatch = useDispatch();
   
   const user = useSelector((store) => store.user);
-  const [petList, setPetList] = useState([]);
+  const userPets = useSelector(store => store.pet.userPets);
+  // const [petList, setPetList] = useState([]);
 
   useEffect(() => {
-    fetchPets();
+    // fetchPets();
+    dispatch({type: 'FETCH_PETS'});
   }, []);
 
-  const fetchPets = (userID) => {
-    console.log('in fetchPets');
-    axios.get('/api/pet')
-      .then((response) => {
-        setPetList(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        alert('Something went wrong. Sorry!');
-      });
-  } // end fetchPets
+  // const fetchPets = (userID) => {
+  //   console.log('in fetchPets');
+  //   axios.get('/api/pet')
+  //     .then((response) => {
+  //       setPetList(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       alert('Something went wrong. Sorry!');
+  //     });
+  // } // end fetchPets
 
   const handleClick = () => {
     console.log('in handleClick');
@@ -55,7 +58,7 @@ function UserPage() {
           {/* <p>Your ID is: {user.id}</p> */}
           {/* <LogOutButton className="btn" /> */}
           {
-            petList.map(pet => {
+            userPets.map(pet => {
               return (
                   <Grid item xs={6} key={pet.id}>
                     <PetItem 
