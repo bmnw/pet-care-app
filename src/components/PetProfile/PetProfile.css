@@ -1,3 +1,4 @@
+/* css file needs to be imported after the MUI button is imported */
 .profile-menu-btn {
     width: 200px;
     background-color: #f9f5f0;
