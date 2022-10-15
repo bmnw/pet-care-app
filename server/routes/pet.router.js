@@ -26,6 +26,34 @@ router.get('/', (req, res) => {
     }
 });
 
-
+// POST new pet
+router.post('/', (req, res) => {
+    console.log('in /pet POST route');
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('user', req.user);
+    if(req.isAuthenticated()) {
+        const insertPetQueryText =  `INSERT INTO "pet" ("pet_name", "pet_type", "image")
+                                    VALUES ($1, $2, $3)
+                                    RETURNING "id";`
+        pool.query(insertPetQueryText, [req.body.pet_name, req.body.pet_type, req.body.image])
+        .then(result => {
+            // console.log('new pet id', result.rows[0].id);
+            console.log('result', result.rows[0].id);
+            const createdPetId = result.rows[0].id;
+            const insertUserPetQuery =  `INSERT INTO "user_pet" ("user_id", "pet_id")
+                                        VALUES ($1, $2);`
+            pool.query(insertUserPetQuery, [req.user.id, createdPetId])
+                .then(result => {
+                    res.sendStatus(200);
+                })
+                .catch(error => {
+                    console.log(error);
+                    res.sendStatus(500);
+                })
+        })
+    } else {
+        res.sendStatus(403); // forbidden
+    }
+});
 
 module.exports = router;

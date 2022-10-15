@@ -36,6 +36,7 @@ function UserPage() {
 
   const handleClick = () => {
     console.log('in handleClick');
+    history.push("/addpet");
   } // end handleClick
 
   return (
