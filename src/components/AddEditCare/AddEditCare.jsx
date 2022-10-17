@@ -11,13 +11,14 @@ const AddEditCare = () => {
     let {petid} = useParams();
 
     const pet = useSelector(store => store.pet.petDetails);
+    const careItems = useSelector(store => store.care.petCareItems);
 
     const [updatedName, setUpdatedName] = useState('');
 
     useEffect(() => {
         console.log(petid);
         dispatch({type: 'REFRESH_PET_DETAILS', payload: petid});
-        // dispatch({type: 'FETCH_PET_CARE_ITEMS', payload: petid});
+        dispatch({type: 'FETCH_PET_CARE_ITEMS', payload: petid});
     }, []);
 
     return  <div>
@@ -31,6 +32,13 @@ const AddEditCare = () => {
                                         updatedName={updatedName}
                                         setUpdatedName={setUpdatedName}
                                     />
+                                )
+                    })
+                }
+                {
+                    careItems.map(item => {
+                        return  (
+                                    <span>{item.description}</span>
                                 )
                     })
                 }
