@@ -3,11 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
 import Nav from '../Nav/Nav.jsx';
 import UpdateName from './UpdateName.jsx';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
-import Textfield from '@mui/material/Textfield';
 
 const AddEditCare = () => {
 
@@ -22,6 +17,7 @@ const AddEditCare = () => {
     useEffect(() => {
         console.log(petid);
         dispatch({type: 'REFRESH_PET_DETAILS', payload: petid});
+        // dispatch({type: 'FETCH_PET_CARE_ITEMS', payload: petid});
     }, []);
 
     return  <div>
