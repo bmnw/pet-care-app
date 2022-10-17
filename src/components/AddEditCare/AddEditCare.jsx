@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
 import Nav from '../Nav/Nav.jsx';
 import UpdateName from './UpdateName.jsx';
+import CareItem from './CareItem.jsx';
+import Grid from '@mui/material/Grid';
 
 const AddEditCare = () => {
 
@@ -35,13 +37,20 @@ const AddEditCare = () => {
                                 )
                     })
                 }
-                {
-                    careItems.map(item => {
-                        return  (
-                                    <span>{item.description}</span>
-                                )
-                    })
-                }
+                <br />
+                    {
+                        careItems.map(item => {
+                            return  (
+                                       
+                                            <CareItem 
+                                                key={item.id}
+                                                item={item}
+                                            />
+                                        
+                                    
+                                    )
+                        })
+                    }
             </div>
 } // end AddEditCare
 
