@@ -30,6 +30,7 @@ const AddEditCare = () => {
                     pet.map(pet => {
                         return  (
                                     <UpdateName 
+                                        key={pet.id}
                                         pet={pet}
                                         updatedName={updatedName}
                                         setUpdatedName={setUpdatedName}

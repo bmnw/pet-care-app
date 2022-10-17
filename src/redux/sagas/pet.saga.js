@@ -1,5 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import { alignProperty } from '@mui/material/styles/cssUtils';
 
 function* fetchPets () {
     console.log('in fetchPets saga');
@@ -47,6 +48,17 @@ function* addPet (action) {
     }
 } // end addPet saga
 
+function* updatePetName (action) {
+    console.log('in updatePetName saga', action.payload.id);
+    try {
+        yield axios.put(`/api/pet/${action.payload.id}`, action.payload);
+        yield put ({type: 'REFRESH_PET_DETAILS', payload: action.payload.id});
+    } catch (error) {
+        console.log('error in updatePetName saga', error);
+        alert("Something went wrong updating your pet's name.");
+    }
+}    
+
 function* deletePetProfile (action) {
     console.log('in deletePetProfile saga', action.payload);
     try{
@@ -64,6 +76,7 @@ function* petSaga() {
     yield takeLatest('FETCH_THIS_PET', fetchThisPet);
     yield takeLatest('REFRESH_PET_DETAILS', refreshPetDetails);
     yield takeLatest('DELETE_PET_PROFILE', deletePetProfile);
+    yield takeLatest('UPDATE_PET_NAME', updatePetName);
 }
 
 export default petSaga;

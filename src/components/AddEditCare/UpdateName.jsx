@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from 'react-redux';
+import {useHistory, useParams} from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -5,13 +7,20 @@ import Textfield from '@mui/material/Textfield';
 
 const UpdateName = ({pet, updatedName, setUpdatedName}) => {
 
+    const dispatch = useDispatch();
+    let {petid} = useParams();
+
+    const updateName = (nameInput) => {
+        console.log('in updateName', nameInput, petid);
+        dispatch({type: 'UPDATE_PET_NAME', payload: {pet_name: nameInput, id: petid}});
+    } // end updateName
+
     return  <>
                 <Grid
                                 container
                                 spacing={2}
                                 direction="column"
                                 justifyContent="center"
-                                key={pet.id}
                             >
                                 <Grid item
                                     sx={{display:"flex", alignItems:"center", justifyContent:"center"}}
@@ -38,7 +47,7 @@ const UpdateName = ({pet, updatedName, setUpdatedName}) => {
                                     </Grid>
                                 </Grid>
                                 <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                                    <Button variant="contained">UPDATE NAME</Button>
+                                    <Button onClick={(event) => updateName(updatedName)} variant="contained">UPDATE NAME</Button>
                                 </Grid>
                             </Grid>
             </>
