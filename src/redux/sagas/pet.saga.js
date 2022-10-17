@@ -53,6 +53,7 @@ function* updatePetName (action) {
     try {
         yield axios.put(`/api/pet/${action.payload.id}`, action.payload);
         yield put ({type: 'REFRESH_PET_DETAILS', payload: action.payload.id});
+        action.clearInput();
     } catch (error) {
         console.log('error in updatePetName saga', error);
         alert("Something went wrong updating your pet's name.");

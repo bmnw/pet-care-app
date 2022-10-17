@@ -12,8 +12,13 @@ const UpdateName = ({pet, updatedName, setUpdatedName}) => {
 
     const updateName = (nameInput) => {
         console.log('in updateName', nameInput, petid);
-        dispatch({type: 'UPDATE_PET_NAME', payload: {pet_name: nameInput, id: petid}});
+        dispatch({type: 'UPDATE_PET_NAME', payload: {pet_name: nameInput, id: petid}, clearInput: clearInput});
     } // end updateName
+
+    const clearInput = () => {
+        console.log('in clearInput');
+        setUpdatedName('');
+    } // end clearInput
 
     return  <>
                 <Grid
