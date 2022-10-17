@@ -37,13 +37,13 @@ const AddPet = () => {
         console.log('in selectPetType', petInput);
         setPetType(petInput);
         if (petInput === 'cat'){
-            setPetImage('/images/cat-1-cropped.jpeg');
+            setPetImage('/images/cat-2.jpg');
         } else if (petInput === 'dog') {
-            setPetImage('/images/dog-1-cropped.jpeg');
+            setPetImage('/images/dog-2.jpg');
         } else if(petInput === 'rabbit') {
-            setPetImage('/images/rabbit-1-cropped.jpeg');
+            setPetImage('/images/rabbit-2.jpg');
         } else {
-            setPetImage('/images/logo-cropped.jpg'); // update with 'other' image
+            setPetImage('/images/other-7.jpg'); // update with 'other' image
         }
     }
 
