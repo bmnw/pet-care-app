@@ -47,11 +47,23 @@ function* addPet (action) {
     }
 } // end addPet saga
 
+function* deletePetProfile (action) {
+    console.log('in deletePetProfile saga', action.payload);
+    try{
+        yield axios.delete(`/api/pet/${action.payload}`);
+        action.toDashboard();
+    } catch (error) {
+        console.log('error in deletePetProfile saga', error);
+        alert('Something went wrong removing this profile.');
+    }
+}
+
 function* petSaga() {
     yield takeLatest('ADD_PET', addPet);
     yield takeLatest('FETCH_PETS', fetchPets);
     yield takeLatest('FETCH_THIS_PET', fetchThisPet);
     yield takeLatest('REFRESH_PET_DETAILS', refreshPetDetails);
+    yield takeLatest('DELETE_PET_PROFILE', deletePetProfile);
 }
 
 export default petSaga;
