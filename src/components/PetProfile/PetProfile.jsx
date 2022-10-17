@@ -66,7 +66,7 @@ const PetProfile = () => {
                             <Button className="profile-menu-btn" variant="contained" size="large">ADD CARE/EDIT</Button>
                         </Grid>
                         <Grid item>
-                            <Button color="secondary" className="profile-back-btn" variant="contained" size="large">ALL PETS</Button>
+                            <Button onClick={() => history.push('/user')} color="secondary" className="profile-back-btn" variant="contained" size="large">ALL PETS</Button>
                         </Grid>
                     </Grid>
                     <br />

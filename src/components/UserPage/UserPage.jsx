@@ -41,6 +41,11 @@ function UserPage() {
           <Grid item>
             <Typography variant="h5">Welcome, {user.username}!</Typography>
           </Grid>
+          <br />
+          <Grid item>
+            <Button onClick={handleClick} variant="contained">ADD PET</Button>
+          </Grid>
+          <br />
           {
             userPets.map(pet => {
               return (
@@ -52,10 +57,6 @@ function UserPage() {
               )
             })
           }
-          <br />
-          <Grid item>
-            <Button onClick={handleClick} variant="contained">ADD PET</Button>
-          </Grid>
       </Grid>
     </div>
   );
