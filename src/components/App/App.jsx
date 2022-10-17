@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddPet from '../AddPet/AddPet.jsx';
 import PetProfile from '../PetProfile/PetProfile.jsx';
+import AddEditCare from '../AddEditCare/AddEditCare.jsx';
 
 import './App.css';
 
@@ -85,6 +86,12 @@ function App() {
             <PetProfile />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            exact path="/add-edit/:petid"
+            element={<AddEditCare/>}
+          >
+            <AddEditCare />
+          </ProtectedRoute>
           <Route
             exact
             path="/login"
