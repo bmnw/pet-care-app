@@ -46,6 +46,7 @@ const AddEditCare = () => {
                                             <CareItem 
                                                 key={item.id}
                                                 item={item}
+                                                petid={petid}
                                             />
                                         
                                     

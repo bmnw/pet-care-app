@@ -26,9 +26,22 @@ function* fetchPetCareItems (action) {
     }
 }
 
+function* deleteCareItem (action) {
+    console.log('in deleteCareItem saga', action.payload.id);
+    console.log(typeof(action.payload.pet_id));
+    try {
+        yield axios.delete(`/api/care/${action.payload.id}`);
+        yield put({type: 'FETCH_PET_CARE_ITEMS', payload: action.payload.pet_id});
+    } catch (error) {
+        console.log('error in deleteCareItem saga', error);
+        alert('Something went wrong deleting this care item.');
+    }
+}
+
 function* careSaga() {
     yield takeLatest('FETCH_PET_CARE_ITEMS', fetchPetCareItems);
     yield takeLatest('SUBMIT_CARE_ITEM', submitCareItem);
+    yield takeLatest('DELETE_CARE_ITEM', deleteCareItem);
 }
 
 export default careSaga;

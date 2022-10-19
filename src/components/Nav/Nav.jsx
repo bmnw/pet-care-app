@@ -20,7 +20,7 @@ function Nav() {
           </Grid>
           <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}><h2 className="nav-title">Waffle's Spot</h2></Grid>
         </Grid> 
-        <Grid item sx={{color: 'black'}}>{user.username} is logged in</Grid>
+        <Grid item sx={{color: 'black'}}>Hey {user.username}!</Grid>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}

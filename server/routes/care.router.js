@@ -46,4 +46,24 @@ router.post('/', (req, res) => {
     }
 });
 
+// DELETE selected pet care item
+router.delete('/:itemid', (req, res) => {
+    console.log('in care DELETE /:itemid', req.params.itemid);
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('user', req.user);
+    if(req.isAuthenticated()){
+        const queryText =   `DELETE FROM "care_item"
+                            WHERE "id" = $1;`
+        pool.query(queryText, [req.params.itemid])
+            .then(result => {
+                res.sendStatus(200);
+            })
+            .catch(error => {
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403); // forbidden
+    }
+});
+
 module.exports = router;
