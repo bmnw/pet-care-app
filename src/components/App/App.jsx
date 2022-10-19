@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AddPet from '../AddPet/AddPet.jsx';
 import PetProfile from '../PetProfile/PetProfile.jsx';
 import AddEditCare from '../AddEditCare/AddEditCare.jsx';
+import CareReminders from '../CareReminders/CareReminders.jsx';
 
 import './App.css';
 
@@ -91,6 +92,13 @@ function App() {
             element={<AddEditCare/>}
           >
             <AddEditCare />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact path="/reminders/:petid"
+            element={<CareReminders/>}
+          >
+            <CareReminders />
           </ProtectedRoute>
           <Route
             exact
