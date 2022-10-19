@@ -25,6 +25,11 @@ router.get('/:petId', (req, res) => {
     }
 });
 
+// GET care item reminders for pet
+router.get('/reminders/:petid', (req, res) => {
+    console.log('in GET /care/reminders/:petid', req.params.petid);
+});
+
 // POST add care item to database
 router.post('/', (req, res) => {
     console.log('in /care POST route');

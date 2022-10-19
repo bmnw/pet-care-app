@@ -18,7 +18,7 @@ const CareReminders = () => {
     useEffect(() => {
         console.log(petid);
         dispatch({type: 'REFRESH_PET_DETAILS', payload: petid});
-        // dispatch({type: 'FETCH_REMINDERS', payload: petid});
+        dispatch({type: 'FETCH_REMINDERS', payload: petid});
     }, []);
 
     return  <div>
