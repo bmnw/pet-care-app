@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Textfield from '@mui/material/Textfield';
 
-const AddCareForm = () => {
+const AddCareForm = ({showForm, setShowForm}) => {
 
     const dispatch = useDispatch();
     let {petid} = useParams();
@@ -81,6 +81,20 @@ const AddCareForm = () => {
                         fullWidth 
                         multiline
                     />
+                    </Grid>
+                </Grid>
+                <br />
+                <Grid
+                    container
+                    spacing={2}
+                    direction="row"
+                    justifyContent="center"
+                >
+                    <Grid item>
+                        <Button sx={{width: 100}} onClick={() => setShowForm(!showForm)} variant="contained">CANCEL</Button>
+                    </Grid>
+                    <Grid item>
+                        <Button sx={{width: 100}} variant="contained">SAVE</Button>
                     </Grid>
                 </Grid>
             </div>
