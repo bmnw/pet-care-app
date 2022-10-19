@@ -5,6 +5,7 @@ import Nav from '../Nav/Nav.jsx';
 import UpdateName from './UpdateName.jsx';
 import CareItem from './CareItem.jsx';
 import AddCareButton from './AddCareButton.jsx';
+import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 
 const AddEditCare = () => {
@@ -55,6 +56,19 @@ const AddEditCare = () => {
                     }
                 <br />
                 <AddCareButton />
+                <br />
+                {
+                    pet.map(pet => {
+                        return  <Grid sx={{display: "flex", justifyContent: "center"}}>
+                                    <Grid item>
+                                        <Button sx={{width: 200}} color='secondary' variant="contained" onClick={(event) => history.push(`/petprofile/${petid}`)}>{pet.pet_name}'s PROFILE</Button>
+                                    </Grid>
+                                </Grid>
+                        
+                                
+                    })
+
+                }
             </div>
 } // end AddEditCare
 
