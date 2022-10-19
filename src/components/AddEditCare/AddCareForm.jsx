@@ -16,6 +16,27 @@ const AddCareForm = ({showForm, setShowForm}) => {
     const [frequency, setFrequency] = useState('');
     const [careDetails, setCareDetails] = useState('');
 
+    const submitCareItem = () => {
+        console.log('in submitCareItems', careDescription, frequency, startDate, careDetails);
+        dispatch({type: 'SUBMIT_CARE_ITEM', payload: {
+                pet_id: petid, 
+                description: careDescription, 
+                frequency: frequency, 
+                start_date: startDate, 
+                details: careDetails
+            },
+            clearInputs: clearInputs
+        });
+    } // end submitCareItem
+
+    const clearInputs = () => {
+        console.log('in clearInputs');
+        setCareDescription('');
+        setStartDate('');
+        setFrequency('');
+        setCareDetails('');
+    } // end clearInputs
+
     return  <div style={{marginLeft: 20, marginRight: 20}}>
                 <br />
                 <Grid
@@ -45,6 +66,7 @@ const AddCareForm = ({showForm, setShowForm}) => {
                         direction="row"
                         justifyContent="center"
                     >
+                        {/* Change these buttons to radio buttons */}
                         <Grid item>
                             <Button onClick={() => setFrequency('daily')} sx={{width: 75}} variant="contained">DAILY</Button>
                         </Grid>
@@ -94,7 +116,7 @@ const AddCareForm = ({showForm, setShowForm}) => {
                         <Button sx={{width: 100}} onClick={() => setShowForm(!showForm)} variant="contained">CANCEL</Button>
                     </Grid>
                     <Grid item>
-                        <Button sx={{width: 100}} variant="contained">SAVE</Button>
+                        <Button sx={{width: 100}} onClick={submitCareItem} variant="contained">SAVE</Button>
                     </Grid>
                 </Grid>
             </div>
