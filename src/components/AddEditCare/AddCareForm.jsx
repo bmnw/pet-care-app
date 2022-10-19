@@ -11,11 +11,12 @@ const AddCareForm = () => {
     const dispatch = useDispatch();
     let {petid} = useParams();
 
-    const pet = useSelector(store => store.pet.petDetails);
     const [careDescription, setCareDescription] = useState('');
     const [startDate, setStartDate] = useState('');
+    const [frequency, setFrequency] = useState('');
+    const [careDetails, setCareDetails] = useState('');
 
-    return  <div>
+    return  <div style={{marginLeft: 20, marginRight: 20}}>
                 <br />
                 <Grid
                     container
@@ -45,20 +46,20 @@ const AddCareForm = () => {
                         justifyContent="center"
                     >
                         <Grid item>
-                            <Button sx={{width: 80}} variant="contained">DAILY</Button>
+                            <Button onClick={() => setFrequency('daily')} sx={{width: 75}} variant="contained">DAILY</Button>
                         </Grid>
                         <Grid item>
-                            <Button sx={{width: 80}} variant="contained">WEEKLY</Button>
+                            <Button onClick={() => setFrequency('weekly')} sx={{width: 75}} variant="contained">WEEKLY</Button>
                         </Grid>
                         <Grid item>
-                            <Button sx={{width: 80}} variant="contained">MONTHLY</Button>
+                            <Button onClick={() => setFrequency('monthly')} sx={{width: 75}} variant="contained">MONTHLY</Button>
                         </Grid>
                         <Grid item>
-                            <Button sx={{width: 80}} variant="contained">YEARLY</Button>
+                            <Button onClick={() => setFrequency('yearly')} sx={{width: 75}} variant="contained">YEARLY</Button>
                         </Grid>
                     </Grid>
                     <Grid item>
-                        <Typography>Start Date:</Typography>
+                        <Typography>Start Date (YYYY/MM/DD):</Typography>
                     </Grid>
                     <Grid item>
                     <Textfield 
@@ -66,6 +67,19 @@ const AddCareForm = () => {
                         required
                         value={startDate}
                         onChange={(event) => setStartDate(event.target.value)}
+                    />
+                    </Grid>
+                    <Grid item>
+                        <Typography>Care Details (optional):</Typography>
+                    </Grid>
+                    <Grid item>
+                    <Textfield 
+                        sx={{backgroundColor: 'white'}}
+                        required
+                        value={careDetails}
+                        onChange={(event) => setCareDetails(event.target.value)}
+                        fullWidth 
+                        multiline
                     />
                     </Grid>
                 </Grid>
