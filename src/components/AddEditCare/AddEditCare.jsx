@@ -4,6 +4,7 @@ import {useHistory, useParams} from 'react-router-dom';
 import Nav from '../Nav/Nav.jsx';
 import UpdateName from './UpdateName.jsx';
 import CareItem from './CareItem.jsx';
+import AddCareButton from './AddCareButton.jsx';
 import Grid from '@mui/material/Grid';
 
 const AddEditCare = () => {
@@ -51,6 +52,8 @@ const AddEditCare = () => {
                                     )
                         })
                     }
+                <br />
+                <AddCareButton />
             </div>
 } // end AddEditCare
 
