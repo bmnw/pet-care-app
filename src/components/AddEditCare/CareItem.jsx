@@ -11,7 +11,7 @@ const CareItem = ({item}) => {
 
     return  <div style={{marginLeft: 15}}>
                 <Grid 
-                    sx={{marginBottom: 3, display: "flex", justifyContent: 'space-around'}}
+                    sx={{marginBottom: 3, display: "flex", justifyContent: "flex-end"}}
                     container
                     direction="row"
                 >
