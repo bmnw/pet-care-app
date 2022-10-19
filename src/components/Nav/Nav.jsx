@@ -12,14 +12,15 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <Grid container spacing={1}>
-          <Grid item>
+        <Grid container spacing={1} direction="row">
+          <Grid item sx={{marginBottom: 1}}>
             <img src={'images/logo-cropped.jpg'} 
             style={{width: 100, height: 75, border: 'solid'}}
             />
           </Grid>
           <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}><h2 className="nav-title">Waffle's Spot</h2></Grid>
         </Grid> 
+        <Grid item sx={{color: 'black'}}>{user.username} is logged in</Grid>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
