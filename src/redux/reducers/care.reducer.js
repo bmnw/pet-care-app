@@ -11,6 +11,17 @@ const petCareItems = (state = [], action) => {
     return state;
 }
 
+const reminders = (state = [], action) => {
+    console.log('in reminders reducer');
+    if(action.type === 'SET_REMINDERS'){
+        return action.payload;
+    } else if (action.type === 'UNSET_USER') {
+        return [];
+    }
+    return state;
+}
+
 export default combineReducers({
-    petCareItems
+    petCareItems,
+    reminders
   });
