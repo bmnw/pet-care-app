@@ -17,7 +17,10 @@ const AddCareButton = () => {
                     showForm ? (
                         <></>
                     ) : (
-                        <AddCareForm />
+                        <AddCareForm
+                            showForm={showForm}
+                            setShowForm={setShowForm}
+                        />
                     )
                 }                  
             </>
