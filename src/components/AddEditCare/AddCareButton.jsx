@@ -15,12 +15,12 @@ const AddCareButton = () => {
                 </Grid>
                 {
                     showForm ? (
-                        <></>
-                    ) : (
                         <AddCareForm
-                            showForm={showForm}
-                            setShowForm={setShowForm}
-                        />
+                        showForm={showForm}
+                        setShowForm={setShowForm}
+                    />
+                    ) : (
+                       <></>
                     )
                 }                  
             </>
