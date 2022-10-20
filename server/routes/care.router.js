@@ -28,6 +28,28 @@ router.get('/:petId', (req, res) => {
 // GET care item reminders for pet
 router.get('/reminders/:petid', (req, res) => {
     console.log('in GET /care/reminders/:petid', req.params.petid);
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('user', req.user);
+    if(req.isAuthenticated()){
+        const remindersQueryText =  `SELECT * FROM "care_item" 
+                                    WHERE "pet_id" = $1 
+                                    AND "frequency" = 'daily' AND "start_date" <= NOW()
+                                    OR "pet_id" = $1 AND ("frequency" = 'weekly' AND to_char("start_date", 'D') = to_char(NOW(), 'D') AND "start_date" <= NOW())
+                                    OR "pet_id" = $1 AND ("frequency" = 'monthly' AND to_char("start_date", 'DD') = to_char(NOW(), 'DD') AND "start_date" <= NOW())
+                                    OR "pet_id" = $1 AND ("frequency" = 'yearly' AND to_char("start_date", 'DDD') = to_char(NOW(), 'DDD') AND "start_date" <= NOW())
+                                    ORDER BY "start_date"
+                                    LIMIT 5;`
+        pool.query(remindersQueryText, [req.params.petid])
+            .then(result => {
+            res.send(result.rows);
+            })
+            .catch(error => {
+            console.log('erre in GET /care/reminders', error);
+            res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403); // forbidden
+    }
 });
 
 // POST add care item to database

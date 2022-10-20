@@ -5,6 +5,7 @@ import Nav from '../Nav/Nav.jsx';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const CareReminders = () => {
 
@@ -27,16 +28,39 @@ const CareReminders = () => {
                     pet.map(detail => {
                         return  <Grid container spacing={2} direction="column" alignContent="center">
                                     <Grid item>
-                                        <Typography variant="h5">What does {detail.pet_name} need?</Typography>
+                                        <Typography variant="h5">What does {detail.pet_name} need today?</Typography>
                                     </Grid>
                                 </Grid>
                     })
                 }
-                      {
+                <br />
+                <Grid container direction="column" sx={{display: "flex", justifyContent: "center"}}>
+                {
+                    reminders.map(reminder => {
+                        return  <Grid container spacing={2} direction="row" display="flex" justifyContent="center">
+                                    <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+                                        <Typography>{reminder.description}</Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <CheckCircleOutlineIcon  fontSize="large"/>
+                                    </Grid>
+                                </Grid>
+                    })
+                }
+                </Grid>
+                <br />
+                {
                     pet.map(detail => {
                         return  <Grid sx={{display: "flex", justifyContent: "center"}}>
                                     <Grid item>
-                                        <Button sx={{width: 200}} color='secondary' variant="contained" onClick={(event) => history.push(`/petprofile/${petid}`)}>{detail.pet_name}'s PROFILE</Button>
+                                        <Button 
+                                            sx={{width: 200}} 
+                                            color='secondary' 
+                                            variant="contained" 
+                                            onClick={(event) => history.push(`/petprofile/${petid}`)}
+                                        >
+                                            {detail.pet_name}'s PROFILE
+                                        </Button>
                                     </Grid>
                                 </Grid>
                         
