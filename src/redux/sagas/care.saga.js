@@ -26,6 +26,17 @@ function* fetchPetCareItems (action) {
     }
 }
 
+function* fetchReminders (action) {
+    console.log('in fetchReminders saga', action.payload);
+    try{
+        const reminders = yield axios.get(`/api/care/reminders/${action.payload}`);
+        yield put ({type: 'SET_REMINDERS', payload: reminders.data});
+    } catch (error) {
+        console.log('error in fetchReminders saga', error);
+        alert('Something went wrong displaying your reminders.');
+    }
+}
+
 function* deleteCareItem (action) {
     console.log('in deleteCareItem saga', action.payload.id);
     console.log(typeof(action.payload.pet_id));
@@ -42,6 +53,7 @@ function* careSaga() {
     yield takeLatest('FETCH_PET_CARE_ITEMS', fetchPetCareItems);
     yield takeLatest('SUBMIT_CARE_ITEM', submitCareItem);
     yield takeLatest('DELETE_CARE_ITEM', deleteCareItem);
+    yield takeLatest('FETCH_REMINDERS', fetchReminders);
 }
 
 export default careSaga;
