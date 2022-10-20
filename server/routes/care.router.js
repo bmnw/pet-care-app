@@ -36,7 +36,7 @@ router.get('/reminders/:petid', (req, res) => {
                                     AND "frequency" = 'daily' AND "start_date" <= NOW()
                                     OR "pet_id" = $1 AND ("frequency" = 'weekly' AND to_char("start_date", 'D') = to_char(NOW(), 'D') AND "start_date" <= NOW())
                                     OR "pet_id" = $1 AND ("frequency" = 'monthly' AND to_char("start_date", 'DD') = to_char(NOW(), 'DD') AND "start_date" <= NOW())
-                                    OR "pet_id" = $1 AND ("frequency" = 'yearly' AND to_char("start_date", 'DDD') = to_char(NOW(), 'DDD') AND "start_date" <= NOW())
+                                    OR "pet_id" = $1 AND ("frequency" = 'yearly' AND to_char("start_date", 'DD MM') = to_char(NOW(), 'DD MM') AND "start_date" <= NOW())
                                     ORDER BY "start_date"
                                     LIMIT 5;`
         pool.query(remindersQueryText, [req.params.petid])
