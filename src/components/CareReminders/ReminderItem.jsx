@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Checkbox from '@mui/material/Checkbox';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
