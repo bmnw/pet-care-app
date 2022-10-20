@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
 import Nav from '../Nav/Nav.jsx';
+import ReminderItem from './ReminderItem.jsx';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -37,14 +38,9 @@ const CareReminders = () => {
                 <Grid container direction="column" sx={{display: "flex", justifyContent: "center"}}>
                 {
                     reminders.map(reminder => {
-                        return  <Grid container spacing={2} direction="row" display="flex" justifyContent="center">
-                                    <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                                        <Typography>{reminder.description}</Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <CheckCircleOutlineIcon  fontSize="large"/>
-                                    </Grid>
-                                </Grid>
+                        return  <ReminderItem 
+                                    reminder={reminder}
+                                />
                     })
                 }
                 </Grid>
