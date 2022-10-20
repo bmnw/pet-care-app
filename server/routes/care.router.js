@@ -73,6 +73,28 @@ router.post('/', (req, res) => {
     }
 });
 
+// PUT to mark a care item as complete on a day
+router.put('/:itemid', (req, res) => {
+    console.log('in care PUT /:itemid', req.params.itemid);
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('user', req.user);
+    if(req.isAuthenticated()) {
+        const queryText =   `UPDATE "pet_care_item" 
+                            SET "date_complete" = CURRENT_DATE
+                            WHERE "care_item_id" = $1;`
+        pool.query(queryText, [req.params.itemid])
+            .then(result => {
+                res.sendStatus(200);
+            })
+            .catch(error => {
+                console.log(error);
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403); // forbidden
+    }
+});
+
 // DELETE selected pet care item
 router.delete('/:itemid', (req, res) => {
     console.log('in care DELETE /:itemid', req.params.itemid);

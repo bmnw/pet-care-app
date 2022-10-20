@@ -6,7 +6,6 @@ import ReminderItem from './ReminderItem.jsx';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const CareReminders = () => {
 
