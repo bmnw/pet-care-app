@@ -60,12 +60,25 @@ router.post('/', (req, res) => {
     if(req.isAuthenticated()) {
         const careItemQueryText =   `INSERT INTO "care_item" 
                                     ("pet_id", "description", "frequency", "start_date", "details")
-                                    VALUES ($1, $2, $3, $4, $5);`
+                                    VALUES ($1, $2, $3, $4, $5)
+                                    RETURNING "id";`
         pool.query(careItemQueryText, [req.body.pet_id, req.body.description, req.body.frequency, req.body.start_date, req.body.details])
             .then(result => {
-                res.sendStatus(200);
+                console.log('care_item.id', result.rows[0].id);
+                const careItemId = result.rows[0].id;
+                const insertPetCareItemQuery =  `INSERT INTO "pet_care_item" ("care_item_id")
+                                                VALUES ($1);`
+                pool.query(insertPetCareItemQuery, [careItemId])
+                    .then(result => {
+                        res.sendStatus(200);
+                    })
+                    .catch(error => {
+                        console.log('error inserting into pet_care_item', error);
+                        res.sendStatus(500);
+                    });
             })
             .catch(error => {
+                console.log('error inserting into care_item', error);
                 res.sendStatus(500);
             })
     } else {
