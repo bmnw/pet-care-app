@@ -49,11 +49,23 @@ function* deleteCareItem (action) {
     }
 }
 
+function* markAsComplete (action) {
+    console.log('in markAsComplete saga');
+    try {
+        yield axios.put(`/api/care/${action.payload}`);
+        // next dispatch a fetch for care reminders that joins care_items with pet_care_item so the color of the check can stay green on the day it was done
+    } catch (error) {
+        console.log('error in markAsComplete saga', error);
+        alert('Something went wrong recording that you finished that.');
+    }
+}
+
 function* careSaga() {
     yield takeLatest('FETCH_PET_CARE_ITEMS', fetchPetCareItems);
     yield takeLatest('SUBMIT_CARE_ITEM', submitCareItem);
     yield takeLatest('DELETE_CARE_ITEM', deleteCareItem);
     yield takeLatest('FETCH_REMINDERS', fetchReminders);
+    yield takeLatest('MARK_AS_COMPLETE', markAsComplete);
 }
 
 export default careSaga;

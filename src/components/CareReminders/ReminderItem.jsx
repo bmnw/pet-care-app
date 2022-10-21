@@ -1,16 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import CompletedReminder from './CompletedReminder.jsx';
+import IncompleteReminder from './IncompleteReminder.jsx';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import Checkbox from '@mui/material/Checkbox';
+import Switch from '@mui/material/Switch';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 const ReminderItem = ({reminder}) => {
 
+    const dispatch = useDispatch();
+
     const [open, setOpen] = useState(false);
+    const [isComplete, setIsComplete] = useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -20,15 +25,54 @@ const ReminderItem = ({reminder}) => {
         setOpen(false);
     }
 
-    return <>   
-                <Grid container spacing={2} direction="row" display="flex" justifyContent="center" onClick={handleClickOpen}>
-                    <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                        <Typography>{reminder.description}</Typography>
-                    </Grid>
-                    <Grid item>
-                        <CheckCircleOutlineIcon  fontSize="large"/>
-                    </Grid>
-                </Grid>
+    useEffect(() => {
+        console.log('useEffect is complete?:', isComplete);
+        checkIfComplete(reminder.date_complete);
+    }, []);
+
+    const checkIfComplete = (dateInput) => {
+        // console.log(new Date(dateInput).toDateString()); // doesn't work with null values
+        let today = new Date().toDateString();
+        console.log('today:', today);
+        let dateCompleted = "";
+        if(dateInput === null){
+            dateCompleted = null;
+        } else if(dateInput != null){
+            dateCompleted = new Date(dateInput).toDateString();
+        }
+        if(dateCompleted === null || dateCompleted < today){
+            console.log('incomplete');
+            setIsComplete(false);
+        } else if (dateCompleted == today) {
+            console.log('complete');
+            setIsComplete(true);
+        } else {
+            console.log('neither true or false');
+        }
+    } // end checkIfComplete
+
+    const taskComplete = (careItemId) => {
+        console.log('in taskComplete');
+        dispatch({type: 'MARK_AS_COMPLETE', payload: careItemId});
+    }  // end taskComplete
+
+    return <>   {
+                    isComplete ? (
+                        <CompletedReminder 
+                            reminder={reminder}
+                            handleClickOpen={handleClickOpen}
+                            taskComplete={taskComplete}
+                        />
+                    ) :
+                    (
+                        <IncompleteReminder 
+                            reminder={reminder}
+                            handleClickOpen={handleClickOpen}
+                            taskComplete={taskComplete}
+                        />
+                    )
+                }
+               
                 <Dialog
                     open={open}
                     onClose={handleClickClose}
