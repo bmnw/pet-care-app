@@ -50,10 +50,11 @@ function* deleteCareItem (action) {
 }
 
 function* markAsComplete (action) {
-    console.log('in markAsComplete saga');
+    console.log('in markAsComplete saga', action.payload);
     try {
         yield axios.put(`/api/care/${action.payload.id}`);
-        yield put({type: 'FETCH_REMINDERS', payload: action.payload.pet_id})
+        // yield put({type: 'FETCH_REMINDERS', payload: action.payload.pet_id});
+        action.toReminders(action.payload.pet_id);
     } catch (error) {
         console.log('error in markAsComplete saga', error);
         alert('Something went wrong recording that you finished that.');

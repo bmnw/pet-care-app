@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import CompletedReminder from './CompletedReminder.jsx';
 import IncompleteReminder from './IncompleteReminder.jsx';
 import Typography from '@mui/material/Typography';
@@ -13,6 +14,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 const ReminderItem = ({reminder}) => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [open, setOpen] = useState(false);
     const [isComplete, setIsComplete] = useState(false);
@@ -52,9 +54,14 @@ const ReminderItem = ({reminder}) => {
     } // end checkIfComplete
 
     const taskComplete = (careItemId, petId) => {
-        console.log('in taskComplete');
-        dispatch({type: 'MARK_AS_COMPLETE', payload: {id: careItemId, pet_id: petId}});
+        console.log('in taskComplete', careItemId, petId);
+        dispatch({type: 'MARK_AS_COMPLETE', payload: {id: careItemId, pet_id: petId}, toReminders: toReminders});
     }  // end taskComplete
+
+    const toReminders = (petId) => {
+        console.log('in toReminders');
+        history.push(`/reminders/${petId}`);
+    }
 
     return <>   {
                     isComplete ? (
