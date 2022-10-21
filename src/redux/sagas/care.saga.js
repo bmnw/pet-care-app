@@ -52,8 +52,8 @@ function* deleteCareItem (action) {
 function* markAsComplete (action) {
     console.log('in markAsComplete saga');
     try {
-        yield axios.put(`/api/care/${action.payload}`);
-        // next dispatch a fetch for care reminders that joins care_items with pet_care_item so the color of the check can stay green on the day it was done
+        yield axios.put(`/api/care/${action.payload.id}`);
+        yield put({type: 'FETCH_REMINDERS', payload: action.payload.pet_id})
     } catch (error) {
         console.log('error in markAsComplete saga', error);
         alert('Something went wrong recording that you finished that.');

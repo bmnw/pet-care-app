@@ -9,7 +9,7 @@ const IncompleteReminder = ({reminder, taskComplete}) => {
                         <Typography variant="h6">{reminder.description}</Typography>
                     </Grid>
                     <Grid item>
-                        <Switch color="success" size="large" onClick={() => taskComplete(reminder.id)}/>
+                        <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
                     </Grid>
                 </Grid>
             </>
