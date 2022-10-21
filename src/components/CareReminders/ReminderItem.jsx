@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import CompletedReminder from './CompletedReminder.jsx';
+import IncompleteReminder from './IncompleteReminder.jsx';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Checkbox from '@mui/material/Checkbox';
@@ -31,11 +32,12 @@ const ReminderItem = ({reminder}) => {
     const checkIfComplete = (dateInput) => {
         console.log(dateInput);
         let today = new Date();
-        if(dateInput = today){
+        if(Date(dateInput) === today){
             setIsComplete(true);
-        } else if (dateInput < today) {
+        } else if (dateInput < today || dateInput === null) {
             setIsComplete(false);
         }
+        console.log('is complete?:', isComplete);
     } // end checkIfComplete
 
     const taskComplete = (careItemId) => {
@@ -52,14 +54,11 @@ const ReminderItem = ({reminder}) => {
                         />
                     ) :
                     (
-                        <Grid container spacing={2} direction="row" display="flex" justifyContent="center">
-                            <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                                <Typography variant="h6" onClick={handleClickOpen}>{reminder.description}</Typography>
-                            </Grid>
-                            <Grid item>
-                                <Switch color="success" size="large" onClick={() => taskComplete(reminder.id)}/>
-                            </Grid>
-                        </Grid>
+                        <IncompleteReminder 
+                            reminder={reminder}
+                            handleClickOpen={handleClickOpen}
+                            taskComplete={taskComplete}
+                        />
                     )
                 }
                
