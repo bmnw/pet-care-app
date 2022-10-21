@@ -36,7 +36,7 @@ router.get('/reminders/:petid', (req, res) => {
                                     WHERE "pet_id" = $1 AND "frequency" = 'daily' AND "start_date" <= NOW()
                                     OR "pet_id" = $1 AND ("frequency" = 'weekly' AND to_char("start_date", 'D') = to_char(NOW(), 'D') AND "start_date" <= NOW())
                                     OR "pet_id" = $1 AND ("frequency" = 'monthly' AND to_char("start_date", 'DD') = to_char(NOW(), 'DD') AND "start_date" <= NOW())
-                                    OR "pet_id" = $1 AND ("frequency" = 'yearly' AND to_char("start_date", 'DD MM') = to_char(NOW(), 'DD MM') AND "start_date" <= NOW())
+                                    OR "pet_id" = 21 AND ("frequency" = 'yearly' AND to_char("start_date", 'DD MM') = to_char(NOW(), 'DD MM') AND "start_date" <= NOW())
                                     ORDER BY "start_date";`
         pool.query(remindersQueryText, [req.params.petid])
             .then(result => {
@@ -113,13 +113,23 @@ router.delete('/:itemid', (req, res) => {
     console.log('is authenticated?', req.isAuthenticated());
     console.log('user', req.user);
     if(req.isAuthenticated()){
-        const queryText =   `DELETE FROM "care_item"
-                            WHERE "id" = $1;`
-        pool.query(queryText, [req.params.itemid])
+        const deletePetCareItemQuery =   `DELETE FROM "pet_care_item"
+                                            WHERE "care_item_id" = $1;`
+        pool.query(deletePetCareItemQuery, [req.params.itemid])
             .then(result => {
-                res.sendStatus(200);
+                const deleteCareItemQuery = `DELETE FROM "care_item"
+                                            WHERE "id" = $1;`
+                pool.query(deleteCareItemQuery, [req.params.itemid])
+                    .then(result => {
+                        res.sendStatus(200);
+                    })
+                    .catch(error => {
+                        console.log('error deleting from care_item', error);
+                        res.sendStatus(500);
+                    })
             })
             .catch(error => {
+                console.log('error deleting from pet_care_item', error);
                 res.sendStatus(500);
             });
     } else {

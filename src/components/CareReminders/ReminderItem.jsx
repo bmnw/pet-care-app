@@ -26,16 +26,21 @@ const ReminderItem = ({reminder}) => {
     }
 
     useEffect(() => {
+        console.log('useEffect is complete?:', isComplete);
         checkIfComplete(reminder.date_complete);
     }, []);
 
     const checkIfComplete = (dateInput) => {
         console.log(dateInput);
         let today = new Date();
-        if(Date(dateInput) === today){
+        if(dateInput){
+            console.log('complete');
             setIsComplete(true);
-        } else if (dateInput < today || dateInput === null) {
+        } else if (dateInput === null) {
+            console.log('incomplete');
             setIsComplete(false);
+        } else {
+            console.log('neither true or false');
         }
         console.log('is complete?:', isComplete);
     } // end checkIfComplete
