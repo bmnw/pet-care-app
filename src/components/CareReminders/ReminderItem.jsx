@@ -31,18 +31,24 @@ const ReminderItem = ({reminder}) => {
     }, []);
 
     const checkIfComplete = (dateInput) => {
-        console.log(dateInput);
-        let today = new Date();
-        if(dateInput){
-            console.log('complete');
-            setIsComplete(true);
-        } else if (dateInput === null) {
+        // console.log(new Date(dateInput).toDateString()); // doesn't work with null values
+        let today = new Date().toDateString();
+        console.log('today:', today);
+        let dateCompleted = "";
+        if(dateInput === null){
+            dateCompleted = null;
+        } else if(dateInput != null){
+            dateCompleted = new Date(dateInput).toDateString();
+        }
+        if(dateCompleted === null || dateCompleted < today){
             console.log('incomplete');
             setIsComplete(false);
+        } else if (dateCompleted == today) {
+            console.log('complete');
+            setIsComplete(true);
         } else {
             console.log('neither true or false');
         }
-        console.log('is complete?:', isComplete);
     } // end checkIfComplete
 
     const taskComplete = (careItemId) => {
