@@ -51,9 +51,9 @@ const ReminderItem = ({reminder}) => {
         }
     } // end checkIfComplete
 
-    const taskComplete = (careItemId) => {
+    const taskComplete = (careItemId, petId) => {
         console.log('in taskComplete');
-        dispatch({type: 'MARK_AS_COMPLETE', payload: careItemId});
+        dispatch({type: 'MARK_AS_COMPLETE', payload: {id: careItemId, pet_id: petId}});
     }  // end taskComplete
 
     return <>   {

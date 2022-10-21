@@ -10,7 +10,7 @@ const CompletedReminder = ({reminder, handleClickOpen, taskComplete}) => {
                         <Typography variant="h6" onClick={handleClickOpen}>{reminder.description}</Typography>
                     </Grid>
                     <Grid item>
-                        <Switch checked color="success" size="large" onClick={() => taskComplete(reminder.id)}/>
+                        <Switch disabled checked color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
                     </Grid>
                 </Grid>
             </>
