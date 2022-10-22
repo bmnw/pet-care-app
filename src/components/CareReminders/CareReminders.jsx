@@ -61,9 +61,16 @@ const CareReminders = () => {
                 <Grid container direction="column" sx={{display: "flex", justifyContent: "center"}}>
                 {
                     reminders.map(reminder => {
+ 
+                        if(checkIfComplete(reminder.date_complete) === true){
+                            isComplete = true;
+                        } else if (checkIfComplete(reminder.date_complete) === false){
+                            isComplete = false;
+                        }
+
                         return  <ReminderItem 
                                     reminder={reminder}
-                                    checkIfComplete={checkIfComplete}
+                                    // checkIfComplete={checkIfComplete}
                                     // setIsComplete={setIsComplete}
                                     isComplete={isComplete}
                                 />

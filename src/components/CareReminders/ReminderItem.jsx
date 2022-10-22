@@ -10,6 +10,7 @@ import Switch from '@mui/material/Switch';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import EditAttributesSharpIcon from '@mui/icons-material/EditAttributesSharp';
 
 const ReminderItem = ({reminder, checkIfComplete, isComplete}) => {
 
@@ -29,7 +30,7 @@ const ReminderItem = ({reminder, checkIfComplete, isComplete}) => {
 
     useEffect(() => {
         console.log('ReminderItem page load');
-        checkIfComplete(reminder.date_complete);
+        // checkIfComplete(reminder.date_complete);
     }, [reminder]);
 
     // const checkIfComplete = (dateInput) => {
@@ -86,7 +87,7 @@ const ReminderItem = ({reminder, checkIfComplete, isComplete}) => {
                     </Grid>
                     <Grid item>
                         {
-                            isComplete ? <Switch disabled checked color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/> :
+                            isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/> :
                             <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
                         }
                     </Grid>
