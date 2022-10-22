@@ -79,7 +79,7 @@ const ReminderItem = ({reminder, isComplete}) => {
                         />
                     )
                 } */}
-                 <Grid container spacing={2} direction="row" display="flex" justifyContent="center">
+                 <Grid container spacing={2} direction="row" display="flex" justifyContent="center" sx={{marginBottom: 1}}>
                     <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                         <Typography variant="h6" onClick={handleClickOpen}>{reminder.description}</Typography>
                     </Grid>
