@@ -8,7 +8,7 @@ function* fetchVetNotes (action) {
         yield put ({type: 'SET_VET_NOTES', payload: vetNotes.data});
     } catch (error) {
         console.log('error in fetchVetNotes saga', error);
-        alert('Something went wrong displaying the vet notes.')
+        alert('Something went wrong displaying the vet notes.');
     }
 }
 
