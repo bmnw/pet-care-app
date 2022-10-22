@@ -40,11 +40,11 @@ router.get('/reminders/:petid', (req, res) => {
                                     ORDER BY "start_date";`
         pool.query(remindersQueryText, [req.params.petid])
             .then(result => {
-            res.send(result.rows);
+                res.send(result.rows);
             })
             .catch(error => {
-            console.log('erre in GET /care/reminders', error);
-            res.sendStatus(500);
+                console.log('error in GET /care/reminders', error);
+                res.sendStatus(500);
             });
     } else {
         res.sendStatus(403); // forbidden

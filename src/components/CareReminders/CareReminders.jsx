@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
 import Nav from '../Nav/Nav.jsx';
@@ -15,12 +15,36 @@ const CareReminders = () => {
 
     const pet = useSelector(store => store.pet.petDetails);
     const reminders = useSelector(store => store.care.reminders);
+    // const [isComplete, setIsComplete] = useState(false);
+    let isComplete = false;
 
     useEffect(() => {
         console.log(petid);
         dispatch({type: 'REFRESH_PET_DETAILS', payload: petid});
         dispatch({type: 'FETCH_REMINDERS', payload: petid});
     }, []);
+
+    const checkIfComplete = (dateInput) => {
+        console.log('in checkIfComplete');
+        let today = new Date().toDateString();
+        console.log('today:', today);
+        let dateCompleted = "";
+        if(dateInput === null){
+            dateCompleted = null;
+        } else if(dateInput != null){
+            dateCompleted = new Date(dateInput).toDateString();
+        }
+        if(dateCompleted === null || dateCompleted < today){
+            console.log('incomplete');
+            isComplete = false;
+        } else if (dateCompleted == today) {
+            console.log('complete');
+            isComplete = true;
+            console.log('should be true:', isComplete);
+        } else {
+            console.log('neither true or false');
+        }
+    } // end checkIfComplete
 
     return  <div>
                 <Nav />
@@ -39,6 +63,9 @@ const CareReminders = () => {
                     reminders.map(reminder => {
                         return  <ReminderItem 
                                     reminder={reminder}
+                                    checkIfComplete={checkIfComplete}
+                                    // setIsComplete={setIsComplete}
+                                    isComplete={isComplete}
                                 />
                     })
                 }
