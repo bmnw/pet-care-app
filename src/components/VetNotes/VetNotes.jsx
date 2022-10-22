@@ -17,6 +17,7 @@ const VetNotes = () => {
     useEffect(() => {
         console.log(petid);
         dispatch({type: 'REFRESH_PET_DETAILS', payload: petid});
+        dispatch({type: 'FETCH_VET_NOTES', payload: petid});
     }, []);
 
     return  <div>
