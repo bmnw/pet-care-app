@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
 import Nav from '../Nav/Nav.jsx';
+import VetNoteItem from '../VetNotes/VetNoteItem.jsx';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -13,6 +14,7 @@ const VetNotes = () => {
     let {petid} = useParams();
 
     const pet = useSelector(store => store.pet.petDetails);
+    const vetNotes = useSelector(store => store.vet.vetNotes);
 
     useEffect(() => {
         console.log(petid);
@@ -29,6 +31,16 @@ const VetNotes = () => {
                                         <Typography variant="h5">Vet Notes for {detail.pet_name}</Typography>
                                     </Grid>
                                 </Grid>
+                    })
+                }
+                <br />
+                {
+                    vetNotes.map(note => {
+                        return  <>
+                                    <VetNoteItem 
+                                        note={note}
+                                    />
+                                </>
                     })
                 }
                 <br />
