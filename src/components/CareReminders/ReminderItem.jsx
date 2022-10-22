@@ -12,13 +12,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import EditAttributesSharpIcon from '@mui/icons-material/EditAttributesSharp';
 
-const ReminderItem = ({reminder, checkIfComplete, isComplete}) => {
+const ReminderItem = ({reminder, isComplete}) => {
 
     const dispatch = useDispatch();
     const history = useHistory();
 
     const [open, setOpen] = useState(false);
-    // const [isComplete, setIsComplete] = useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -30,7 +29,6 @@ const ReminderItem = ({reminder, checkIfComplete, isComplete}) => {
 
     useEffect(() => {
         console.log('ReminderItem page load');
-        // checkIfComplete(reminder.date_complete);
     }, [reminder]);
 
     // const checkIfComplete = (dateInput) => {

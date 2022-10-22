@@ -54,7 +54,6 @@ function* markAsComplete (action) {
     try {
         yield axios.put(`/api/care/${action.payload.id}`); // sets pet_care_item date_complete to CURRENT_DATE
         yield put({type: 'FETCH_REMINDERS', payload: action.payload.pet_id}); // fetches all care items for the current day
-        // action.toReminders(action.payload.pet_id); 
     } catch (error) {
         console.log('error in markAsComplete saga', error);
         alert('Something went wrong recording that you finished that.');

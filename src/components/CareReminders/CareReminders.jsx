@@ -15,7 +15,6 @@ const CareReminders = () => {
 
     const pet = useSelector(store => store.pet.petDetails);
     const reminders = useSelector(store => store.care.reminders);
-    // const [isComplete, setIsComplete] = useState(false);
     let isComplete = false;
 
     useEffect(() => {
@@ -70,8 +69,6 @@ const CareReminders = () => {
 
                         return  <ReminderItem 
                                     reminder={reminder}
-                                    // checkIfComplete={checkIfComplete}
-                                    // setIsComplete={setIsComplete}
                                     isComplete={isComplete}
                                 />
                     })
@@ -91,11 +88,8 @@ const CareReminders = () => {
                                             {detail.pet_name}'s PROFILE
                                         </Button>
                                     </Grid>
-                                </Grid>
-                        
-                                
+                                </Grid>            
                     })
-
                 }
             </div>
 }
