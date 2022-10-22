@@ -60,7 +60,7 @@ const PetProfile = () => {
                             <Button onClick={() => history.push(`/reminders/${petid}`)} className="profile-menu-btn" variant="contained" size="large">CARE REMINDERS</Button>
                         </Grid>
                         <Grid item>
-                            <Button className="profile-menu-btn" variant="contained" size="large">VET NOTES</Button>
+                            <Button onClick={() => history.push(`/vet-notes/${petid}`)} className="profile-menu-btn" variant="contained" size="large">VET NOTES</Button>
                         </Grid>
                         <Grid item>
                             <Button onClick={() => history.push(`/add-edit/${petid}`)} className="profile-menu-btn" variant="contained" size="large">ADD CARE/EDIT</Button>
