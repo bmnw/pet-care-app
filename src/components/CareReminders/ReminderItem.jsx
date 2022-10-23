@@ -85,7 +85,7 @@ const ReminderItem = ({reminder, isComplete}) => {
                     </Grid>
                     <Grid item>
                         {
-                            isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/> :
+                            isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large"/> :
                             <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
                         }
                     </Grid>
