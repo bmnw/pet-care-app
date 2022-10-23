@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {useParams} from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -53,14 +53,15 @@ const AddCareForm = ({showForm, setShowForm}) => {
                     <Textfield 
                             sx={{backgroundColor: 'white'}}
                             required
+                            label="Required"
                             value={careDescription}
                             onChange={(event) => setCareDescription(event.target.value)}
                             fullWidth 
                         />
                 </Box>
                 <br />
-                <Box sx={{width: 125}}>
-                    <FormControl fullWidth>
+                <Box sx={{width: 125, bgcolor: 'white'}}>
+                    <FormControl fullWidth required>
                         <InputLabel>Frequency</InputLabel>
                         <Select
                             label="Frequency"
@@ -80,20 +81,22 @@ const AddCareForm = ({showForm, setShowForm}) => {
                     <Textfield 
                         sx={{backgroundColor: 'white'}}
                         required
+                        label="Required"
                         value={startDate}
                         onChange={(event) => setStartDate(event.target.value)}
                     />
                 </Box>
                 <br />
                 <Box>
-                    <Typography>Care Details (optional):</Typography>
+                    <Typography>Care Details:</Typography>
                     <Textfield 
                         sx={{backgroundColor: 'white'}}
-                        required
                         value={careDetails}
                         onChange={(event) => setCareDetails(event.target.value)}
                         fullWidth 
                         multiline
+                        rows={3}
+                        label="Optional"
                     />
                 </Box>
                 <br />

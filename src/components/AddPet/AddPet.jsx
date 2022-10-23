@@ -1,16 +1,19 @@
-import React from 'react';
-import {useState, useEffect} from 'react';
-import axios from 'axios';
+import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import Nav from '../Nav/Nav.jsx';
 import Container from '@mui/material/Container';
 import Textfield from '@mui/material/Textfield';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-
+import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
 import './AddPet.css';
-import Nav from '../Nav/Nav.jsx';
+
 
 const AddPet = () => {
 
@@ -20,6 +23,11 @@ const AddPet = () => {
     const [petName, setPetName] = useState('');
     const [petType, setPetType] = useState('');
     const [petImage, setPetImage] = useState('');
+
+    // const handleChange = (event) => {
+    //     console.log('in handleChange', event.target.value);
+    //     setPetType(event.target.value);
+    // }
 
     const submitPet = () => {
         console.log('in submitPet');
@@ -43,7 +51,7 @@ const AddPet = () => {
         } else if(petInput === 'rabbit') {
             setPetImage('/images/rabbit-2.jpg');
         } else {
-            setPetImage('/images/other-7.jpg'); // update with 'other' image
+            setPetImage('/images/other-7.jpg');
         }
     }
 
@@ -52,27 +60,34 @@ const AddPet = () => {
                 <Container>
                     <Typography sx={{textAlign: "center"}} variant="h5">Add a new pet!</Typography>
                     <br />
-                    <Grid
-                        container
-                        spacing={2}
-                        direction="row"
-                        justifyContent="center"
-                    >
-                        <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                            <Typography>PET NAME:</Typography>
-                        </Grid>
-                        <Grid item>
-                            <Textfield 
-                                sx={{backgroundColor: 'white'}}
-                                required
-                                value={petName}
-                                onChange={(event) => setPetName(event.target.value)}    
-                            />
-                        </Grid>
-                    </Grid>
+                    <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                        <Typography sx={{display: 'flex', alignItems:'center', width: 100}}>PET NAME:</Typography> 
+                        <Textfield 
+                                    sx={{backgroundColor: 'white'}}
+                                    required
+                                    label="Required"
+                                    value={petName}
+                                    onChange={(event) => setPetName(event.target.value)}    
+                        />
+                    </Box>
                     <br />
                     <br />
-                    <Grid
+                    <Box sx={{display: 'flex', justifyContent: 'center', marginLeft:10, marginRight: 10, bgcolor: 'white'}}>
+                        <FormControl fullWidth required variant="outlined">
+                            <InputLabel>Type of Pet</InputLabel>
+                            <Select
+                                label="Type of Pet"
+                                value={petType}
+                                onChange={(event) => selectPetType(event.target.value)}
+                            >
+                                <MenuItem value="cat">CAT</MenuItem>
+                                <MenuItem value="dog">DOG</MenuItem>
+                                <MenuItem value = "rabbit">RABBIT</MenuItem>
+                                <MenuItem value="other">OTHER</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
+                    {/* <Grid
                         container
                         spacing={2}
                         justifyContent="center"
@@ -89,7 +104,7 @@ const AddPet = () => {
                         <Grid item>
                             <Button onClick={() => selectPetType('other')} className="add-pet-btn" size="large" variant="contained">OTHER</Button>
                         </Grid>
-                    </Grid>
+                    </Grid> */}
                     <br />
                     <br />
                     <Grid
