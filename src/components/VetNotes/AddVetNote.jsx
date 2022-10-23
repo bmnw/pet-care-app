@@ -17,12 +17,24 @@ const AddVetNote = () => {
 
     const pet = useSelector(store => store.pet.petDetails);
 
-    const [noteDate, setNoteDate] = useState('');
+    const [date, setDate] = useState('');
+    const [vet, setVet] = useState('');
+    const [note, setNote] = useState('');
 
     useEffect(() => {
         console.log(petid);
         dispatch({type: 'REFRESH_PET_DETAILS', payload: petid});
     }, []);
+
+    const checkNoteLength = (noteInput) => {
+        console.log('in checkNoteLength');
+        if(noteInput.length <= 1000) {
+            setNote(noteInput);
+        } else if(noteInput.length > 1000) {
+            alert('Vet note cannot be more than 1000 characters.');
+            return;
+        }
+    }
 
     return  <>
                 <Nav />
@@ -36,20 +48,43 @@ const AddVetNote = () => {
                     })
                 }
                 <br />
-                <Paper sx={{border: 1, margin: 2, padding: 2, bgcolor: 'lightgray'}}>
+                <Paper elevation={5} sx={{ margin: 2, padding: 2, bgcolor: 'lightgray'}}>
                     <Box sx={{display: 'flex'}}>
-                        <Typography sx={{display:"flex", alignItems:"center", marginRight: 1}}>DATE:</Typography>
+                        <Typography sx={{display:"flex", alignItems:"center"}}>DATE:</Typography>
                         <Textfield 
                                 sx={{backgroundColor: 'white'}}
                                 required
-                                value={noteDate}
-                                onChange={(event) => setNoteDate(event.target.value)}
+                                value={date}
+                                onChange={(event) => setDate(event.target.value)}
                                 label="YYYY/MM/DD"
                         />
                     </Box>
+                    <br />
+                    <Box sx={{display: 'flex'}}>
+                        <Typography sx={{display:"flex", alignItems:"center"}}>VET:</Typography>
+                        <Textfield 
+                                sx={{backgroundColor: 'white'}}
+                                required
+                                value={vet}
+                                onChange={(event) => setVet(event.target.value)}
+                                label="Vet/clinic name"
+                        />
+                    </Box>
+                    <Box>
+                        <Typography>NOTE:</Typography>
+                        <Textfield 
+                                sx={{backgroundColor: 'white'}}
+                                required
+                                value={note}
+                                // onChange={(event) => setNote(event.target.value)}
+                                onChange={(event) => checkNoteLength(event.target.value)}
+                                multiline
+                                fullWidth
+                                rows={8}
+                        />
+                        <Typography>{note.length}/1000</Typography>
+                    </Box>
 
-                    <Typography>VET:</Typography>
-                    <Typography>NOTE:</Typography>
                     {/* <Box sx={{
                         bgcolor: 'white',
                         border: 1,
