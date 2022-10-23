@@ -34,6 +34,16 @@ const AddVetNote = () => {
             alert('Vet note cannot be more than 1000 characters.');
             return;
         }
+    } // end checkNoteLength
+
+    const submitVetNote = () => {
+        console.log('in submitVetNote');
+        // dispatch({type: 'SUBMIT_VET_NOTE', payload: {pet_id: petid, date: date, vet: vet, note: note}, toVetNotes: toVetNotes});
+    } // end submitVetNote
+
+    const toVetNotes = () => {
+        console.log('in toVetNotes');
+        history.push(`/vet-notes/${petid}`);
     }
 
     return  <>
@@ -48,35 +58,35 @@ const AddVetNote = () => {
                     })
                 }
                 <br />
-                <Paper elevation={5} sx={{ margin: 2, padding: 2, bgcolor: 'lightgray'}}>
+                <Paper elevation={10} sx={{ margin: 2, padding: 2, bgcolor: 'lightgray'}}>
                     <Box sx={{display: 'flex'}}>
-                        <Typography sx={{display:"flex", alignItems:"center"}}>DATE:</Typography>
+                        <Typography sx={{display:"flex", alignItems:"center", width: 50}}>DATE:</Typography>
                         <Textfield 
                                 sx={{backgroundColor: 'white'}}
                                 required
                                 value={date}
                                 onChange={(event) => setDate(event.target.value)}
-                                label="YYYY/MM/DD"
+                                helperText="YYYY/MM/DD"
                         />
                     </Box>
                     <br />
                     <Box sx={{display: 'flex'}}>
-                        <Typography sx={{display:"flex", alignItems:"center"}}>VET:</Typography>
+                        <Typography sx={{display:"flex", alignItems:"center", width: 50}}>VET:</Typography>
                         <Textfield 
                                 sx={{backgroundColor: 'white'}}
                                 required
                                 value={vet}
                                 onChange={(event) => setVet(event.target.value)}
-                                label="Vet/clinic name"
+                                helperText="Vet/clinic name"
                         />
                     </Box>
+                    <br />
                     <Box>
                         <Typography>NOTE:</Typography>
                         <Textfield 
                                 sx={{backgroundColor: 'white'}}
                                 required
                                 value={note}
-                                // onChange={(event) => setNote(event.target.value)}
                                 onChange={(event) => checkNoteLength(event.target.value)}
                                 multiline
                                 fullWidth
@@ -84,16 +94,11 @@ const AddVetNote = () => {
                         />
                         <Typography>{note.length}/1000</Typography>
                     </Box>
-
-                    {/* <Box sx={{
-                        bgcolor: 'white',
-                        border: 1,
-                        p: 1,
-
-                    }}>
-                    </Box> */}
-
                 </Paper>
+                <Box sx={{display: 'flex', justifyContent:'center'}}>
+                    <Button onClick={() => history.push(`/vet-notes/${petid}`)} sx={{marginRight: 1}} variant="contained">CANCEL</Button>
+                    <Button onClick={submitVetNote} sx={{marginLeft: 1}} variant="contained">ADD NOTE</Button>
+                </Box>
             </>
 }
 
