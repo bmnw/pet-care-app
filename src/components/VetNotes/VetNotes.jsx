@@ -35,16 +35,6 @@ const VetNotes = () => {
                 }
                 <br />
                 {
-                    vetNotes.map(note => {
-                        return  <>
-                                    <VetNoteItem 
-                                        note={note}
-                                    />
-                                </>
-                    })
-                }
-                <br />
-                {
                     pet.map(detail => {
                         return  <Grid
                                     container
@@ -56,11 +46,23 @@ const VetNotes = () => {
                                         <Button sx={{width: 125}} variant="contained" onClick={(event) => history.push(`/petprofile/${petid}`)}>{detail.pet_name}'s Profile</Button>
                                     </Grid>
                                     <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                                        <Button sx={{width: 125}} variant="contained" onClick={(event) => history.push(`/add-vet-note/${petid}`)}>ADD NOTE</Button>
+                                        <Button sx={{width: 125}} variant="contained" onClick={(event) => history.push(`/add-vet-note/${petid}`)}>NEW NOTE</Button>
                                     </Grid>
                                 </Grid>
                     })
                 }
+                <br />
+                {
+                    vetNotes.map(note => {
+                        return  <>
+                                    <VetNoteItem 
+                                        note={note}
+                                        petid={petid}
+                                    />
+                                </>
+                    })
+                }
+                <br />
             </div>
 }
 

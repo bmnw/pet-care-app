@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {useDispatch} from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import './PetProfile.css';
 
@@ -27,6 +25,7 @@ const RemoveProfileButton = () => {
         history.push('/user');
     }
 
+    // dialog feature variables and functions
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
