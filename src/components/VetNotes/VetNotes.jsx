@@ -35,16 +35,6 @@ const VetNotes = () => {
                 }
                 <br />
                 {
-                    vetNotes.map(note => {
-                        return  <>
-                                    <VetNoteItem 
-                                        note={note}
-                                    />
-                                </>
-                    })
-                }
-                <br />
-                {
                     pet.map(detail => {
                         return  <Grid
                                     container
@@ -61,6 +51,17 @@ const VetNotes = () => {
                                 </Grid>
                     })
                 }
+                <br />
+                {
+                    vetNotes.map(note => {
+                        return  <>
+                                    <VetNoteItem 
+                                        note={note}
+                                    />
+                                </>
+                    })
+                }
+                <br />
             </div>
 }
 

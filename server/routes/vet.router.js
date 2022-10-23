@@ -10,7 +10,8 @@ router.get('/:petid', (req, res) => {
     console.log('user', req.user);
     if (req.isAuthenticated()) {
         const queryText =   `SELECT * FROM "vet_note"
-                            WHERE "pet_id" = $1;`
+                            WHERE "pet_id" = $1
+                            ORDER BY "date" DESC;`
         pool.query(queryText, [req.params.petid])
             .then(result => {
                 res.send(result.rows);
