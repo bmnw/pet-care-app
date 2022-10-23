@@ -27,7 +27,7 @@ const AddVetNote = () => {
     }, []);
 
     const checkNoteLength = (noteInput) => {
-        console.log('in checkNoteLength');
+        console.log('in checkNoteLength', noteInput.length);
         if(noteInput.length <= 1000) {
             setNote(noteInput);
         } else if(noteInput.length > 1000) {
@@ -37,13 +37,13 @@ const AddVetNote = () => {
     } // end checkNoteLength
 
     const submitVetNote = () => {
-        console.log('in submitVetNote');
-        // dispatch({type: 'SUBMIT_VET_NOTE', payload: {pet_id: petid, date: date, vet: vet, note: note}, toVetNotes: toVetNotes});
+        console.log('in submitVetNote', date, vet, note);
+        dispatch({type: 'SUBMIT_VET_NOTE', payload: {pet_id: petid, date: date, vet: vet, note: note}, toVetNotes: toVetNotes});
     } // end submitVetNote
 
-    const toVetNotes = () => {
+    const toVetNotes = (petIdInput) => {
         console.log('in toVetNotes');
-        history.push(`/vet-notes/${petid}`);
+        history.push(`/vet-notes/${petIdInput}`);
     }
 
     return  <>
