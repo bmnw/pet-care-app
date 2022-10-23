@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -8,7 +9,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 
-const VetNoteItem = ({note}) => {
+const VetNoteItem = ({note, petid}) => {
+
+    const dispatch = useDispatch();
 
     // dialog feature variables and functions
     const [open, setOpen] = useState(false);
@@ -22,8 +25,8 @@ const VetNoteItem = ({note}) => {
     }
 
     const deleteVetNote = (noteIdInput) => {
-        console.log('in deleteVetNote', noteIdInput);
-
+        console.log('in deleteVetNote', noteIdInput, petid);
+        dispatch({type: 'DELETE_VET_NOTE', payload: {id: noteIdInput, pet_id: petid}, handleClickClose: handleClickClose});
     } // end deleteVetNote
 
     return  <>

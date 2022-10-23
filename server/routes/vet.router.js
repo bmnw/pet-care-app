@@ -46,5 +46,25 @@ router.post('/', (req, res) => {
     }
 });
 
+router.delete('/:noteid', (req, res) => {
+    console.log('in vet DELETE /:petid route', req.params.noteid);
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('user', req.user);
+    if(req.isAuthenticated()){
+        const queryText =   `DELETE FROM "vet_note"
+                            WHERE "id" = $1;`
+        pool.query(queryText, [req.params.noteid])
+            .then(result => {
+                res.sendStatus(200);
+            })
+            .catch(error => {
+                console.log('error in vet DELETE route', error);
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403); // forbidden
+    }
+});
+
 
 module.exports = router;

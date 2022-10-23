@@ -57,6 +57,7 @@ const VetNotes = () => {
                         return  <>
                                     <VetNoteItem 
                                         note={note}
+                                        petid={petid}
                                     />
                                 </>
                     })
