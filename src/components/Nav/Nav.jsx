@@ -14,7 +14,7 @@ function Nav() {
       <Link to="/home">
         <Grid container spacing={1} direction="row">
           <Grid item sx={{marginBottom: 1}}>
-            <img src={'images/logo-cropped.jpg'} 
+            <img src={'images/logo-cropped-2.jpg'} 
             style={{width: 100, height: 75, border: 'solid'}}
             />
           </Grid>
