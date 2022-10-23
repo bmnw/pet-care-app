@@ -5,6 +5,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Textfield from '@mui/material/Textfield';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
 
 const AddCareForm = ({showForm, setShowForm}) => {
 
@@ -15,6 +20,11 @@ const AddCareForm = ({showForm, setShowForm}) => {
     const [startDate, setStartDate] = useState('');
     const [frequency, setFrequency] = useState('');
     const [careDetails, setCareDetails] = useState('');
+
+    const handleChange = (event) => {
+        console.log('in handleChange', event.target.value);
+        setFrequency(event.target.value);
+    }
 
     const submitCareItem = () => {
         console.log('in submitCareItems', careDescription, frequency, startDate, careDetails);
@@ -39,13 +49,39 @@ const AddCareForm = ({showForm, setShowForm}) => {
 
     return  <div style={{marginLeft: 20, marginRight: 20}}>
                 <br />
+                <Box>
+                    <Typography>Description:</Typography>
+                    <Textfield 
+                            sx={{backgroundColor: 'white'}}
+                            required
+                            value={careDescription}
+                            onChange={(event) => setCareDescription(event.target.value)}
+                            fullWidth 
+                        />
+                </Box>
+                <br />
+                <Box sx={{width: 125}}>
+                    <FormControl fullWidth>
+                        <InputLabel>Frequency</InputLabel>
+                        <Select
+                            label="Frequency"
+                            value={frequency}
+                            onChange={handleChange}
+                        >
+                            <MenuItem value="daily">DAILY</MenuItem>
+                            <MenuItem value="weekly">WEEKLY</MenuItem>
+                            <MenuItem value = "monthly">MONTHLY</MenuItem>
+                            <MenuItem value="yearly">YEARLY</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
                 <Grid
                     container
                     spacing={2}
                     direction="column"
                     justifyContent="left"
                 >
-                    <Grid item>
+                    {/* <Grid item>
                         <Typography>Description:</Typography>
                     </Grid>
                     <Grid item>
@@ -56,9 +92,9 @@ const AddCareForm = ({showForm, setShowForm}) => {
                         onChange={(event) => setCareDescription(event.target.value)}
                         fullWidth 
                     />
-                    </Grid>
+                    </Grid> */}
                     <Grid item>
-                        <Typography>Frequency:</Typography>
+                        {/* <Typography>Frequency:</Typography> */}
                     </Grid>
                     <Grid
                         container
@@ -67,7 +103,7 @@ const AddCareForm = ({showForm, setShowForm}) => {
                         justifyContent="center"
                     >
                         {/* Change these buttons to radio buttons */}
-                        <Grid item>
+                        {/* <Grid item>
                             <Button onClick={() => setFrequency('daily')} sx={{width: 75}} variant="contained">DAILY</Button>
                         </Grid>
                         <Grid item>
@@ -78,7 +114,7 @@ const AddCareForm = ({showForm, setShowForm}) => {
                         </Grid>
                         <Grid item>
                             <Button onClick={() => setFrequency('yearly')} sx={{width: 75}} variant="contained">YEARLY</Button>
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                     <Grid item>
                         <Typography>Start Date (YYYY/MM/DD):</Typography>
