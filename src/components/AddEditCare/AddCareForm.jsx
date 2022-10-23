@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {useHistory, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
 import Textfield from '@mui/material/Textfield';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
 
 const AddCareForm = ({showForm, setShowForm}) => {
 
@@ -15,6 +19,11 @@ const AddCareForm = ({showForm, setShowForm}) => {
     const [startDate, setStartDate] = useState('');
     const [frequency, setFrequency] = useState('');
     const [careDetails, setCareDetails] = useState('');
+
+    const handleChange = (event) => {
+        console.log('in handleChange', event.target.value);
+        setFrequency(event.target.value);
+    }
 
     const submitCareItem = () => {
         console.log('in submitCareItems', careDescription, frequency, startDate, careDetails);
@@ -39,62 +48,45 @@ const AddCareForm = ({showForm, setShowForm}) => {
 
     return  <div style={{marginLeft: 20, marginRight: 20}}>
                 <br />
-                <Grid
-                    container
-                    spacing={2}
-                    direction="column"
-                    justifyContent="left"
-                >
-                    <Grid item>
-                        <Typography>Description:</Typography>
-                    </Grid>
-                    <Grid item>
+                <Box>
+                    <Typography>Description:</Typography>
                     <Textfield 
-                        sx={{backgroundColor: 'white'}}
-                        required
-                        value={careDescription}
-                        onChange={(event) => setCareDescription(event.target.value)}
-                        fullWidth 
-                    />
-                    </Grid>
-                    <Grid item>
-                        <Typography>Frequency:</Typography>
-                    </Grid>
-                    <Grid
-                        container
-                        spacing={2}
-                        direction="row"
-                        justifyContent="center"
-                    >
-                        {/* Change these buttons to radio buttons */}
-                        <Grid item>
-                            <Button onClick={() => setFrequency('daily')} sx={{width: 75}} variant="contained">DAILY</Button>
-                        </Grid>
-                        <Grid item>
-                            <Button onClick={() => setFrequency('weekly')} sx={{width: 75}} variant="contained">WEEKLY</Button>
-                        </Grid>
-                        <Grid item>
-                            <Button onClick={() => setFrequency('monthly')} sx={{width: 75}} variant="contained">MONTHLY</Button>
-                        </Grid>
-                        <Grid item>
-                            <Button onClick={() => setFrequency('yearly')} sx={{width: 75}} variant="contained">YEARLY</Button>
-                        </Grid>
-                    </Grid>
-                    <Grid item>
-                        <Typography>Start Date (YYYY/MM/DD):</Typography>
-                    </Grid>
-                    <Grid item>
+                            sx={{backgroundColor: 'white'}}
+                            required
+                            value={careDescription}
+                            onChange={(event) => setCareDescription(event.target.value)}
+                            fullWidth 
+                        />
+                </Box>
+                <br />
+                <Box sx={{width: 125}}>
+                    <FormControl fullWidth>
+                        <InputLabel>Frequency</InputLabel>
+                        <Select
+                            label="Frequency"
+                            value={frequency}
+                            onChange={handleChange}
+                        >
+                            <MenuItem value="daily">DAILY</MenuItem>
+                            <MenuItem value="weekly">WEEKLY</MenuItem>
+                            <MenuItem value = "monthly">MONTHLY</MenuItem>
+                            <MenuItem value="yearly">YEARLY</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
+                <br />
+                <Box>
+                    <Typography>Start Date (YYYY/MM/DD):</Typography>
                     <Textfield 
                         sx={{backgroundColor: 'white'}}
                         required
                         value={startDate}
                         onChange={(event) => setStartDate(event.target.value)}
                     />
-                    </Grid>
-                    <Grid item>
-                        <Typography>Care Details (optional):</Typography>
-                    </Grid>
-                    <Grid item>
+                </Box>
+                <br />
+                <Box>
+                    <Typography>Care Details (optional):</Typography>
                     <Textfield 
                         sx={{backgroundColor: 'white'}}
                         required
@@ -103,22 +95,12 @@ const AddCareForm = ({showForm, setShowForm}) => {
                         fullWidth 
                         multiline
                     />
-                    </Grid>
-                </Grid>
+                </Box>
                 <br />
-                <Grid
-                    container
-                    spacing={2}
-                    direction="row"
-                    justifyContent="center"
-                >
-                    <Grid item>
-                        <Button sx={{width: 100}} onClick={() => setShowForm(!showForm)} variant="contained">CANCEL</Button>
-                    </Grid>
-                    <Grid item>
-                        <Button sx={{width: 100}} onClick={submitCareItem} variant="contained">SAVE</Button>
-                    </Grid>
-                </Grid>
+                <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                    <Button sx={{width: 100, marginRight: 1}} onClick={() => setShowForm(!showForm)} variant="contained">CANCEL</Button>
+                    <Button sx={{width: 100, marginLeft: 1}} onClick={submitCareItem} variant="contained">SAVE</Button>
+                </Box>
             </div>
 }
 
