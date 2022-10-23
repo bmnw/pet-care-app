@@ -5,7 +5,6 @@ import Nav from '../Nav/Nav.jsx';
 import ReminderItem from './ReminderItem.jsx';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
 const CareReminders = () => {
@@ -50,11 +49,9 @@ const CareReminders = () => {
                 <Nav />
                 {
                     pet.map(detail => {
-                        return  <Grid container spacing={2} direction="column" alignContent="center">
-                                    <Grid item>
-                                        <Typography variant="h5">What does {detail.pet_name} need today?</Typography>
-                                    </Grid>
-                                </Grid>
+                        return  <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                                    <Typography variant="h5">What does {detail.pet_name} need today?</Typography>
+                                </Box>
                     })
                 }
                 <br />
