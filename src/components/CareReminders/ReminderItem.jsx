@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import CompletedReminder from './CompletedReminder.jsx';
-import IncompleteReminder from './IncompleteReminder.jsx';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Checkbox from '@mui/material/Checkbox';
 import Switch from '@mui/material/Switch';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import EditAttributesSharpIcon from '@mui/icons-material/EditAttributesSharp';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 
 const ReminderItem = ({reminder, isComplete}) => {
 
@@ -31,66 +29,23 @@ const ReminderItem = ({reminder, isComplete}) => {
         console.log('ReminderItem page load');
     }, [reminder]);
 
-    // const checkIfComplete = (dateInput) => {
-    //     // console.log(new Date(dateInput).toDateString()); // doesn't work with null values
-    //     let today = new Date().toDateString();
-    //     console.log('today:', today);
-    //     let dateCompleted = "";
-    //     if(dateInput === null){
-    //         dateCompleted = null;
-    //     } else if(dateInput != null){
-    //         dateCompleted = new Date(dateInput).toDateString();
-    //     }
-    //     if(dateCompleted === null || dateCompleted < today){
-    //         console.log('incomplete');
-    //         setIsComplete(false);
-    //     } else if (dateCompleted == today) {
-    //         console.log('complete');
-    //         setIsComplete(true);
-    //     } else {
-    //         console.log('neither true or false');
-    //     }
-    // } // end checkIfComplete
-
     const taskComplete = (careItemId, petId) => {
         console.log('in taskComplete', careItemId, petId);
         dispatch({type: 'MARK_AS_COMPLETE', payload: {id: careItemId, pet_id: petId}});
     }  // end taskComplete
 
-    const toReminders = (petId) => {
-        console.log('in toReminders');
-        history.push(`/reminders/${petId}`);
-    }
-
     return <>   
-                {/* {
-                    isComplete ? (
-                        <CompletedReminder 
-                            reminder={reminder}
-                            handleClickOpen={handleClickOpen}
-                            taskComplete={taskComplete}
-                        />
-                    ) :
-                    (
-                        <IncompleteReminder 
-                            reminder={reminder}
-                            handleClickOpen={handleClickOpen}
-                            taskComplete={taskComplete}
-                        />
-                    )
-                } */}
-                 <Grid container spacing={2} direction="row" display="flex" justifyContent="center" sx={{marginBottom: 1}}>
-                    <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                        <Typography variant="h6" onClick={handleClickOpen}>{reminder.description}</Typography>
-                    </Grid>
-                    <Grid item>
-                        {
-                            isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/> :
-                            <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
-                        }
-                    </Grid>
-                </Grid>
-               
+                <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                        <Paper elevation={10} sx={{display: 'flex', alignItems:'center', justifyContent: 'flex-end', height: 50, width: 300, padding: 2, marginBottom: 2}}>
+                            <Typography variant="h6" onClick={handleClickOpen} sx={{marginRight: 3}}>
+                                {reminder.description}
+                            </Typography>
+                            {
+                                isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large"/> :
+                                <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
+                            }
+                    </Paper>
+                </Box>               
                 <Dialog
                     open={open}
                     onClose={handleClickClose}
