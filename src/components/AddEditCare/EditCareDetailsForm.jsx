@@ -12,7 +12,13 @@ const EditCareDetailsForm = ({item, petid, showForm, setShowForm}) => {
 
     const updateCareDetails = (itemInput, petInput) => {
         console.log('in updateCareDetails', itemInput, petInput, careDetails);
-        dispatch({type: 'UPDATE_CARE_DETAILS', payload: {id: itemInput, pet_id: petInput, details: careDetails}, hideForm: hideForm});
+        // validate that careDetails has a value
+        if(careDetails) {
+            dispatch({type: 'UPDATE_CARE_DETAILS', payload: {id: itemInput, pet_id: petInput, details: careDetails}, hideForm: hideForm});
+        } else {
+            alert("Please update details or click cancel.");
+        }
+        // dispatch({type: 'UPDATE_CARE_DETAILS', payload: {id: itemInput, pet_id: petInput, details: careDetails}, hideForm: hideForm});
     } // end updateCareDetails
 
     const hideForm = () => {

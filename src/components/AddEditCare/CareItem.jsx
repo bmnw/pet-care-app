@@ -63,7 +63,7 @@ const CareItem = ({item, petid}) => {
                     <DialogTitle sx={{display: 'flex', justifyContent: 'space-between'}}>
                         {`Details for ${item.description}`}
                         <Button variant="contained" size="medium" onClick={() => setShowForm(!showForm)}>
-                            <EditSharpIcon fontSize="medium"/>
+                            <EditSharpIcon/>
                         </Button>
                     </DialogTitle>
                     <DialogContent>
