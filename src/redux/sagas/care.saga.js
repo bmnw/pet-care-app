@@ -60,12 +60,25 @@ function* markAsComplete (action) {
     }
 }
 
+function* updateCareDetails (action) {
+    console.log('in updateCareDetails saga', action.payload);
+    try {
+        yield axios.put(`/api/care/details/${action.payload.id}`, action.payload);
+        yield put({type: 'FETCH_PET_CARE_ITEMS', payload: action.payload.pet_id});
+        action.hideForm();
+    } catch (error) {
+        console.log('error in updateCareDetails saga', error);
+        alert('Something went wrong updating care details.');
+    }
+}
+
 function* careSaga() {
     yield takeLatest('FETCH_PET_CARE_ITEMS', fetchPetCareItems);
     yield takeLatest('SUBMIT_CARE_ITEM', submitCareItem);
     yield takeLatest('DELETE_CARE_ITEM', deleteCareItem);
     yield takeLatest('FETCH_REMINDERS', fetchReminders);
     yield takeLatest('MARK_AS_COMPLETE', markAsComplete);
+    yield takeLatest('UPDATE_CARE_DETAILS', updateCareDetails);
 }
 
 export default careSaga;
