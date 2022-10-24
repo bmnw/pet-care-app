@@ -1,15 +1,12 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
-import axios from 'axios';
+import {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector, useDispatch} from 'react-redux';
 import PetItem from '../PetItem/PetItem.jsx';
 import Nav from '../Nav/Nav.jsx';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import { Typography } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 function UserPage() {
 

@@ -20,7 +20,8 @@ function RegisterPage() {
       >
         <img src={'images/logo-cropped-2.jpg'} style={{width: 150, height: 100, border: 'solid'}}/>
         <br />
-        <Typography sx={{textAlign: 'center'}} variant="h4">Welcome to Waffle's Spot!</Typography>
+        <Typography sx={{textAlign: 'center'}} variant="h4">Welcome to</Typography>
+        <Typography sx={{textAlign: 'center'}} variant="h4">Waffle's Spot!</Typography>
         <br />
         <RegisterForm />
         <br />
