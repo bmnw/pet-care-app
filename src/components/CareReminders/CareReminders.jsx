@@ -49,7 +49,7 @@ const CareReminders = () => {
                 <Nav />
                 {
                     pet.map(detail => {
-                        return  <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                        return  <Box sx={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
                                     <Typography variant="h5">What does {detail.pet_name} need today?</Typography>
                                 </Box>
                     })
@@ -63,7 +63,6 @@ const CareReminders = () => {
                         } else if (checkIfComplete(reminder.date_complete) === false){
                             isComplete = false;
                         }
-
                         return  <ReminderItem 
                                     reminder={reminder}
                                     isComplete={isComplete}
