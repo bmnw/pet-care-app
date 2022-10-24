@@ -32,13 +32,18 @@ const AddVetNote = () => {
             setNote(noteInput);
         } else if(noteInput.length > 1000) {
             alert('Vet note cannot be more than 1000 characters.');
-            return;
         }
     } // end checkNoteLength
 
     const submitVetNote = () => {
         console.log('in submitVetNote', date, vet, note);
-        dispatch({type: 'SUBMIT_VET_NOTE', payload: {pet_id: petid, date: date, vet: vet, note: note}, toVetNotes: toVetNotes});
+        // validate that date, vet, and note have values
+        if(date && vet && note){
+            dispatch({type: 'SUBMIT_VET_NOTE', payload: {pet_id: petid, date: date, vet: vet, note: note}, toVetNotes: toVetNotes});
+        } else {
+            alert('Date, vet/clinic name, and note text are required.');
+        }
+        // dispatch({type: 'SUBMIT_VET_NOTE', payload: {pet_id: petid, date: date, vet: vet, note: note}, toVetNotes: toVetNotes});
     } // end submitVetNote
 
     const toVetNotes = (petIdInput) => {
@@ -46,7 +51,7 @@ const AddVetNote = () => {
         history.push(`/vet-notes/${petIdInput}`);
     }
 
-    return  <>
+    return  <div>
                 <Nav />
                 {
                     pet.map(detail => {
@@ -64,9 +69,9 @@ const AddVetNote = () => {
                         <Textfield 
                                 sx={{backgroundColor: 'white'}}
                                 required
+                                label="Date (yyyy/mm/dd)"
                                 value={date}
                                 onChange={(event) => setDate(event.target.value)}
-                                helperText="YYYY/MM/DD"
                         />
                     </Box>
                     <br />
@@ -77,7 +82,7 @@ const AddVetNote = () => {
                                 required
                                 value={vet}
                                 onChange={(event) => setVet(event.target.value)}
-                                helperText="Vet/clinic name"
+                                label="Vet/clinic name"
                         />
                     </Box>
                     <br />
@@ -91,6 +96,7 @@ const AddVetNote = () => {
                                 multiline
                                 fullWidth
                                 rows={8}
+                                label="Notes from the appointment"
                         />
                         <Typography>{note.length}/1000</Typography>
                     </Box>
@@ -99,7 +105,7 @@ const AddVetNote = () => {
                     <Button onClick={() => history.push(`/vet-notes/${petid}`)} sx={{marginRight: 1}} variant="contained">CANCEL</Button>
                     <Button onClick={submitVetNote} sx={{marginLeft: 1}} variant="contained">ADD NOTE</Button>
                 </Box>
-            </>
+            </div>
 }
 
 export default AddVetNote;
