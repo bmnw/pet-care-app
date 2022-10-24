@@ -7,8 +7,10 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import EditAttributesSharpIcon from '@mui/icons-material/EditAttributesSharp';
+import FeedSharpIcon from '@mui/icons-material/FeedSharp';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 
 const ReminderItem = ({reminder, isComplete}) => {
 
@@ -36,14 +38,15 @@ const ReminderItem = ({reminder, isComplete}) => {
 
     return <>   
                 <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                        <Paper elevation={10} sx={{display: 'flex', alignItems:'center', justifyContent: 'flex-end', height: 50, width: 300, padding: 2, marginBottom: 2}}>
-                            <Typography variant="h6" onClick={handleClickOpen} sx={{marginRight: 3}}>
-                                {reminder.description}
-                            </Typography>
-                            {
-                                isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large"/> :
-                                <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
-                            }
+                    <Paper elevation={10} sx={{display: 'flex', alignItems:'center', justifyContent: 'flex-end', minHeight: 50, width: 300, padding: 1, marginBottom: 2}}>
+                        <Typography  onClick={handleClickOpen} sx={{marginRight: 3}}>
+                            {reminder.description}
+                        </Typography>
+                        <Button onClick={handleClickOpen} sx={{marginRight: 2}}><FeedSharpIcon fontSize="large"/></Button>
+                        {
+                            isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large"/> :
+                            <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
+                        }
                     </Paper>
                 </Box>               
                 <Dialog
