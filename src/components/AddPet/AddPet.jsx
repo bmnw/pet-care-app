@@ -32,7 +32,12 @@ const AddPet = () => {
     const submitPet = () => {
         console.log('in submitPet');
         console.log(petName, petType, petImage);
-        dispatch({type: 'ADD_PET', payload: {pet_name: petName, pet_type: petType, image: petImage}, toDashboard: toDashboard});
+        // validate all inputs have a value
+        if(petName && petType){
+            dispatch({type: 'ADD_PET', payload: {pet_name: petName, pet_type: petType, image: petImage}, toDashboard: toDashboard});
+        } else {
+            alert('Both pet name and pet type are required to add a new pet.');
+        }
     } // end submitPet
 
     const toDashboard = () => {
@@ -87,38 +92,16 @@ const AddPet = () => {
                             </Select>
                         </FormControl>
                     </Box>
-                    {/* <Grid
-                        container
-                        spacing={2}
-                        justifyContent="center"
-                    >
-                        <Grid item>
-                            <Button onClick={() => selectPetType('cat')} className="add-pet-btn" size="large" variant="contained">CAT</Button>
-                        </Grid>
-                        <Grid item>
-                            <Button onClick={() => selectPetType('dog')} className="add-pet-btn" size="large" variant="contained">DOG</Button>
-                        </Grid>
-                        <Grid item>
-                            <Button onClick={() => selectPetType('rabbit')} className="add-pet-btn" size="large" variant="contained">RABBIT</Button>
-                        </Grid>
-                        <Grid item>
-                            <Button onClick={() => selectPetType('other')} className="add-pet-btn" size="large" variant="contained">OTHER</Button>
-                        </Grid>
-                    </Grid> */}
                     <br />
                     <br />
-                    <Grid
-                        container
-                        spacing={2}
-                        justifyContent="center"
-                    >
-                         <Grid item>
-                            <Button onClick={() => history.push("/user")} className="add-pet-btn" size="large" variant="contained">CANCEL</Button>
-                        </Grid>
-                        <Grid item>
-                            <Button onClick={submitPet} className="add-pet-btn" size="large" variant="contained">ADD PET</Button>
-                        </Grid>
-                    </Grid>
+                    <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                        <Button sx={{marginRight: 1}} onClick={() => history.push("/user")} className="add-pet-btn" size="large" variant="contained">
+                            CANCEL
+                        </Button>
+                        <Button sx={{marginLeft: 1}} onClick={submitPet} className="add-pet-btn" size="large" variant="contained">
+                            ADD PET
+                        </Button>
+                    </Box>
                 </Container>
             </div>
 } // end AddPet
