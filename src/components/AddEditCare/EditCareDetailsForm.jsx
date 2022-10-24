@@ -20,6 +20,15 @@ const EditCareDetailsForm = ({item, petid, showForm, setShowForm}) => {
         setShowForm(!showForm);
     } // end hideForm
 
+    const checkLength = (detailsInput) => {
+        console.log('in checkLength');
+        if(detailsInput.length <= 500) {
+            setCareDetails(detailsInput);
+        } else {
+            alert('Care details cannot be more than 500 characters.');
+        }
+    }
+
     return  <>
                 <Box>
                     <br />
@@ -27,12 +36,13 @@ const EditCareDetailsForm = ({item, petid, showForm, setShowForm}) => {
                     <Textfield 
                         sx={{backgroundColor: 'white'}}
                         value={careDetails}
-                        onChange={(event) => setCareDetails(event.target.value)}
+                        onChange={(event) => checkLength(event.target.value)}
                         fullWidth 
                         multiline
-                        rows={3}
+                        rows={4}
                         label="Update details here"
                     />
+                    <Typography>{careDetails.length}/500</Typography>
                 </Box>
                 <br />
                     <Box sx={{display: 'flex', justifyContent: 'center'}}>
