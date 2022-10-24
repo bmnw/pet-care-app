@@ -27,15 +27,29 @@ const AddCareForm = ({showForm, setShowForm}) => {
 
     const submitCareItem = () => {
         console.log('in submitCareItems', careDescription, frequency, startDate, careDetails);
-        dispatch({type: 'SUBMIT_CARE_ITEM', payload: {
-                pet_id: petid, 
-                description: careDescription, 
-                frequency: frequency, 
-                start_date: startDate, 
-                details: careDetails
-            },
-            clearInputs: clearInputs
-        });
+        // validate that careDescription, frequency, and stateDate have values
+        if(careDescription && frequency && startDate){
+            dispatch({type: 'SUBMIT_CARE_ITEM', payload: {
+                    pet_id: petid, 
+                    description: careDescription, 
+                    frequency: frequency, 
+                    start_date: startDate, 
+                    details: careDetails
+                },
+                    clearInputs: clearInputs
+            });
+        } else {
+            alert('Care description, frequency, and start date are required.');
+        }
+        // dispatch({type: 'SUBMIT_CARE_ITEM', payload: {
+        //         pet_id: petid, 
+        //         description: careDescription, 
+        //         frequency: frequency, 
+        //         start_date: startDate, 
+        //         details: careDetails
+        //     },
+        //     clearInputs: clearInputs
+        // });
     } // end submitCareItem
 
     const clearInputs = () => {
