@@ -43,16 +43,7 @@ const ReminderItem = ({reminder, isComplete}) => {
     }  // end taskComplete
 
     return <>   
-                <ListItem
-                    // secondaryAction={
-                    //     <IconButton edge="end">
-                    //         {
-                    //             isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large"/> :
-                    //             <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
-                    //         }
-                    //     </IconButton>
-                    // }
-                >
+                <ListItem>
                     <ListItemIcon>
                         <ArrowForwardIosSharpIcon />
                     </ListItemIcon>

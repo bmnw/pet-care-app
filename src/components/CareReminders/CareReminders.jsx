@@ -25,8 +25,8 @@ const CareReminders = () => {
         dispatch({type: 'FETCH_REMINDERS', payload: petid});
     }, []);
 
-    const checkIfComplete = (dateInput) => {
-        console.log('in checkIfComplete');
+    const checkIfComplete = (dateInput, textInput) => {
+        console.log('in checkIfComplete', textInput);
         let today = new Date().toDateString();
         console.log('today:', today);
         let dateCompleted = "";
@@ -35,12 +35,15 @@ const CareReminders = () => {
         } else if(dateInput != null){
             dateCompleted = new Date(dateInput).toDateString();
         }
-        if(dateCompleted === null || dateCompleted < today){
+        console.log('date completed:', dateCompleted)
+        if(dateCompleted === null || dateCompleted != today){
             console.log('incomplete');
-            isComplete = false;
+            // isComplete = false;
+            return false;
         } else if (dateCompleted == today) {
             console.log('complete');
-            isComplete = true;
+            // isComplete = true;
+            return true;
             console.log('should be true:', isComplete);
         } else {
             console.log('neither true or false');
@@ -60,7 +63,7 @@ const CareReminders = () => {
                     {
                         reminders.map(reminder => {
     
-                            if(checkIfComplete(reminder.date_complete) === true){
+                            if(checkIfComplete(reminder.date_complete, reminder.description) === true){
                                 isComplete = true;
                             } else if (checkIfComplete(reminder.date_complete) === false){
                                 isComplete = false;
