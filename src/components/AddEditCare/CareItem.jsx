@@ -41,7 +41,7 @@ const CareItem = ({item, petid}) => {
                     <ListItemIcon>
                         <ArrowForwardIosSharpIcon />
                     </ListItemIcon>
-                    <ListItemButton onClick={handleClickOpen}>
+                    <ListItemButton onClick={handleClickOpen} sx={{width: 160}}>
                         <ListItemText>
                             {item.description}
                         </ListItemText>

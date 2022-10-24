@@ -56,7 +56,7 @@ const ReminderItem = ({reminder, isComplete}) => {
                     <ListItemIcon>
                         <ArrowForwardIosSharpIcon />
                     </ListItemIcon>
-                    <ListItemButton  onClick={handleClickOpen}>
+                    <ListItemButton  onClick={handleClickOpen} sx={{width: 160}}>
                         <ListItemText>
                             {reminder.description}
                         </ListItemText>
@@ -64,7 +64,7 @@ const ReminderItem = ({reminder, isComplete}) => {
                     <ListItemButton  onClick={handleClickOpen}>
                         <FeedSharpIcon sx={{marginRight: 2}} fontSize="large"/>
                     </ListItemButton>
-                    <ListItemButton>
+                    <ListItemButton sx={{width: 75}}>
                         {
                             isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large"/> :
                             <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
@@ -91,6 +91,9 @@ const ReminderItem = ({reminder, isComplete}) => {
                         {`Details for ${reminder.description}`}
                     </DialogTitle>
                     <DialogContent>
+                        {`Frequency: ${reminder.frequency}`}
+                        <br />
+                        <br />
                         {`${reminder.details}`}
                     </DialogContent>
                 </Dialog>
