@@ -6,6 +6,8 @@ import ReminderItem from './ReminderItem.jsx';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import ListSubheader from '@mui/material/ListSubheader';
+import List from '@mui/material/List';
 
 const CareReminders = () => {
 
@@ -55,20 +57,22 @@ const CareReminders = () => {
                     })
                 }
                 <br />
-                {
-                    reminders.map(reminder => {
- 
-                        if(checkIfComplete(reminder.date_complete) === true){
-                            isComplete = true;
-                        } else if (checkIfComplete(reminder.date_complete) === false){
-                            isComplete = false;
-                        }
-                        return  <ReminderItem 
-                                    reminder={reminder}
-                                    isComplete={isComplete}
-                                />
-                    })
-                }
+                <List sx={{width: '100%'}} subheader={<ListSubheader>Care Reminders</ListSubheader>}>
+                    {
+                        reminders.map(reminder => {
+    
+                            if(checkIfComplete(reminder.date_complete) === true){
+                                isComplete = true;
+                            } else if (checkIfComplete(reminder.date_complete) === false){
+                                isComplete = false;
+                            }
+                            return  <ReminderItem 
+                                        reminder={reminder}
+                                        isComplete={isComplete}
+                                    />
+                        })
+                    }
+                 </List>
                 <br />
                 <Box sx={{display: 'flex', justifyContent: 'center'}}>
                     <Button 

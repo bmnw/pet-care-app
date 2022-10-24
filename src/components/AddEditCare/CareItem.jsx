@@ -9,6 +9,12 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FeedSharpIcon from '@mui/icons-material/FeedSharp';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
+import ListItemButton from '@mui/material/ListItemButton';
+import { Feed } from '@mui/icons-material';
 
 const CareItem = ({item, petid}) => {
 
@@ -31,16 +37,22 @@ const CareItem = ({item, petid}) => {
     } // end deleteCareItem
 
     return  <div style={{marginLeft: 15}}>
-                <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                    <Paper elevation={10} sx={{display: 'flex', alignItems:'center', justifyContent: 'flex-end', minHeight: 50, width: 300, padding: 1, marginBottom: 2}}>
-                        <Typography onClick={handleClickOpen} sx={{marginRight: 1}}>
+                <ListItem>
+                    <ListItemIcon>
+                        <ArrowForwardIosSharpIcon />
+                    </ListItemIcon>
+                    <ListItemButton onClick={handleClickOpen}>
+                        <ListItemText>
                             {item.description}
-                        </Typography>
-                        <Button onClick={handleClickOpen}><FeedSharpIcon fontSize="large"/></Button>
-                        {/* create user confirmation dialog for this delete */}
-                        <Button onClick={(event) => deleteCareItem(item.id)}><DeleteIcon fontSize="large"/></Button> 
-                    </Paper>
-                </Box>   
+                        </ListItemText>
+                    </ListItemButton>
+                    <ListItemButton onClick={handleClickOpen}>
+                        <FeedSharpIcon fontSize="large" />
+                    </ListItemButton>
+                    <ListItemButton onClick={(event) => deleteCareItem(item.id)}>
+                        <DeleteIcon fontSize="large" />
+                    </ListItemButton>
+                </ListItem>
                 <Dialog
                     open={open}
                     onClose={handleClickClose}
@@ -49,6 +61,9 @@ const CareItem = ({item, petid}) => {
                         {`Details for ${item.description}`}
                     </DialogTitle>
                     <DialogContent>
+                        {`Frequency: ${item.frequency}`}
+                        <br />
+                        <br />
                         {`${item.details}`}
                     </DialogContent>
                 </Dialog>                

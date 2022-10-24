@@ -7,6 +7,8 @@ import CareItem from './CareItem.jsx';
 import AddCareButton from './AddCareButton.jsx';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import ListSubheader from '@mui/material/ListSubheader';
+import List from '@mui/material/List';
 
 const AddEditCare = () => {
 
@@ -40,6 +42,7 @@ const AddEditCare = () => {
                     })
                 }
                 <br />
+                <List sx={{width: '100%'}} subheader={<ListSubheader>All Care Items</ListSubheader>}>
                 {
                     careItems.map(item => {
                         return  ( 
@@ -51,6 +54,7 @@ const AddEditCare = () => {
                                 )
                     })
                 }
+                </List>
                 <br />
                 <AddCareButton />
                 <br />

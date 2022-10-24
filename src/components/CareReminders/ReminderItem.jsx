@@ -11,6 +11,12 @@ import FeedSharpIcon from '@mui/icons-material/FeedSharp';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
+import ListItemButton from '@mui/material/ListItemButton';
+import IconButton from '@mui/material/IconButton';
 
 const ReminderItem = ({reminder, isComplete}) => {
 
@@ -37,7 +43,35 @@ const ReminderItem = ({reminder, isComplete}) => {
     }  // end taskComplete
 
     return <>   
-                <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                <ListItem
+                    // secondaryAction={
+                    //     <IconButton edge="end">
+                    //         {
+                    //             isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large"/> :
+                    //             <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
+                    //         }
+                    //     </IconButton>
+                    // }
+                >
+                    <ListItemIcon>
+                        <ArrowForwardIosSharpIcon />
+                    </ListItemIcon>
+                    <ListItemButton  onClick={handleClickOpen}>
+                        <ListItemText>
+                            {reminder.description}
+                        </ListItemText>
+                    </ListItemButton>
+                    <ListItemButton  onClick={handleClickOpen}>
+                        <FeedSharpIcon sx={{marginRight: 2}} fontSize="large"/>
+                    </ListItemButton>
+                    <ListItemButton>
+                        {
+                            isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large"/> :
+                            <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
+                        }
+                    </ListItemButton>
+                </ListItem>
+                {/* <Box sx={{display: 'flex', justifyContent: 'center'}}>
                     <Paper elevation={10} sx={{display: 'flex', alignItems:'center', justifyContent: 'flex-end', minHeight: 50, width: 300, padding: 1, marginBottom: 2}}>
                         <Typography onClick={handleClickOpen} sx={{marginRight: 3}}>
                             {reminder.description}
@@ -48,7 +82,7 @@ const ReminderItem = ({reminder, isComplete}) => {
                             <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
                         }
                     </Paper>
-                </Box>               
+                </Box>                */}
                 <Dialog
                     open={open}
                     onClose={handleClickClose}
