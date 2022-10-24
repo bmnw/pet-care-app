@@ -6,6 +6,7 @@ import VetNoteItem from '../VetNotes/VetNoteItem.jsx';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 
 const VetNotes = () => {
 
@@ -26,29 +27,23 @@ const VetNotes = () => {
                 <Nav />
                 {
                     pet.map(detail => {
-                        return  <Grid container spacing={2} direction="column" alignContent="center">
-                                    <Grid item>
-                                        <Typography variant="h5">Vet Notes for {detail.pet_name}</Typography>
-                                    </Grid>
-                                </Grid>
+                        return  <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                                    <Typography variant="h5">Vet Notes for {detail.pet_name}</Typography>
+                                </Box>
                     })
                 }
                 <br />
                 {
                     pet.map(detail => {
-                        return  <Grid
-                                    container
-                                    spacing={2}
-                                    direction="row"
-                                    justifyContent="center"
-                                >
-                                    <Grid item>
-                                        <Button sx={{width: 125}} variant="contained" onClick={(event) => history.push(`/petprofile/${petid}`)}>{detail.pet_name}'s Profile</Button>
-                                    </Grid>
-                                    <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                                        <Button sx={{width: 125}} variant="contained" onClick={(event) => history.push(`/add-vet-note/${petid}`)}>NEW NOTE</Button>
-                                    </Grid>
-                                </Grid>
+                        return  <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                                    <Button sx={{marginRight: 1, width: 150}} variant="contained" onClick={(event) => history.push(`/petprofile/${petid}`)}>
+                                        {/* {detail.pet_name}'s Profile */}
+                                        BACK TO PET PROFILE
+                                    </Button>
+                                    <Button sx={{marginLeft: 1, width: 150}} variant="contained" onClick={(event) => history.push(`/add-vet-note/${petid}`)}>
+                                        NEW NOTE
+                                    </Button>
+                                </Box>
                     })
                 }
                 <br />

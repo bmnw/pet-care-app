@@ -71,22 +71,16 @@ const CareReminders = () => {
                     })
                 }
                 <br />
-                {
-                    pet.map(detail => {
-                        return  (
-                                    <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                                        <Button 
-                                            sx={{width: 200}} 
-                                            color='secondary' 
-                                            variant="contained" 
-                                            onClick={(event) => history.push(`/petprofile/${petid}`)}
-                                        >
-                                            {detail.pet_name}'s PROFILE
-                                        </Button> 
-                                    </Box>
-                        )                             
-                    })
-                }
+                <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                    <Button 
+                        sx={{width: 200}} 
+                        color='secondary' 
+                        variant="contained" 
+                        onClick={(event) => history.push(`/petprofile/${petid}`)}
+                    >
+                        BACK TO PET PROFILE
+                    </Button> 
+                </Box>
             </div>
 }
 

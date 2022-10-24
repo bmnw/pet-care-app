@@ -32,7 +32,7 @@ const VetNoteItem = ({note, petid}) => {
     return  <>
                 <Paper elevation={10} sx={{margin: 2, padding: 2, bgcolor: 'lightgray'}}>
                     <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
-                        <Typography sx={{display: 'flex', alignItems: 'center'}}>Date: {new Date(note.date).toDateString()}</Typography>
+                        <Typography variant="h6" sx={{display: 'flex', alignItems: 'center'}}>Date: {new Date(note.date).toDateString()}</Typography>
                         <Button onClick={handleClickOpen}><DeleteIcon/></Button>
                     </Box>
                     <Typography>Vet: {note.vet}</Typography>

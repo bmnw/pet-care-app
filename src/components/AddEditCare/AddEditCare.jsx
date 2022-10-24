@@ -54,20 +54,16 @@ const AddEditCare = () => {
                 <br />
                 <AddCareButton />
                 <br />
-                {
-                    pet.map(pet => {
-                        return <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                                    <Button 
-                                        sx={{width: 200}} 
-                                        color='secondary' 
-                                        variant="contained" 
-                                        onClick={(event) => history.push(`/petprofile/${petid}`)}
-                                    >
-                                            {pet.pet_name}'s PROFILE
-                                    </Button>
-                                </Box>
-                    })
-                }
+                <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                    <Button 
+                        sx={{width: 200}} 
+                        color='secondary' 
+                        variant="contained" 
+                        onClick={(event) => history.push(`/petprofile/${petid}`)}
+                    >
+                        BACK TO PET PROFILE
+                    </Button> 
+                </Box>
             </div>
 } // end AddEditCare
 
