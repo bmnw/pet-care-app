@@ -14,7 +14,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import ListItemButton from '@mui/material/ListItemButton';
-import { Feed } from '@mui/icons-material';
+import EditSharpIcon from '@mui/icons-material/EditSharp';
+import IconButton from '@mui/material/IconButton';
 
 const CareItem = ({item, petid}) => {
 
@@ -58,8 +59,11 @@ const CareItem = ({item, petid}) => {
                     onClose={handleClickClose}
                     fullWidth
                 >
-                    <DialogTitle>
+                    <DialogTitle sx={{display: 'flex', justifyContent: 'space-between'}}>
                         {`Details for ${item.description}`}
+                        <Button variant="contained" size="medium">
+                            <EditSharpIcon fontSize="medium"/>
+                        </Button>
                     </DialogTitle>
                     <DialogContent>
                         {`Frequency: ${item.frequency}`}
