@@ -1,3 +1,4 @@
+const { Poll } = require('@mui/icons-material');
 const express = require('express');
 const pool = require('../modules/pool');
 const { route } = require('./user.router');
@@ -100,6 +101,28 @@ router.put('/:itemid', (req, res) => {
             })
             .catch(error => {
                 console.log(error);
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403); // forbidden
+    }
+});
+
+// PUT route to update selected care item details
+router.put('/details/:itemid', (req, res) => {
+    console.log('in care PUT /details/:itemid', req.params.itemid);
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('user', req.user);
+    if(req.isAuthenticated()) {
+        const updateDetailsQueryText =  `UPDATE "care_item"
+                                        SET "details" = $3
+                                        WHERE "id" = $1 AND "pet_id" = $2;`
+        pool.query(updateDetailsQueryText, [req.params.itemid, req.body.pet_id, req.body.details])
+            .then(result => {
+                res.sendStatus(200);
+            })
+            .catch(error => {
+                console.log('error updating care item details', error);
                 res.sendStatus(500);
             });
     } else {

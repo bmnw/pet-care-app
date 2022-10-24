@@ -41,15 +41,6 @@ const AddCareForm = ({showForm, setShowForm}) => {
         } else {
             alert('Care description, frequency, and start date are required.');
         }
-        // dispatch({type: 'SUBMIT_CARE_ITEM', payload: {
-        //         pet_id: petid, 
-        //         description: careDescription, 
-        //         frequency: frequency, 
-        //         start_date: startDate, 
-        //         details: careDetails
-        //     },
-        //     clearInputs: clearInputs
-        // });
     } // end submitCareItem
 
     const clearInputs = () => {
@@ -59,6 +50,15 @@ const AddCareForm = ({showForm, setShowForm}) => {
         setFrequency('');
         setCareDetails('');
     } // end clearInputs
+
+    const checkLength = (detailsInput) => {
+        console.log('in checkLength');
+        if(detailsInput.length <= 500) {
+            setCareDetails(detailsInput);
+        } else {
+            alert('Care details cannot be more than 500 characters.');
+        }
+    } // end checkLength
 
     return  <div style={{marginLeft: 20, marginRight: 20}}>
                 <br />
@@ -106,12 +106,13 @@ const AddCareForm = ({showForm, setShowForm}) => {
                     <Textfield 
                         sx={{backgroundColor: 'white'}}
                         value={careDetails}
-                        onChange={(event) => setCareDetails(event.target.value)}
+                        onChange={(event) => checkLength(event.target.value)}
                         fullWidth 
                         multiline
                         rows={3}
                         label="Optional"
                     />
+                    <Typography>{careDetails.length}/500</Typography>
                 </Box>
                 <br />
                 <Box sx={{display: 'flex', justifyContent: 'center'}}>

@@ -1,8 +1,7 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
+import EditCareDetailsForm from './EditCareDetailsForm.jsx';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -15,11 +14,13 @@ import ListItemText from '@mui/material/ListItemText';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import ListItemButton from '@mui/material/ListItemButton';
 import EditSharpIcon from '@mui/icons-material/EditSharp';
-import IconButton from '@mui/material/IconButton';
 
 const CareItem = ({item, petid}) => {
 
     const dispatch = useDispatch();
+
+    // variable for dialog edit form conditional rendering
+    const [showForm, setShowForm] = useState(false);
 
     // variable and functions for dialog
     const [open, setOpen] = useState(false);
@@ -61,15 +62,32 @@ const CareItem = ({item, petid}) => {
                 >
                     <DialogTitle sx={{display: 'flex', justifyContent: 'space-between'}}>
                         {`Details for ${item.description}`}
-                        <Button variant="contained" size="medium">
-                            <EditSharpIcon fontSize="medium"/>
+                        <Button variant="contained" size="medium" onClick={() => setShowForm(!showForm)}>
+                            <EditSharpIcon/>
                         </Button>
                     </DialogTitle>
                     <DialogContent>
-                        {`Frequency: ${item.frequency}`}
-                        <br />
-                        <br />
-                        {`${item.details}`}
+                        {
+                            showForm ? (
+                                <>
+                                    <Typography>Frequency: {item.frequency}</Typography>
+                                    <br />
+                                    <Typography>Current Details: {item.details}</Typography>
+                                    <EditCareDetailsForm 
+                                        item={item}
+                                        petid={petid}
+                                        showForm={showForm}
+                                        setShowForm={setShowForm}
+                                    />
+                                </> 
+                            ) : (
+                                <>
+                                    <Typography>Frequency: {item.frequency}</Typography>
+                                    <br />
+                                    {`${item.details}`}
+                                </> 
+                            )
+                        }
                     </DialogContent>
                 </Dialog>                
             </div>
