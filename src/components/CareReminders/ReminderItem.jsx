@@ -86,6 +86,7 @@ const ReminderItem = ({reminder, isComplete}) => {
                 <Dialog
                     open={open}
                     onClose={handleClickClose}
+                    fullWidth
                 >
                     <DialogTitle>
                         {`Details for ${reminder.description}`}

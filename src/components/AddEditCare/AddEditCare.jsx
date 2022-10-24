@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
+import { Typography } from '@mui/material';
 
 const AddEditCare = () => {
 
@@ -42,7 +43,10 @@ const AddEditCare = () => {
                     })
                 }
                 <br />
-                <List sx={{width: '100%'}} subheader={<ListSubheader>All Care Items</ListSubheader>}>
+                <Typography variant="h6" sx={{marginLeft: 3}}>
+                    All Care Items
+                </Typography>
+                <List sx={{width: '100%'}}>
                 {
                     careItems.map(item => {
                         return  ( 

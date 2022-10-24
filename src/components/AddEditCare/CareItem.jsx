@@ -50,12 +50,13 @@ const CareItem = ({item, petid}) => {
                         <FeedSharpIcon fontSize="large" />
                     </ListItemButton>
                     <ListItemButton onClick={(event) => deleteCareItem(item.id)}>
-                        <DeleteIcon fontSize="large" />
+                        <DeleteIcon color="error" fontSize="large" />
                     </ListItemButton>
                 </ListItem>
                 <Dialog
                     open={open}
                     onClose={handleClickClose}
+                    fullWidth
                 >
                     <DialogTitle>
                         {`Details for ${item.description}`}

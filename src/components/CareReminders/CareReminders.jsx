@@ -56,8 +56,7 @@ const CareReminders = () => {
                                 </Box>
                     })
                 }
-                <br />
-                <List sx={{width: '100%'}} subheader={<ListSubheader>Reminders</ListSubheader>}>
+                <List sx={{width: '100%'}}>
                     {
                         reminders.map(reminder => {
     
