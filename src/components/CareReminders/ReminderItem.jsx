@@ -39,7 +39,7 @@ const ReminderItem = ({reminder, isComplete}) => {
     return <>   
                 <Box sx={{display: 'flex', justifyContent: 'center'}}>
                     <Paper elevation={10} sx={{display: 'flex', alignItems:'center', justifyContent: 'flex-end', minHeight: 50, width: 300, padding: 1, marginBottom: 2}}>
-                        <Typography  onClick={handleClickOpen} sx={{marginRight: 3}}>
+                        <Typography onClick={handleClickOpen} sx={{marginRight: 3}}>
                             {reminder.description}
                         </Typography>
                         <Button onClick={handleClickOpen} sx={{marginRight: 2}}><FeedSharpIcon fontSize="large"/></Button>

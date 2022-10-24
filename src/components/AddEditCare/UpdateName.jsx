@@ -1,9 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import {useHistory, useParams} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {useParams} from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Textfield from '@mui/material/Textfield';
+import Box from '@mui/material/Box';
 
 const UpdateName = ({pet, updatedName, setUpdatedName}) => {
 
@@ -21,40 +22,23 @@ const UpdateName = ({pet, updatedName, setUpdatedName}) => {
     } // end clearInput
 
     return  <>
-                <Grid
-                                container
-                                spacing={2}
-                                direction="column"
-                                justifyContent="center"
-                            >
-                                <Grid item
-                                    sx={{display:"flex", alignItems:"center", justifyContent:"center"}}
-                                >
-                                    <Typography variant="h5">Update {pet.pet_name}'s Care</Typography>
-                                </Grid>
-                                <br />
-                                <Grid
-                                    container
-                                    spacing={2}
-                                    direction="row"
-                                    justifyContent="center"
-                                >
-                                    <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                                        <Typography>PET NAME:</Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <Textfield 
-                                            sx={{backgroundColor: 'white'}}
-                                            required
-                                            value={updatedName}
-                                            onChange={(event) => setUpdatedName(event.target.value)}    
-                                        />
-                                    </Grid>
-                                </Grid>
-                                <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                                    <Button onClick={(event) => updateName(updatedName)} variant="contained">UPDATE NAME</Button>
-                                </Grid>
-                            </Grid>
+                <Box sx={{display:"flex", justifyContent:"center"}}>
+                    <Typography variant="h5">Update {pet.pet_name}'s Care</Typography>
+                </Box>
+                <br />
+                <Box sx={{display:"flex", justifyContent:"center"}}>
+                    <Typography sx={{display: "flex", alignItems: "center", width: 100}}>PET NAME:</Typography>
+                    <Textfield 
+                        sx={{backgroundColor: 'white'}}
+                        required
+                        value={updatedName}
+                        onChange={(event) => setUpdatedName(event.target.value)}    
+                    />
+                </Box>
+                <br />
+                <Box sx={{display:"flex", justifyContent:"center"}}>
+                    <Button onClick={(event) => updateName(updatedName)} variant="contained">UPDATE NAME</Button>
+                </Box>
             </>
 }
 
