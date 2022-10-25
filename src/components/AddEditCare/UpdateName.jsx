@@ -29,7 +29,11 @@ const UpdateName = ({pet, updatedName, setUpdatedName}) => {
 
     const updateName = (nameInput) => {
         console.log('in updateName', nameInput, petid);
-        dispatch({type: 'UPDATE_PET_NAME', payload: {pet_name: nameInput, id: petid}, clearInput: clearInput});
+        if(nameInput){
+          dispatch({type: 'UPDATE_PET_NAME', payload: {pet_name: nameInput, id: petid}, clearInput: clearInput});
+        } else {
+          alert('Please enter a new name.');
+        }
     } // end updateName
 
     const clearInput = () => {
