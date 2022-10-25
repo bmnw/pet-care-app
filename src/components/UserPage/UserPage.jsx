@@ -7,6 +7,7 @@ import Nav from '../Nav/Nav.jsx';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function UserPage() {
 
@@ -15,6 +16,20 @@ function UserPage() {
   
   const user = useSelector((store) => store.user);
   const userPets = useSelector(store => store.pet.userPets);
+
+  const colorTheme = createTheme({
+    palette: {
+      orange: {
+        main: '#E27511',
+      },
+      white: {
+        main: '#F9F5F0',
+      },
+      blue: {
+        main: '#3D85C6',
+      }
+    }
+  });
 
   useEffect(() => {
     dispatch({type: 'FETCH_PETS'});
@@ -40,7 +55,9 @@ function UserPage() {
           </Grid>
           <br />
           <Grid item>
-            <Button onClick={handleClick} variant="contained">ADD PET</Button>
+            <ThemeProvider theme={colorTheme}>
+              <Button onClick={handleClick} variant="contained" color="orange" size="large">ADD PET</Button>
+            </ThemeProvider>
           </Grid>
           <br />
           {
