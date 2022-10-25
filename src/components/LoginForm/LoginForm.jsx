@@ -5,12 +5,24 @@ import Container from '@mui/material/Container';
 import Textfield from '@mui/material/Textfield';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
   const dispatch = useDispatch();
+
+  const colorTheme = createTheme({
+    palette: {
+      primary: {
+        main: '#F4BC87',
+        secondary: '#E27511',
+        offWhite: '#F9F5F0',
+        blue: '#3D85C6'
+      }
+    }
+  });
 
   const login = (event) => {
     event.preventDefault();

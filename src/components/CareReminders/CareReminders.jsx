@@ -59,7 +59,7 @@ const CareReminders = () => {
                     })
                 }
                 <List sx={{width: '100%'}}>
-                    {
+                    {   
                         reminders.map(reminder => {
     
                             if(checkIfComplete(reminder.date_complete, reminder.description) === true){
