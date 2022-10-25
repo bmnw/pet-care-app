@@ -6,7 +6,6 @@ import ReminderItem from './ReminderItem.jsx';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 
 const CareReminders = () => {
