@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const CareReminders = () => {
 
@@ -17,6 +18,21 @@ const CareReminders = () => {
     const pet = useSelector(store => store.pet.petDetails);
     const reminders = useSelector(store => store.care.reminders);
     let isComplete = false;
+
+    const colorTheme = createTheme({
+        palette: {
+          orange: {
+            main: '#E27511',
+          },
+          white: {
+            main: '#F9F5F0',
+          },
+          blue: {
+            main: '#3D85C6',
+            contrastText: '#F9F5F0'
+          }
+        }
+      });
 
     useEffect(() => {
         console.log(petid);
@@ -76,14 +92,17 @@ const CareReminders = () => {
                  </List>
                 <br />
                 <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                    <Button 
-                        sx={{width: 200}} 
-                        color='secondary' 
-                        variant="contained" 
-                        onClick={(event) => history.push(`/petprofile/${petid}`)}
-                    >
-                        BACK TO PET PROFILE
-                    </Button> 
+                    <ThemeProvider theme={colorTheme}>
+                        <Button 
+                            sx={{width: 200}} 
+                            color="orange" 
+                            variant="contained" 
+                            onClick={(event) => history.push(`/petprofile/${petid}`)}
+                        >
+                            BACK TO PET PROFILE
+                        </Button> 
+                    </ThemeProvider>
+                   
                 </Box>
             </div>
 }

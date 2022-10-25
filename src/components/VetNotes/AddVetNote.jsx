@@ -8,6 +8,7 @@ import Textfield from '@mui/material/Textfield';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const AddVetNote = () => {
 
@@ -20,6 +21,21 @@ const AddVetNote = () => {
     const [date, setDate] = useState('');
     const [vet, setVet] = useState('');
     const [note, setNote] = useState('');
+
+    const colorTheme = createTheme({
+        palette: {
+          orange: {
+            main: '#E27511',
+          },
+          white: {
+            main: '#F9F5F0',
+          },
+          blue: {
+            main: '#3D85C6',
+            contrastText: '#F9F5F0'
+          }
+        }
+      });
 
     useEffect(() => {
         console.log(petid);
@@ -101,10 +117,12 @@ const AddVetNote = () => {
                         <Typography>{note.length}/1000</Typography>
                     </Box>
                 </Paper>
+                <ThemeProvider theme={colorTheme}>
                 <Box sx={{display: 'flex', justifyContent:'center'}}>
-                    <Button onClick={() => history.push(`/vet-notes/${petid}`)} sx={{marginRight: 1}} variant="contained">CANCEL</Button>
-                    <Button onClick={submitVetNote} sx={{marginLeft: 1}} variant="contained">ADD NOTE</Button>
+                    <Button onClick={() => history.push(`/vet-notes/${petid}`)} sx={{marginRight: 1}} variant="contained" color="white">CANCEL</Button>
+                    <Button onClick={submitVetNote} sx={{marginLeft: 1}} variant="contained" color="orange">ADD NOTE</Button>
                 </Box>
+                </ThemeProvider>
             </div>
 }
 
