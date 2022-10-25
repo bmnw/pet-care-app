@@ -5,11 +5,27 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Textfield from '@mui/material/Textfield';
 import Box from '@mui/material/Box';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const UpdateName = ({pet, updatedName, setUpdatedName}) => {
 
     const dispatch = useDispatch();
     let {petid} = useParams();
+
+    const colorTheme = createTheme({
+        palette: {
+          orange: {
+            main: '#E27511',
+          },
+          white: {
+            main: '#F9F5F0',
+          },
+          blue: {
+            main: '#3D85C6',
+            contrastText: '#F9F5F0'
+          }
+        }
+      });
 
     const updateName = (nameInput) => {
         console.log('in updateName', nameInput, petid);
@@ -36,9 +52,11 @@ const UpdateName = ({pet, updatedName, setUpdatedName}) => {
                     />
                 </Box>
                 <br />
-                <Box sx={{display:"flex", justifyContent:"center"}}>
-                    <Button onClick={(event) => updateName(updatedName)} variant="contained">UPDATE NAME</Button>
-                </Box>
+                <ThemeProvider theme={colorTheme}>
+                    <Box sx={{display:"flex", justifyContent:"center"}}>
+                        <Button onClick={(event) => updateName(updatedName)} variant="contained" color="white">UPDATE NAME</Button>
+                    </Box>
+                </ThemeProvider>
             </>
 }
 
