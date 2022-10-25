@@ -59,9 +59,11 @@ const AddEditCare = () => {
                     })
                 }
                 <br />
-                <Typography variant="h6" sx={{marginLeft: 3}}>
-                    All Care Items
-                </Typography>
+                <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                    <Typography variant="h6">
+                        All Care Items
+                    </Typography>
+                </Box>
                 <List sx={{width: '100%'}}>
                 {
                     careItems.map(item => {
