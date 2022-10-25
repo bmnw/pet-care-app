@@ -5,12 +5,27 @@ import Textfield from '@mui/material/Textfield';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
+
+  const colorTheme = createTheme({
+    palette: {
+      orange: {
+        main: '#E27511',
+      },
+      white: {
+        main: '#F9F5F0',
+      },
+      blue: {
+        main: '#3D85C6',
+      }
+    }
+  });
 
   const registerUser = (event) => {
     event.preventDefault();
@@ -63,7 +78,9 @@ function RegisterForm() {
         </div>
         <br />
         <div>
-          <Button variant="contained" onClick={registerUser}>SIGN UP!</Button>
+          <ThemeProvider theme={colorTheme}>
+            <Button variant="contained" onClick={registerUser} color="orange">SIGN UP!</Button>
+          </ThemeProvider>
         </div>
       </div>
     </Container>
