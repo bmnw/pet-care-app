@@ -1,12 +1,12 @@
 /* css file needs to be imported after the MUI button is imported */
 .profile-menu-btn {
     width: 200px;
-    background-color: #f9f5f0;
+    /* background-color: #f9f5f0;
     color: black;
-    font-weight: 500;
+    font-weight: 500; */
 }
 
-.profile-back-btn {
+/* .profile-back-btn {
     background-color: #e27511;
     color: black;
     font-weight: 500;
@@ -16,4 +16,4 @@
     background-color: #f9f5f0;
     color: black;
     font-weight: 100;
-}
+} */

@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import './PetProfile.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const PetProfile = () => {
 
@@ -16,6 +17,21 @@ const PetProfile = () => {
     let {petid} = useParams();
 
     const pet = useSelector(store => store.pet.petDetails);
+
+    const colorTheme = createTheme({
+        palette: {
+          orange: {
+            main: '#E27511',
+          },
+          white: {
+            main: '#F9F5F0',
+          },
+          blue: {
+            main: '#3D85C6',
+            contrastText: '#F9F5F0'
+          }
+        }
+      });
 
     useEffect(() => {
         console.log(petid);
@@ -56,18 +72,21 @@ const PetProfile = () => {
                         alignItems="center"
                         justifyContent="center"
                     >
-                        <Grid item>
-                            <Button onClick={() => history.push(`/reminders/${petid}`)} className="profile-menu-btn" variant="contained" size="large">CARE REMINDERS</Button>
-                        </Grid>
-                        <Grid item>
-                            <Button onClick={() => history.push(`/vet-notes/${petid}`)} className="profile-menu-btn" variant="contained" size="large">VET NOTES</Button>
-                        </Grid>
-                        <Grid item>
-                            <Button onClick={() => history.push(`/add-edit/${petid}`)} className="profile-menu-btn" variant="contained" size="large">ADD CARE/EDIT</Button>
-                        </Grid>
-                        <Grid item>
-                            <Button onClick={() => history.push('/user')} color="secondary" className="profile-back-btn" variant="contained" size="large">ALL PETS</Button>
-                        </Grid>
+                        <ThemeProvider theme={colorTheme}>
+                            <Grid item>
+                                <Button onClick={() => history.push(`/reminders/${petid}`)} className="profile-menu-btn" variant="contained" size="large" color="white">CARE REMINDERS</Button>
+                            </Grid>
+                            <Grid item>
+                                <Button onClick={() => history.push(`/vet-notes/${petid}`)} className="profile-menu-btn" variant="contained" size="large" color="white">VET NOTES</Button>
+                            </Grid>
+                            <Grid item>
+                                <Button onClick={() => history.push(`/add-edit/${petid}`)} className="profile-menu-btn" variant="contained" size="large" color="white">ADD CARE/EDIT</Button>
+                            </Grid>
+                            <Grid item>
+                                <Button onClick={() => history.push('/user')} className="profile-back-btn" variant="contained" size="large" color="orange">ALL PETS</Button>
+                            </Grid>
+                        </ThemeProvider>
+                 
                     </Grid>
                     <br />
                     <br />

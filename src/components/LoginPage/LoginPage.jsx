@@ -4,9 +4,24 @@ import { useHistory } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function LoginPage() {
   const history = useHistory();
+
+  const colorTheme = createTheme({
+    palette: {
+      orange: {
+        main: '#E27511',
+      },
+      white: {
+        main: '#F9F5F0',
+      },
+      blue: {
+        main: '#3D85C6',
+      }
+    }
+  });
 
   return (
     <div style={{margin: 10, marginTop: 20}}>
@@ -27,14 +42,18 @@ function LoginPage() {
         <center>
           <Typography>New to Waffle's Spot?</Typography>
           <br />
+          <ThemeProvider theme={colorTheme}>
           <Button
             variant="contained"
+            color="white"
             onClick={() => {
               history.push('/registration');
             }}
           >
             Register
           </Button>
+          </ThemeProvider>
+   
         </center>
       </Grid>
     </div>

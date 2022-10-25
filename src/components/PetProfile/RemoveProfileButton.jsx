@@ -5,7 +5,8 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
-import './PetProfile.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+// import './PetProfile.css';
 
 
 
@@ -14,6 +15,21 @@ const RemoveProfileButton = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     let {petid} = useParams();
+
+    const colorTheme = createTheme({
+        palette: {
+          orange: {
+            main: '#E27511',
+          },
+          white: {
+            main: '#F9F5F0',
+          },
+          blue: {
+            main: '#3D85C6',
+            contrastText: '#F9F5F0'
+          }
+        }
+      });
 
     const removeProfile = (inputId) => {
         console.log('in removeProfile', petid);
@@ -37,7 +53,30 @@ const RemoveProfileButton = () => {
     }
 
     return  <>
-                <Button 
+                <ThemeProvider theme={colorTheme}>
+                    <Button 
+                        onClick={handleClickOpen} 
+                        className="remove-profile-btn" 
+                        variant="contained" 
+                        size="small"
+                        color="white"
+                        >
+                            REMOVE PROFILE
+                        </Button>
+                    <Dialog
+                        open={open}
+                        onClose={handleClickClose}
+                    >
+                        <DialogTitle>
+                            {"Remove this pet's profile?"}
+                        </DialogTitle>
+                        <DialogActions>
+                            <Button onClick={handleClickClose} variant="contained" color="orange">No</Button>
+                            <Button onClick={() => removeProfile(petid)} color="blue">Yes</Button>
+                        </DialogActions>
+                    </Dialog>
+                </ThemeProvider>
+                {/* <Button 
                     onClick={handleClickOpen} 
                     className="remove-profile-btn" 
                     variant="contained" 
@@ -55,7 +94,7 @@ const RemoveProfileButton = () => {
                         <Button onClick={handleClickClose} variant="contained">No</Button>
                         <Button onClick={() => removeProfile(petid)}>Yes</Button>
                     </DialogActions>
-                </Dialog>
+                </Dialog> */}
             </>
 }
 

@@ -2,15 +2,33 @@ import { useState } from 'react';
 import AddCareForm from './AddCareForm.jsx';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const AddCareButton = () => {
 
     const [showForm, setShowForm] = useState(false);
 
-    return  <>
-                <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                        <Button onClick={() => setShowForm(!showForm)} variant="contained">ADD CARE ITEM</Button>
-                </Box>
+    const colorTheme = createTheme({
+        palette: {
+          orange: {
+            main: '#E27511',
+          },
+          white: {
+            main: '#F9F5F0',
+          },
+          blue: {
+            main: '#3D85C6',
+            contrastText: '#F9F5F0'
+          }
+        }
+      });
+
+    return  <>  
+                <ThemeProvider theme={colorTheme}>
+                    <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                            <Button onClick={() => setShowForm(!showForm)} variant="contained" color="orange">ADD CARE ITEM</Button>
+                    </Box>
+                </ThemeProvider>
                 {
                     showForm ? (
                         <AddCareForm

@@ -12,6 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './AddPet.css';
 
 
@@ -24,10 +25,19 @@ const AddPet = () => {
     const [petType, setPetType] = useState('');
     const [petImage, setPetImage] = useState('');
 
-    // const handleChange = (event) => {
-    //     console.log('in handleChange', event.target.value);
-    //     setPetType(event.target.value);
-    // }
+    const colorTheme = createTheme({
+        palette: {
+          orange: {
+            main: '#E27511',
+          },
+          white: {
+            main: '#F9F5F0',
+          },
+          blue: {
+            main: '#3D85C6',
+          }
+        }
+      });
 
     const submitPet = () => {
         console.log('in submitPet');
@@ -95,12 +105,14 @@ const AddPet = () => {
                     <br />
                     <br />
                     <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                        <Button sx={{marginRight: 1}} onClick={() => history.push("/user")} className="add-pet-btn" size="large" variant="contained">
-                            CANCEL
-                        </Button>
-                        <Button sx={{marginLeft: 1}} onClick={submitPet} className="add-pet-btn" size="large" variant="contained">
-                            ADD PET
-                        </Button>
+                        <ThemeProvider theme={colorTheme}>
+                            <Button sx={{marginRight: 1}} onClick={() => history.push("/user")} className="add-pet-btn" size="large" variant="contained" color="white">
+                                CANCEL
+                            </Button>
+                            <Button sx={{marginLeft: 1}} onClick={submitPet} className="add-pet-btn" size="large" variant="contained" color="orange">
+                                ADD PET
+                            </Button>
+                        </ThemeProvider>
                     </Box>
                 </Container>
             </div>

@@ -10,6 +10,7 @@ import Box from '@mui/material/Box';
 import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 import { Typography } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const AddEditCare = () => {
 
@@ -21,6 +22,21 @@ const AddEditCare = () => {
     const careItems = useSelector(store => store.care.petCareItems);
 
     const [updatedName, setUpdatedName] = useState('');
+
+    const colorTheme = createTheme({
+        palette: {
+          orange: {
+            main: '#E27511',
+          },
+          white: {
+            main: '#F9F5F0',
+          },
+          blue: {
+            main: '#3D85C6',
+            contrastText: '#F9F5F0'
+          }
+        }
+      });
 
     useEffect(() => {
         console.log(petid);
@@ -62,16 +78,19 @@ const AddEditCare = () => {
                 <br />
                 <AddCareButton />
                 <br />
-                <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                    <Button 
-                        sx={{width: 200}} 
-                        color='secondary' 
-                        variant="contained" 
-                        onClick={(event) => history.push(`/petprofile/${petid}`)}
-                    >
-                        BACK TO PET PROFILE
-                    </Button> 
-                </Box>
+                <ThemeProvider theme={colorTheme}>
+                    <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                        <Button 
+                            sx={{width: 200}} 
+                            color="white" 
+                            variant="contained" 
+                            onClick={(event) => history.push(`/petprofile/${petid}`)}
+                        >
+                            BACK TO PET PROFILE
+                        </Button> 
+                    </Box>
+                </ThemeProvider>
+             
             </div>
 } // end AddEditCare
 

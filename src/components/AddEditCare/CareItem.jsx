@@ -14,10 +14,26 @@ import ListItemText from '@mui/material/ListItemText';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import ListItemButton from '@mui/material/ListItemButton';
 import EditSharpIcon from '@mui/icons-material/EditSharp';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const CareItem = ({item, petid}) => {
 
     const dispatch = useDispatch();
+
+    const colorTheme = createTheme({
+        palette: {
+          orange: {
+            main: '#E27511',
+          },
+          white: {
+            main: '#F9F5F0',
+          },
+          blue: {
+            main: '#3D85C6',
+            contrastText: '#F9F5F0'
+          }
+        }
+      });
 
     // variable for dialog edit form conditional rendering
     const [showForm, setShowForm] = useState(false);
@@ -62,9 +78,11 @@ const CareItem = ({item, petid}) => {
                 >
                     <DialogTitle sx={{display: 'flex', justifyContent: 'space-between'}}>
                         {`Details for ${item.description}`}
-                        <Button variant="contained" size="medium" onClick={() => setShowForm(!showForm)}>
-                            <EditSharpIcon/>
-                        </Button>
+                        <ThemeProvider theme={colorTheme}>
+                            <Button color="orange" variant="contained" size="medium" onClick={() => setShowForm(!showForm)}>
+                                <EditSharpIcon/>
+                            </Button>
+                        </ThemeProvider>
                     </DialogTitle>
                     <DialogContent>
                         {
