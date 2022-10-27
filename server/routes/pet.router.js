@@ -88,20 +88,27 @@ router.delete('/:petid', async (req, res) => {
     console.log('is authenticated?', req.isAuthenticated());
     console.log('user', req.user);
     if (req.isAuthenticated()) {
-        const checkAuthorizationQuery = `SELECT "user_pet".*, "user"."username" FROM "user_pet"
-                                        JOIN "user" ON "user"."id" = "user_pet"."user_id"
-                                        WHERE "user"."id" = $1 AND "user_pet"."pet_id" = $2;`
-        const result = await pool.query(checkAuthorizationQuery, [req.user.id, req.params.petid]);
-        if(result) {
-            const userPetQueryText =    `DELETE FROM "user_pet"
-                                        WHERE "pet_id" = $1 AND "user_id" = $2;`
-            await pool.query(userPetQueryText, [req.params.petid, req.user.id]);
-            const petQueryText =    `DELETE FROM "pet"
-                                    WHERE "pet"."id" = $1;`
-            await  pool.query(petQueryText, [req.params.petid])
-            res.sendStatus(200);
-        } else {
-            res.sendStatus(401); // unauthorized
+        try {
+            const checkAuthorizationQuery = `SELECT "user_pet".*, "user"."username" FROM "user_pet"
+                                            JOIN "user" ON "user"."id" = "user_pet"."user_id"
+                                            WHERE "user"."id" = $1 AND "user_pet"."pet_id" = $2;`
+            const result = await pool.query(checkAuthorizationQuery, [req.user.id, req.params.petid]);
+            if(result) {
+                console.log('user has authorization to delete');
+                const userPetQueryText =    `DELETE FROM "user_pet"
+                                            WHERE "pet_id" = $1 AND "user_id" = $2;`
+                await pool.query(userPetQueryText, [req.params.petid, req.user.id]);
+                const petQueryText =    `DELETE FROM "pet"
+                                        WHERE "pet"."id" = $1;`
+                await pool.query(petQueryText, [req.params.petid])
+                res.sendStatus(200);
+            } else {
+                console.log('user is not authorized to delete');
+                res.sendStatus(401); // unauthorized
+            }
+        } catch (error) {
+            console.log('error deleting pet profile', error);
+            res.sendStatus(500);
         }
     } else {
         res.sendStatus(403); // forbidden
