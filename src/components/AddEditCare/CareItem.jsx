@@ -89,8 +89,6 @@ const CareItem = ({item, petid}) => {
                             showForm ? (
                                 <>
                                     <Typography>Frequency: {item.frequency}</Typography>
-                                    <br />
-                                    <Typography>Current Details: {item.details}</Typography>
                                     <EditCareDetailsForm 
                                         item={item}
                                         petid={petid}
