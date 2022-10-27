@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
 import Nav from '../Nav/Nav.jsx';
@@ -96,11 +96,12 @@ const PetProfile = () => {
                         spacing={2}
                         direction="row"
                         alignItems="right"
-                        justifyContent="space-between"
+                        justifyContent="space-evenly"
                     >
                         <ThemeProvider theme={colorTheme}>
                             <Grid item>
-                                <Button color="blue" size="small" variant="contained" sx={{width: 130}}>
+                                <Button 
+                                    color="blue" size="small" variant="contained" sx={{width: 130}} onClick={() => history.push(`/share-profile/${petid}`)}>
                                     Share
                                 </Button>
                             </Grid>

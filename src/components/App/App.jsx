@@ -25,6 +25,7 @@ import AddEditCare from '../AddEditCare/AddEditCare.jsx';
 import CareReminders from '../CareReminders/CareReminders.jsx';
 import VetNotes from '../VetNotes/VetNotes.jsx';
 import AddVetNote from '../VetNotes/AddVetNote.jsx';
+import ShareProfile from '../PetProfile/ShareProfile.jsx';
 
 import './App.css';
 
@@ -115,6 +116,13 @@ function App() {
             element={<AddVetNote/>}
           >
             <AddVetNote/>
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact path="/share-profile/:petid"
+            element={<ShareProfile/>}
+          >
+            <ShareProfile/>
           </ProtectedRoute>
 
           <Route
