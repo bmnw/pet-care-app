@@ -55,7 +55,7 @@ function* updatePetName (action) {
         action.clearInput();
     } catch (error) {
         console.log('error in updatePetName saga', error);
-        alert("Something went wrong updating your pet's name.");
+        alert("Something went wrong. You may not have permission to update this pet's name.");
     }
 }    
 
