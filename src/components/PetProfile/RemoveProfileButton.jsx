@@ -60,7 +60,7 @@ const RemoveProfileButton = () => {
                         variant="contained" 
                         size="small"
                         color="white"
-                        sx={{fontWeight: 'light'}}
+                        sx={{fontWeight: 'light', width: 130}}
                         >
                             REMOVE PROFILE
                         </Button>

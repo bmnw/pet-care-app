@@ -96,8 +96,15 @@ const PetProfile = () => {
                         spacing={2}
                         direction="row"
                         alignItems="right"
-                        justifyContent="right"
+                        justifyContent="space-between"
                     >
+                        <ThemeProvider theme={colorTheme}>
+                            <Grid item>
+                                <Button color="blue" size="small" variant="contained" sx={{width: 130}}>
+                                    Share
+                                </Button>
+                            </Grid>
+                        </ThemeProvider>
                         <Grid item>
                             <RemoveProfileButton />
                         </Grid>

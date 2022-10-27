@@ -158,8 +158,8 @@ router.put('/:petid', async (req, res) => {
             if(result) {
                 console.log('user has authorization to edit');
                 const petQueryText =    `UPDATE "pet" SET
-                        "pet_name" = $1
-                        WHERE "pet"."id" = $2;`
+                                        "pet_name" = $1
+                                        WHERE "pet"."id" = $2;`
                 await pool.query(petQueryText, [req.body.pet_name, req.params.petid]);
                 res.sendStatus(200);
             } else {
