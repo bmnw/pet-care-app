@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -25,6 +25,11 @@ const EditCareDetailsForm = ({item, petid, showForm, setShowForm}) => {
           }
         }
       });
+
+      useEffect(() => {
+        console.log('page load');
+        setCareDetails(item.details);
+      }, []);
 
     const updateCareDetails = (itemInput, petInput) => {
         console.log('in updateCareDetails', itemInput, petInput, careDetails);
