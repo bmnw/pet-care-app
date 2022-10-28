@@ -85,15 +85,26 @@ const ShareProfile  = () => {
                 <Nav/>
                 {
                     pet.map(detail => {
-                        return  <Box key={detail.id} sx={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
-                                    <Typography variant="h5">Share {detail.pet_name}'s profile!</Typography>
-                                </Box>
+                        return  <div key={detail.id}>
+                                    <Box sx={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
+                                        <Typography variant="h5">Share {detail.pet_name}'s profile!</Typography>
+                                    </Box>
+                                    <br />
+                                    <Box sx={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
+                                        <img src={detail.image} style={{width: 125, height: 100, border: 'solid'}} />
+                                    </Box>
+                                </div>
                     })
                 }
                 <br />
                 <Box sx={{display:"flex", justifyContent:"center"}}>
                     <Typography variant="h6">Who do you want to share with?</Typography>
                 </Box>
+                <Box sx={{display:"flex", justifyContent:"center"}}>
+                    <Typography>They will be able to view and edit this pet's profile.</Typography>
+                </Box>
+                <br />
+                <br />
                 <br />
                 <Box sx={{display:"flex", justifyContent:"center"}}>
                     <Textfield 
@@ -104,6 +115,7 @@ const ShareProfile  = () => {
                         onChange={(event) => setUsername(event.target.value)}
                     />
                 </Box>
+                <br />
                 <br />
                 <Box sx={{display:"flex", justifyContent:"space-evenly"}}>
                     <ThemeProvider theme={colorTheme}>
