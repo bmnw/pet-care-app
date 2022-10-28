@@ -82,9 +82,17 @@ const PetProfile = () => {
                             <Grid item>
                                 <Button onClick={() => history.push(`/add-edit/${petid}`)} className="profile-menu-btn" variant="contained" size="large" color="white">ADD CARE/EDIT</Button>
                             </Grid>
-                            <Grid item>
-                                <Button onClick={() => history.push('/user')} className="profile-back-btn" variant="contained" size="large" color="orange">ALL PETS</Button>
+                            <ThemeProvider theme={colorTheme}>
+                            <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+                                <Button 
+                                    color="blue" size="large" variant="contained" sx={{width: 130, height: 45}} onClick={() => history.push(`/share-profile/${petid}`)}>
+                                    Share
+                                </Button>
                             </Grid>
+                            </ThemeProvider>
+                            {/* <Grid item>
+                                <Button onClick={() => history.push('/user')} className="profile-back-btn" variant="contained" size="large" color="orange">ALL PETS</Button>
+                            </Grid> */}
                         </ThemeProvider>
                  
                     </Grid>
@@ -95,18 +103,20 @@ const PetProfile = () => {
                         container
                         spacing={2}
                         direction="row"
-                        alignItems="right"
                         justifyContent="space-evenly"
                     >
                         <ThemeProvider theme={colorTheme}>
                             <Grid item>
+                                <Button onClick={() => history.push('/user')} sx={{width: 130}} variant="contained" size="large" color="orange">ALL PETS</Button>
+                            </Grid>
+                            {/* <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                                 <Button 
-                                    color="blue" size="small" variant="contained" sx={{width: 130}} onClick={() => history.push(`/share-profile/${petid}`)}>
+                                    color="blue" size="large" variant="contained" sx={{width: 130, height: 45}} onClick={() => history.push(`/share-profile/${petid}`)}>
                                     Share
                                 </Button>
-                            </Grid>
+                            </Grid> */}
                         </ThemeProvider>
-                        <Grid item>
+                        <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                             <RemoveProfileButton />
                         </Grid>
                     </Grid>
