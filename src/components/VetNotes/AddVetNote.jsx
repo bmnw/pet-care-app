@@ -9,6 +9,12 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
+import { MobileDatePicker} from '@mui/x-date-pickers/MobileDatePicker';
+import moment from 'moment';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import InputAdornment from '@mui/material/InputAdornment';
 
 const AddVetNote = () => {
 
@@ -42,6 +48,12 @@ const AddVetNote = () => {
         dispatch({type: 'REFRESH_PET_DETAILS', payload: petid});
     }, []);
 
+    const handleDateChange = (newDate) => {
+        console.log(moment(newDate._d).format('YYYY/MM/DD'));
+        setDate(moment(newDate._d).format('YYYY/MM/DD'));
+        console.log('startDate', date);
+    }
+
     const checkNoteLength = (noteInput) => {
         console.log('in checkNoteLength', noteInput.length);
         if(noteInput.length <= 1000) {
@@ -71,7 +83,7 @@ const AddVetNote = () => {
                 <Nav />
                 {
                     pet.map(detail => {
-                        return  <Grid container spacing={2} direction="column" alignContent="center">
+                        return  <Grid key={detail.id} container spacing={2} direction="column" alignContent="center">
                                     <Grid item>
                                         <Typography variant="h5">Add vet note for {detail.pet_name}</Typography>
                                     </Grid>
@@ -82,13 +94,35 @@ const AddVetNote = () => {
                 <Paper elevation={10} sx={{ margin: 2, padding: 2, bgcolor: 'lightgray'}}>
                     <Box sx={{display: 'flex'}}>
                         <Typography sx={{display:"flex", alignItems:"center", width: 50}}>DATE:</Typography>
-                        <Textfield 
+                        <ThemeProvider theme={colorTheme}>
+                            <Box>
+                                <LocalizationProvider dateAdapter={AdapterMoment}>
+                                    <MobileDatePicker
+                                        label="Date"
+                                        // imputFormat="YYYY/MM/DD"
+                                        value={date}
+                                        onChange={handleDateChange}
+                                        renderInput={(params) => <
+                                                                    Textfield 
+                                                                        {...params} 
+                                                                        InputProps={{startAdornment: 
+                                                                                        (<InputAdornment position="start"><CalendarMonthIcon/></InputAdornment>),
+                                                                                    }} 
+                                                                        variant="outlined"
+                                                                        color="blue"
+                                                                />
+                                                    }
+                                    />
+                                </LocalizationProvider>
+                            </Box>
+                        </ThemeProvider>
+                        {/* <Textfield 
                                 sx={{backgroundColor: 'white'}}
                                 required
                                 label="Date (yyyy/mm/dd)"
                                 value={date}
                                 onChange={(event) => setDate(event.target.value)}
-                        />
+                        /> */}
                     </Box>
                     <br />
                     <Box sx={{display: 'flex'}}>
