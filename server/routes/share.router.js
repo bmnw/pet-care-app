@@ -33,8 +33,8 @@ router.post('/', async (req, res) => {
             const queryText =   `SELECT * FROM "user_pet"
                                 WHERE "user_id" = $1 AND "pet_id" = $2;`
             const result = await pool.query(queryText, [req.body.user_id, req.body.pet_id]);
-            console.log(result.rows);
-            if(result.rows) {
+            console.log(result.rows.length);
+            if(result.rows.length > 0) {
                 console.log('user already has access to this pet', result);
                 res.sendStatus(401); // unauthorized
             } else {
