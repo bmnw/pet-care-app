@@ -14,6 +14,8 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker} from '@mui/x-date-pickers/MobileDatePicker';
 import moment from 'moment';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import InputAdornment from '@mui/material/InputAdornment';
 
 
 const AddCareForm = ({showForm, setShowForm}) => {
@@ -117,25 +119,28 @@ const AddCareForm = ({showForm, setShowForm}) => {
                     </FormControl>
                 </Box>
                 <br />
-                <Box>
-                    <LocalizationProvider dateAdapter={AdapterMoment}>
-                        <MobileDatePicker
-                        label="start date"
-                        // imputFormat="YYYY/MM/DD"
-                        value={startDate}
-                        onChange={handleDateChange}
-                        renderInput={(params) => <Textfield {...params} />}
-                        />
-                    </LocalizationProvider>
-                    {/* <Typography>Start Date (YYYY/MM/DD):</Typography>
-                    <Textfield 
-                        sx={{backgroundColor: 'white'}}
-                        required
-                        label="Required"
-                        value={startDate}
-                        onChange={(event) => setStartDate(event.target.value)}
-                    /> */}
-                </Box>
+                <ThemeProvider theme={colorTheme}>
+                    <Box>
+                        <LocalizationProvider dateAdapter={AdapterMoment}>
+                            <MobileDatePicker
+                                label="Start Date"
+                                // imputFormat="YYYY/MM/DD"
+                                value={startDate}
+                                onChange={handleDateChange}
+                                renderInput={(params) => <
+                                                            Textfield 
+                                                                {...params} 
+                                                                InputProps={{startAdornment: 
+                                                                                (<InputAdornment position="start"><CalendarMonthIcon/></InputAdornment>),
+                                                                            }} 
+                                                                variant="outlined"
+                                                                color="blue"
+                                                        />
+                                            }
+                            />
+                        </LocalizationProvider>
+                    </Box>
+                </ThemeProvider>
                 <br />
                 <Box>
                     <Typography>Care Details:</Typography>
