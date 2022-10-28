@@ -37,6 +37,7 @@ const ShareProfile  = () => {
     useEffect(() => {
         console.log('share profile pet id:', petid);
         dispatch({type: 'REFRESH_PET_DETAILS', payload: petid});
+        dispatch({type: 'FETCH_ALL_USERNAMES'});
     }, []);
 
     const shareProfile = (usernameInput) => {

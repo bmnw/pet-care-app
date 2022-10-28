@@ -82,7 +82,6 @@ router.post('/', (req, res) => {
 });
 
 // DELETE to remove pet profile
-
 router.delete('/:petid', async (req, res) => {
     console.log('in pet DELETE /:petid', req.params.petid);
     console.log('is authenticated?', req.isAuthenticated());
