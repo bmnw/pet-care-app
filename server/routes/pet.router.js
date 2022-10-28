@@ -82,7 +82,6 @@ router.post('/', (req, res) => {
 });
 
 // DELETE to remove pet profile
-
 router.delete('/:petid', async (req, res) => {
     console.log('in pet DELETE /:petid', req.params.petid);
     console.log('is authenticated?', req.isAuthenticated());
@@ -93,7 +92,7 @@ router.delete('/:petid', async (req, res) => {
                                             JOIN "user" ON "user"."id" = "user_pet"."user_id"
                                             WHERE "user"."id" = $1 AND "user_pet"."pet_id" = $2;`
             const result = await pool.query(checkAuthorizationQuery, [req.user.id, req.params.petid]);
-            if(result) {
+            if(result.rows) {
                 console.log('user has authorization to delete');
                 const userPetQueryText =    `DELETE FROM "user_pet"
                                             WHERE "pet_id" = $1 AND "user_id" = $2;`

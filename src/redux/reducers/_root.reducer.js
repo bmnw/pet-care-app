@@ -4,6 +4,7 @@ import user from './user.reducer';
 import pet from './pet.reducer';
 import care from './care.reducer';
 import vet from './vet.reducer';
+import share from './share.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   pet,
   care,
   vet,
+  share,
 });
 
 export default rootReducer;
