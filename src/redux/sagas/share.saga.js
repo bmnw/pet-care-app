@@ -20,7 +20,7 @@ function* shareProfile (action) {
         yield put ({type: 'FETCH_ALL_USERNAMES'});
     } catch (error) {
         console.log('error in shareProfile saga', error);
-        alert('Something went wrong sharing this pet profile.');
+        alert('This username already has access to this pet.');
     }
 }
 

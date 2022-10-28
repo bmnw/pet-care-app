@@ -45,22 +45,22 @@ const PetProfile = () => {
                 {
                     pet.map(pet => {
                         return  (
-                            <Grid
-                                container
-                                spacing={2}
-                                direction="row"
-                                justifyContent="center"
-                                key={pet.id}
-                            >
-                                <Grid item>
-                                    <img src={pet.image} style={{width: 125, height: 100, border: 'solid'}} />
-                                </Grid>
-                                <Grid item
-                                    sx={{display:"flex", alignItems:"center", justifyContent:"center"}}
-                                >
-                                    <Typography variant="h5">{pet.pet_name}!</Typography>
-                                </Grid>
-                            </Grid>
+                                    <Grid
+                                        container
+                                        spacing={2}
+                                        direction="row"
+                                        justifyContent="center"
+                                        key={pet.id}
+                                    >
+                                        <Grid item>
+                                            <img src={pet.image} style={{width: 125, height: 100, border: 'solid'}} />
+                                        </Grid>
+                                        <Grid item
+                                            sx={{display:"flex", alignItems:"center", justifyContent:"center"}}
+                                        >
+                                            <Typography variant="h5">{pet.pet_name}!</Typography>
+                                        </Grid>
+                                    </Grid>
                                 )
                     })
                 }

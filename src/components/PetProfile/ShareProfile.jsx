@@ -67,7 +67,6 @@ const ShareProfile  = () => {
     const shareSuccess = () => {
         console.log('this pet profile was shared successfully');
         handleClickOpen();
-        // setUsername('');
     } // end shareSuccess
 
     const usernameMatch = (usernameArray, usernameInput) => {
