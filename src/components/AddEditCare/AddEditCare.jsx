@@ -64,6 +64,9 @@ const AddEditCare = () => {
                         All Care Items
                     </Typography>
                 </Box>
+                <br />
+                <AddCareButton />
+
                 <List sx={{width: '100%'}}>
                 {
                     careItems.map(item => {
@@ -78,8 +81,7 @@ const AddEditCare = () => {
                 }
                 </List>
                 <br />
-                <AddCareButton />
-                <br />
+                {/* <AddCareButton /> */}
                 <ThemeProvider theme={colorTheme}>
                     <Box sx={{display: 'flex', justifyContent: 'center'}}>
                         <Button 
