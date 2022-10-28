@@ -86,7 +86,7 @@ const AddEditCare = () => {
                     <Box sx={{display: 'flex', justifyContent: 'center'}}>
                         <Button 
                             sx={{width: 200}} 
-                            color="white" 
+                            color="blue" 
                             variant="contained" 
                             onClick={(event) => history.push(`/petprofile/${petid}`)}
                         >
