@@ -12,9 +12,22 @@ function* fetchAllUsernames () {
     }
 }
 
+function* shareProfile (action) {
+    console.log('in shareProfile saga', action.payload);
+    try {
+        yield axios.post(`/api/share/`, action.payload);
+        action.shareSuccess();
+        yield put ({type: 'FETCH_ALL_USERNAMES'});
+    } catch (error) {
+        console.log('error in shareProfile saga', error);
+        alert('Something went wrong sharing this pet profile.');
+    }
+}
+
 
 function* shareSaga() {
     yield takeLatest('FETCH_ALL_USERNAMES', fetchAllUsernames);
+    yield takeLatest('SHARE_PROFILE', shareProfile);
 }
 
 export default shareSaga;
