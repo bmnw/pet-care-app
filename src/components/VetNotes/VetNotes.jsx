@@ -6,6 +6,8 @@ import VetNoteItem from '../VetNotes/VetNoteItem.jsx';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const VetNotes = () => {
@@ -51,12 +53,19 @@ const VetNotes = () => {
                 <ThemeProvider theme={colorTheme}>
                     <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
                         <Button sx={{marginRight: 1, width: 150}} variant="contained" size="large" color="white" onClick={(event) => history.push(`/petprofile/${petid}`)}>
-                            {/* {detail.pet_name}'s Profile */}
                             PET PROFILE
                         </Button>
-                        <Button sx={{marginLeft: 1, width: 150}} variant="contained" size="large" color="orange" onClick={(event) => history.push(`/add-vet-note/${petid}`)}>
+                        {/* <Fab variant="extended" color="white" onClick={(event) => history.push(`/petprofile/${petid}`)}>
+                            
+                            Pet Profile
+                        </Fab> */}
+                        {/* <Button sx={{marginLeft: 1, width: 150}} variant="contained" size="large" color="orange" onClick={(event) => history.push(`/add-vet-note/${petid}`)}>
                             NEW NOTE
-                        </Button>
+                        </Button> */}
+                        <Fab variant="extended" color="orange" onClick={(event) => history.push(`/add-vet-note/${petid}`)}>
+                            <AddIcon sx={{ mr: 1 }}/>
+                            New Note
+                        </Fab>
                     </Box>
                 </ThemeProvider>
              

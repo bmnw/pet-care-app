@@ -94,9 +94,10 @@ const CareReminders = () => {
                 <Box sx={{display: 'flex', justifyContent: 'center'}}>
                     <ThemeProvider theme={colorTheme}>
                         <Button 
-                            sx={{width: 200}} 
+                            sx={{width: 200, height: 60}} 
                             color="white" 
                             variant="contained" 
+                            size="large"
                             onClick={(event) => history.push(`/petprofile/${petid}`)}
                         >
                             PET PROFILE

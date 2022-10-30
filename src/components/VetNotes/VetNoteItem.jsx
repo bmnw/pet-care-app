@@ -8,10 +8,26 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const VetNoteItem = ({note, petid}) => {
 
     const dispatch = useDispatch();
+
+    const colorTheme = createTheme({
+        palette: {
+          orange: {
+            main: '#E27511',
+          },
+          white: {
+            main: '#F9F5F0',
+          },
+          blue: {
+            main: '#3D85C6',
+            contrastText: '#F9F5F0'
+          }
+        }
+      });
 
     // dialog feature variables and functions
     const [open, setOpen] = useState(false);
@@ -31,10 +47,12 @@ const VetNoteItem = ({note, petid}) => {
 
     return  <>
                 <Paper elevation={10} sx={{margin: 2, padding: 2, bgcolor: 'lightgray'}}>
-                    <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
-                        <Typography variant="h6" sx={{display: 'flex', alignItems: 'center'}}>Date: {new Date(note.date).toDateString()}</Typography>
-                        <DeleteIcon fontSize="medium" color='error' onClick={handleClickOpen}/>
-                    </Box>
+                    <ThemeProvider theme={colorTheme}>
+                        <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
+                            <Typography variant="h6" sx={{display: 'flex', alignItems: 'center'}}>Date: {new Date(note.date).toDateString()}</Typography>
+                            <DeleteIcon fontSize="large" color='blue' onClick={handleClickOpen}/>
+                        </Box>
+                    </ThemeProvider>
                     <Typography>Vet: {note.vet}</Typography>
                     <Box sx={{
                         bgcolor: 'white',
@@ -51,8 +69,10 @@ const VetNoteItem = ({note, petid}) => {
                         {"Delete this vet note?"}
                     </DialogTitle>
                     <DialogActions>
-                        <Button onClick={handleClickClose} variant="contained">No</Button>
-                        <Button onClick={() => deleteVetNote(note.id)}>Yes</Button>
+                        <ThemeProvider theme={colorTheme}>
+                            <Button onClick={() => deleteVetNote(note.id)} color="blue" size="large" variant="outlined">Yes</Button>
+                            <Button onClick={handleClickClose} variant="contained" color="orange" size="large">No</Button>
+                        </ThemeProvider>
                     </DialogActions>
                 </Dialog>
             </>

@@ -74,7 +74,7 @@ const EditCareDetailsForm = ({item, petid, showForm, setShowForm}) => {
                 <br />
                 <ThemeProvider theme={colorTheme}>
                     <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-                            <Button color="white" sx={{width: 100, marginRight: 1}} size="large" onClick={() => setShowForm(!showForm)} variant="contained">CANCEL</Button>
+                            {/* <Button color="white" sx={{width: 100, marginRight: 1}} size="large" onClick={() => setShowForm(!showForm)} variant="contained">CANCEL</Button> */}
                             <Button color="orange" sx={{width: 100, marginLeft: 1}} size="large" onClick={() => updateCareDetails(item.id, petid)} variant="contained">SAVE</Button>
                     </Box>
                 </ThemeProvider>

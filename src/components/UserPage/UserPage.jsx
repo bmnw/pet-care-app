@@ -7,6 +7,8 @@ import Nav from '../Nav/Nav.jsx';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function UserPage() {
@@ -56,7 +58,11 @@ function UserPage() {
           <br />
           <Grid item>
             <ThemeProvider theme={colorTheme}>
-              <Button onClick={handleClick} variant="contained" color="orange" size="large">ADD PET</Button>
+              <Fab color="orange" variant="extended" onClick={handleClick}>
+                <AddIcon sx={{ mr: 1}} />
+                Add Pet
+              </Fab>
+              {/* <Button onClick={handleClick} variant="contained" color="orange" size="large">ADD PET</Button> */}
             </ThemeProvider>
           </Grid>
           <br />

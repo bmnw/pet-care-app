@@ -12,7 +12,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import ListItemButton from '@mui/material/ListItemButton';
-import EditSharpIcon from '@mui/icons-material/EditSharp';
 import SummarizeRoundedIcon from '@mui/icons-material/SummarizeRounded';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
@@ -105,7 +104,8 @@ const CareItem = ({item, petid}) => {
                                 </> 
                             ) : (
                                 <>
-                                    <Typography>Frequency: {item.frequency}</Typography>
+                                    Frequency: {item.frequency}
+                                    <br />
                                     <br />
                                     {`${item.details}`}
                                 </> 

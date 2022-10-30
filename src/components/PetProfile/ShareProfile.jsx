@@ -61,6 +61,7 @@ const ShareProfile  = () => {
             dispatch({type: 'SHARE_PROFILE', payload: {user_id: shareWithId, pet_id: petid}, shareSuccess: shareSuccess});
         } else {
             console.log("The username you enter must already have a Waffle's Spot account. Please double check spelling and capitalization!")
+            alert("The username you enter must already have a Waffle's Spot account. Please double check spelling and capitalization!");
         }
     } // end shareProfile
 

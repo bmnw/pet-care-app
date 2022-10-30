@@ -17,6 +17,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import ListItemButton from '@mui/material/ListItemButton';
 import IconButton from '@mui/material/IconButton';
+import SummarizeRoundedIcon from '@mui/icons-material/SummarizeRounded';
 
 const ReminderItem = ({reminder, isComplete}) => {
 
@@ -53,7 +54,7 @@ const ReminderItem = ({reminder, isComplete}) => {
                         </ListItemText>
                     </ListItemButton>
                     <ListItemButton  onClick={handleClickOpen}>
-                        <FeedSharpIcon sx={{marginRight: 2}} fontSize="large"/>
+                        <SummarizeRoundedIcon sx={{marginRight: 2}} fontSize="large"/>
                     </ListItemButton>
                     <ListItemButton sx={{width: 75}}>
                         {
