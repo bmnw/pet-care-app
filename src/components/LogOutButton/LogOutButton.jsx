@@ -37,7 +37,7 @@ function LogOutButton(props) {
         // is passed to it from it's parents through React props
         sx={{width: 100, text: 'white'}}
         variant="contained"
-        color="blue"
+        color="white"
         
         onClick={() => dispatch({ type: 'LOGOUT', toLogin: toLogin})}
       >

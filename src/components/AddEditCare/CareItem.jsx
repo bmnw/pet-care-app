@@ -7,13 +7,15 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
-import FeedSharpIcon from '@mui/icons-material/FeedSharp';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import ListItemButton from '@mui/material/ListItemButton';
 import EditSharpIcon from '@mui/icons-material/EditSharp';
+import SummarizeRoundedIcon from '@mui/icons-material/SummarizeRounded';
+import Fab from '@mui/material/Fab';
+import EditIcon from '@mui/icons-material/Edit';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const CareItem = ({item, petid}) => {
@@ -65,23 +67,28 @@ const CareItem = ({item, petid}) => {
                         </ListItemText>
                     </ListItemButton>
                     <ListItemButton onClick={handleClickOpen}>
-                        <FeedSharpIcon fontSize="large" />
+                        <SummarizeRoundedIcon fontSize="large" />
                     </ListItemButton>
-                    <ListItemButton onClick={(event) => deleteCareItem(item.id)}>
-                        <DeleteIcon color="error" fontSize="large" />
-                    </ListItemButton>
+                    <ThemeProvider theme={colorTheme}>
+                        <ListItemButton onClick={(event) => deleteCareItem(item.id)}>
+                            <DeleteIcon color="blue" fontSize="large" />
+                        </ListItemButton>
+                    </ThemeProvider>
                 </ListItem>
                 <Dialog
                     open={open}
                     onClose={handleClickClose}
                     fullWidth
                 >
-                    <DialogTitle sx={{display: 'flex', justifyContent: 'space-between'}}>
+                    <DialogTitle sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                         {`Details for ${item.description}`}
                         <ThemeProvider theme={colorTheme}>
-                            <Button color="orange" variant="contained" size="medium" onClick={() => setShowForm(!showForm)}>
+                            {/* <Button color="orange" variant="contained" size="medium" onClick={() => setShowForm(!showForm)}>
                                 <EditSharpIcon/>
-                            </Button>
+                            </Button> */}
+                            <Fab color="orange" onClick={() => setShowForm(!showForm)}>
+                                <EditIcon />
+                            </Fab>
                         </ThemeProvider>
                     </DialogTitle>
                     <DialogContent>

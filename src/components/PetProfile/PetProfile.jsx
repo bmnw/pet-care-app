@@ -85,7 +85,7 @@ const PetProfile = () => {
                             <ThemeProvider theme={colorTheme}>
                             <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                                 <Button 
-                                    color="blue" size="large" variant="contained" sx={{width: 130, height: 45}} onClick={() => history.push(`/share-profile/${petid}`)}>
+                                    color="orange" size="large" variant="contained" sx={{width: 130, height: 45}} onClick={() => history.push(`/share-profile/${petid}`)}>
                                     Share
                                 </Button>
                             </Grid>

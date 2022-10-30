@@ -157,9 +157,9 @@ const AddCareForm = ({showForm, setShowForm}) => {
                 </Box>
                 <br />
                 <ThemeProvider theme={colorTheme}>
-                    <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                        <Button sx={{width: 100, marginRight: 1}} onClick={() => setShowForm(!showForm)} variant="contained" color="blue">CANCEL</Button>
-                        <Button sx={{width: 100, marginLeft: 1}} onClick={submitCareItem} variant="contained" color="orange">SAVE</Button>
+                    <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
+                        <Button sx={{width: 100, marginRight: 1}} onClick={() => setShowForm(!showForm)} size="large" variant="contained" color="white">CANCEL</Button>
+                        <Button sx={{width: 100, marginLeft: 1}} onClick={submitCareItem} variant="contained" size="large" color="orange">SAVE</Button>
                     </Box>
                 </ThemeProvider>
             </div>

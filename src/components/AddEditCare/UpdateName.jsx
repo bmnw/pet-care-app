@@ -2,9 +2,10 @@ import { useDispatch } from 'react-redux';
 import {useParams} from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
 import Textfield from '@mui/material/Textfield';
 import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import EditIcon from '@mui/icons-material/Edit';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const UpdateName = ({pet, updatedName, setUpdatedName}) => {
@@ -58,7 +59,11 @@ const UpdateName = ({pet, updatedName, setUpdatedName}) => {
                 <br />
                 <ThemeProvider theme={colorTheme}>
                     <Box sx={{display:"flex", justifyContent:"center"}}>
-                        <Button onClick={(event) => updateName(updatedName)} variant="contained" color="white">UPDATE NAME</Button>
+                        {/* <Button onClick={(event) => updateName(updatedName)} variant="contained" size="large" color="white">UPDATE NAME</Button> */}
+                        <Fab color="white" variant="extended" onClick={(event) => updateName(updatedName)}>
+                          <EditIcon sx={{ mr: 1 }}/>
+                          Update Name
+                        </Fab>
                     </Box>
                 </ThemeProvider>
             </>

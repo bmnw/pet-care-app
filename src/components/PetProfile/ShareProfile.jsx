@@ -119,7 +119,7 @@ const ShareProfile  = () => {
                 <Box sx={{display:"flex", justifyContent:"space-evenly"}}>
                     <ThemeProvider theme={colorTheme}>
                         <Button 
-                            color="blue" size="large" variant="contained" sx={{width: 130, height: 45}} onClick={() => history.push(`/petprofile/${petid}`)}>
+                            color="white" size="large" variant="contained" sx={{width: 130, height: 45}} onClick={() => history.push(`/petprofile/${petid}`)}>
                             CANCEL
                         </Button>
                         <Button 

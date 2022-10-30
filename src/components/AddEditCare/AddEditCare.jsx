@@ -59,14 +59,14 @@ const AddEditCare = () => {
                     })
                 }
                 <br />
+                <br />
+                <AddCareButton />
+                <br />
                 <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                    <Typography variant="h6">
+                    <Typography variant="h6" sx={{display: 'flex', alignItems: 'center'}}>
                         All Care Items
                     </Typography>
                 </Box>
-                <br />
-                <AddCareButton />
-
                 <List sx={{width: '100%'}}>
                 {
                     careItems.map(item => {
@@ -85,12 +85,13 @@ const AddEditCare = () => {
                 <ThemeProvider theme={colorTheme}>
                     <Box sx={{display: 'flex', justifyContent: 'center'}}>
                         <Button 
-                            sx={{width: 200}} 
-                            color="blue" 
+                            // sx={{width: 200}} 
+                            color="white"
+                            size="large" 
                             variant="contained" 
                             onClick={(event) => history.push(`/petprofile/${petid}`)}
                         >
-                            BACK TO PET PROFILE
+                            PET PROFILE
                         </Button> 
                     </Box>
                 </ThemeProvider>

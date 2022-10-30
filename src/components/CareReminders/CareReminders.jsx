@@ -95,11 +95,11 @@ const CareReminders = () => {
                     <ThemeProvider theme={colorTheme}>
                         <Button 
                             sx={{width: 200}} 
-                            color="orange" 
+                            color="white" 
                             variant="contained" 
                             onClick={(event) => history.push(`/petprofile/${petid}`)}
                         >
-                            BACK TO PET PROFILE
+                            PET PROFILE
                         </Button> 
                     </ThemeProvider>
                    

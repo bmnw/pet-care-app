@@ -2,6 +2,8 @@ import { useState } from 'react';
 import AddCareForm from './AddCareForm.jsx';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const AddCareButton = () => {
@@ -24,10 +26,18 @@ const AddCareButton = () => {
       });
 
     return  <>  
-                <ThemeProvider theme={colorTheme}>
+                {/* <ThemeProvider theme={colorTheme}>
                     <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                            <Button onClick={() => setShowForm(!showForm)} variant="contained" color="orange">ADD CARE ITEM</Button>
+                            <Button onClick={() => setShowForm(!showForm)} variant="contained" size="large" color="orange">ADD CARE ITEM</Button>
                     </Box>
+                </ThemeProvider> */}
+                <ThemeProvider theme={colorTheme}>
+                  <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                    <Fab color="orange" variant="extended" onClick={() => setShowForm(!showForm)}>
+                      <AddIcon sx={{ mr: 1 }}/>
+                      Add Care
+                    </Fab>
+                  </Box>
                 </ThemeProvider>
                 {
                     showForm ? (

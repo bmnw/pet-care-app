@@ -116,13 +116,6 @@ const AddVetNote = () => {
                                 </LocalizationProvider>
                             </Box>
                         </ThemeProvider>
-                        {/* <Textfield 
-                                sx={{backgroundColor: 'white'}}
-                                required
-                                label="Date (yyyy/mm/dd)"
-                                value={date}
-                                onChange={(event) => setDate(event.target.value)}
-                        /> */}
                     </Box>
                     <br />
                     <Box sx={{display: 'flex'}}>
@@ -151,10 +144,11 @@ const AddVetNote = () => {
                         <Typography>{note.length}/1000</Typography>
                     </Box>
                 </Paper>
+                <br />
                 <ThemeProvider theme={colorTheme}>
-                <Box sx={{display: 'flex', justifyContent:'center'}}>
-                    <Button onClick={() => history.push(`/vet-notes/${petid}`)} sx={{marginRight: 1}} variant="contained" color="white">CANCEL</Button>
-                    <Button onClick={submitVetNote} sx={{marginLeft: 1}} variant="contained" color="orange">ADD NOTE</Button>
+                <Box sx={{display: 'flex', justifyContent:'space-evenly'}}>
+                    <Button onClick={() => history.push(`/vet-notes/${petid}`)} variant="contained" size="large" color="white">CANCEL</Button>
+                    <Button onClick={submitVetNote} variant="contained" size="large" color="orange">ADD NOTE</Button>
                 </Box>
                 </ThemeProvider>
             </div>

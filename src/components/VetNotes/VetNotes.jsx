@@ -49,12 +49,12 @@ const VetNotes = () => {
                 }
                 <br />
                 <ThemeProvider theme={colorTheme}>
-                    <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                        <Button sx={{marginRight: 1, width: 150}} variant="contained" color="white" onClick={(event) => history.push(`/petprofile/${petid}`)}>
+                    <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
+                        <Button sx={{marginRight: 1, width: 150}} variant="contained" size="large" color="white" onClick={(event) => history.push(`/petprofile/${petid}`)}>
                             {/* {detail.pet_name}'s Profile */}
-                            BACK TO PET PROFILE
+                            PET PROFILE
                         </Button>
-                        <Button sx={{marginLeft: 1, width: 150}} variant="contained" color="orange" onClick={(event) => history.push(`/add-vet-note/${petid}`)}>
+                        <Button sx={{marginLeft: 1, width: 150}} variant="contained" size="large" color="orange" onClick={(event) => history.push(`/add-vet-note/${petid}`)}>
                             NEW NOTE
                         </Button>
                     </Box>
