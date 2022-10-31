@@ -72,8 +72,9 @@ const RemoveProfileButton = () => {
                             {"Remove this pet's profile?"}
                         </DialogTitle>
                         <DialogActions>
+                            <Button onClick={() => removeProfile(petid)} color="blue" variant="outlined">Yes</Button>
                             <Button onClick={handleClickClose} variant="contained" color="orange">No</Button>
-                            <Button onClick={() => removeProfile(petid)} color="blue">Yes</Button>
+
                         </DialogActions>
                     </Dialog>
                 </ThemeProvider>

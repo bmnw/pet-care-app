@@ -13,6 +13,9 @@ import ListItemText from '@mui/material/ListItemText';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import ListItemButton from '@mui/material/ListItemButton';
 import SummarizeRoundedIcon from '@mui/icons-material/SummarizeRounded';
+import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
+import CircleRoundedIcon from '@mui/icons-material/CircleRounded';
+import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -58,7 +61,7 @@ const CareItem = ({item, petid}) => {
     return  <div style={{marginLeft: 15}}>
                 <ListItem>
                     <ListItemIcon>
-                        <ArrowForwardIosSharpIcon />
+                        <RemoveRoundedIcon fontSize="small" />
                     </ListItemIcon>
                     <ListItemButton onClick={handleClickOpen} sx={{width: 160}}>
                         <ListItemText>
@@ -66,7 +69,7 @@ const CareItem = ({item, petid}) => {
                         </ListItemText>
                     </ListItemButton>
                     <ListItemButton onClick={handleClickOpen}>
-                        <SummarizeRoundedIcon fontSize="large" />
+                        <MoreHorizRoundedIcon fontSize="large" />
                     </ListItemButton>
                     <ThemeProvider theme={colorTheme}>
                         <ListItemButton onClick={(event) => deleteCareItem(item.id)}>
@@ -85,7 +88,7 @@ const CareItem = ({item, petid}) => {
                             {/* <Button color="orange" variant="contained" size="medium" onClick={() => setShowForm(!showForm)}>
                                 <EditSharpIcon/>
                             </Button> */}
-                            <Fab color="orange" onClick={() => setShowForm(!showForm)}>
+                            <Fab sx={{marginLeft: 1}} color="orange" onClick={() => setShowForm(!showForm)}>
                                 <EditIcon />
                             </Fab>
                         </ThemeProvider>
