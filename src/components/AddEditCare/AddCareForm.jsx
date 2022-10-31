@@ -25,7 +25,8 @@ import {FaWalking} from 'react-icons/fa';
 import {AiOutlineEye} from 'react-icons/ai';
 import {GiMedicines} from 'react-icons/gi';
 import {FaBath} from 'react-icons/fa';
-import CareDescriptionFormItem from './CareDescriptionFormItem';
+import CareDescriptionFormItem from './CareDescriptionFormItem.jsx';
+import CareFrequencyFormItem from './CareFrequencyFormItem.jsx';
 
 
 const AddCareForm = ({showForm, setShowForm}) => {
@@ -115,21 +116,10 @@ const AddCareForm = ({showForm, setShowForm}) => {
                     careDescription={careDescription}
                 />
                 <br />
-                <Box sx={{width: 125, bgcolor: 'white'}}>
-                    <FormControl fullWidth required>
-                        <InputLabel>Frequency</InputLabel>
-                        <Select
-                            label="Frequency"
-                            value={frequency}
-                            onChange={handleChange}
-                        >
-                            <MenuItem value="daily">DAILY</MenuItem>
-                            <MenuItem value="weekly">WEEKLY</MenuItem>
-                            <MenuItem value = "monthly">MONTHLY</MenuItem>
-                            <MenuItem value="yearly">YEARLY</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
+                <CareFrequencyFormItem 
+                    frequency={frequency}
+                    handleChange={handleChange}
+                />
                 <br />
                 <ThemeProvider theme={colorTheme}>
                     <Box>
