@@ -142,6 +142,15 @@ const AddCareForm = ({showForm, setShowForm}) => {
                     </Box>
                 </ThemeProvider>
                 <br />
+                <ThemeProvider theme={colorTheme}>
+                    <Box>
+                        <Typography>Care Icon:</Typography>
+                        <Box sx={{display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start'}}>
+                        </Box>
+                    </Box>
+                </ThemeProvider>
+
+                <br />
                 <Box>
                     <Typography>Care Details:</Typography>
                     <Textfield 
