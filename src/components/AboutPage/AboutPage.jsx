@@ -8,9 +8,6 @@ import ListItemText from '@mui/material/ListItemText';
 import {GoDash} from 'react-icons/go';
 
 function AboutPage() {
-
-
-
   return (
     <div className="container">
       <Nav />

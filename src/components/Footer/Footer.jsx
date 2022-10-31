@@ -17,7 +17,6 @@ function Footer() {
                 <AiOutlineInfoCircle fontSize="30" color="black"/>
               </Link>
             </Box>
-
           </footer>;
 }
 

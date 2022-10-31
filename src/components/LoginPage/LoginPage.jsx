@@ -53,7 +53,6 @@ function LoginPage() {
             Register
           </Button>
           </ThemeProvider>
-   
         </center>
       </Grid>
     </div>
