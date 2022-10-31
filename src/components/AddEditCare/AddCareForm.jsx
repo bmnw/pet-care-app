@@ -1,20 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useParams} from 'react-router-dom';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import moment from 'moment';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import {FaTooth} from 'react-icons/fa';
-import {GiComb} from 'react-icons/gi';
-import {FaPoop} from 'react-icons/fa';
-import {AiFillHeart} from 'react-icons/ai';
-import {FaWalking} from 'react-icons/fa';
-import {AiOutlineEye} from 'react-icons/ai';
-import {GiMedicines} from 'react-icons/gi';
-import {FaBath} from 'react-icons/fa';
 import CareDescriptionFormItem from './CareDescriptionFormItem.jsx';
 import CareFrequencyFormItem from './CareFrequencyFormItem.jsx';
 import CareStartDateFormItem from './CareStartDateFormItem.jsx';
@@ -29,7 +19,6 @@ const AddCareForm = ({showForm, setShowForm}) => {
     const [startDate, setStartDate] = useState('');
     const [frequency, setFrequency] = useState('');
     const [careDetails, setCareDetails] = useState('');
-    const [icon, setIcon] = useState('<FaTooth/>');
 
     const colorTheme = createTheme({
         palette: {
@@ -52,11 +41,6 @@ const AddCareForm = ({showForm, setShowForm}) => {
     const handleChange = (event) => {
         console.log('in handleChange', event.target.value);
         setFrequency(event.target.value);
-    }
-
-    const handleChangeIcon = (iconInput) => {
-        console.log('in handleChangeIcon', iconInput);
-        setIcon(iconInput);
     }
 
     const handleDateChange = (newDate) => {
@@ -116,27 +100,6 @@ const AddCareForm = ({showForm, setShowForm}) => {
                     handleDateChange={handleDateChange}
                     startDate={startDate}
                 />
-                <br />
-                <ThemeProvider theme={colorTheme}>
-                    <Box>
-                        <Typography>Care Icon:</Typography>
-                        {icon}
-                        <br />
-                        <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                            <ButtonGroup variant="text" onClick={(event) => handleChangeIcon(event.target.value)}>
-                                <Button sx={{fontSize: 30}} color="black" value="FaTooth"><FaTooth/></Button>
-                                <Button sx={{fontSize: 30}} color="black" value="GiComb"><GiComb/></Button>
-                                <Button sx={{fontSize: 30}} color="black" value="FaPoop"><FaPoop/></Button>
-                                <Button sx={{fontSize: 30}} color="black" value="AiFillHeart"><AiFillHeart/></Button>
-                                <Button sx={{fontSize: 30}} color="black" value="FaWalking"><FaWalking/></Button>
-                                <Button sx={{fontSize: 30}} color="black" value="AiOutlineEye"><AiOutlineEye/></Button>
-                                <Button sx={{fontSize: 30}} color="black" value="GiMedicines"><GiMedicines/></Button>
-                                <Button sx={{fontSize: 30}} color="black" value="FaBath"><FaBath/></Button>
-                            </ButtonGroup>
-                        </Box>
-                    </Box>
-                </ThemeProvider>
-
                 <br />
                 <CareDetailsFormItem 
                     careDetails={careDetails}
