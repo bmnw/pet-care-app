@@ -16,6 +16,16 @@ import { MobileDatePicker} from '@mui/x-date-pickers/MobileDatePicker';
 import moment from 'moment';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import InputAdornment from '@mui/material/InputAdornment';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import {FaTooth} from 'react-icons/fa';
+import {GiComb} from 'react-icons/gi';
+import {FaPoop} from 'react-icons/fa';
+import {AiFillHeart} from 'react-icons/ai';
+import {FaWalking} from 'react-icons/fa';
+import {AiOutlineEye} from 'react-icons/ai';
+import {GiMedicines} from 'react-icons/gi';
+import {FaBath} from 'react-icons/fa';
+import CareDescriptionFormItem from './CareDescriptionFormItem';
 
 
 const AddCareForm = ({showForm, setShowForm}) => {
@@ -27,6 +37,7 @@ const AddCareForm = ({showForm, setShowForm}) => {
     const [startDate, setStartDate] = useState('');
     const [frequency, setFrequency] = useState('');
     const [careDetails, setCareDetails] = useState('');
+    const [icon, setIcon] = useState('');
 
     const colorTheme = createTheme({
         palette: {
@@ -39,6 +50,9 @@ const AddCareForm = ({showForm, setShowForm}) => {
           blue: {
             main: '#3D85C6',
             contrastText: '#F9F5F0'
+          },
+          black: {
+            main: '#000000',
           }
         }
       });
@@ -46,6 +60,11 @@ const AddCareForm = ({showForm, setShowForm}) => {
     const handleChange = (event) => {
         console.log('in handleChange', event.target.value);
         setFrequency(event.target.value);
+    }
+
+    const handleChangeIcon = (event) => {
+        console.log('in handleChangeIcon', event.target.value);
+        setIcon(event.target.value);
     }
 
     const handleDateChange = (newDate) => {
@@ -91,17 +110,10 @@ const AddCareForm = ({showForm, setShowForm}) => {
 
     return  <div style={{marginLeft: 20, marginRight: 20}}>
                 <br />
-                <Box>
-                    <Typography>Description:</Typography>
-                    <Textfield 
-                            sx={{backgroundColor: 'white'}}
-                            required
-                            label="Required"
-                            value={careDescription}
-                            onChange={(event) => setCareDescription(event.target.value)}
-                            fullWidth 
-                        />
-                </Box>
+                <CareDescriptionFormItem 
+                    setCareDescription={setCareDescription}
+                    careDescription={careDescription}
+                />
                 <br />
                 <Box sx={{width: 125, bgcolor: 'white'}}>
                     <FormControl fullWidth required>
@@ -145,8 +157,20 @@ const AddCareForm = ({showForm, setShowForm}) => {
                 <ThemeProvider theme={colorTheme}>
                     <Box>
                         <Typography>Care Icon:</Typography>
-                        <Box sx={{display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start'}}>
+                        <br />
+                        <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                            <ButtonGroup variant="text">
+                                <Button sx={{fontSize: 30}} color="black"><FaTooth/></Button>
+                                <Button sx={{fontSize: 30}} color="black"><GiComb/></Button>
+                                <Button sx={{fontSize: 30}} color="black"><FaPoop/></Button>
+                                <Button sx={{fontSize: 30}} color="black"><AiFillHeart/></Button>
+                                <Button sx={{fontSize: 30}} color="black"><FaWalking/></Button>
+                                <Button sx={{fontSize: 30}} color="black"><AiOutlineEye/></Button>
+                                <Button sx={{fontSize: 30}} color="black"><GiMedicines/></Button>
+                                <Button sx={{fontSize: 30}} color="black"><FaBath/></Button>
+                            </ButtonGroup>
                         </Box>
+
                     </Box>
                 </ThemeProvider>
 
