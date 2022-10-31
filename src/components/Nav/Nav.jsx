@@ -5,6 +5,7 @@ import './Nav.css';
 import { useSelector } from 'react-redux';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -47,13 +48,15 @@ function Nav() {
             </Link> */}
 
               <LogOutButton className="btn" />
+
+
     
 
           </>
         )}
 
-        {/* <Link className="navLink" to="/about">
-          About
+        {/* <Link to="/about">
+          <AiOutlineInfoCircle fontSize="25" color="black"/>
         </Link> */}
       </div>
     </div>

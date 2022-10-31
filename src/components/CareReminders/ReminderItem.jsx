@@ -5,13 +5,13 @@ import Switch from '@mui/material/Switch';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import EditAttributesSharpIcon from '@mui/icons-material/EditAttributesSharp';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import CheckBoxRoundedIcon from '@mui/icons-material/CheckBoxRounded';
 import ListItemButton from '@mui/material/ListItemButton';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import {GoDash} from 'react-icons/go';
+
 const ReminderItem = ({reminder, isComplete}) => {
 
     const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const ReminderItem = ({reminder, isComplete}) => {
                     </ListItemButton>
                     <ListItemButton sx={{width: 75}}>
                         {
-                            isComplete ? <CheckBoxRoundedIcon checked color="success" fontSize="large"/> :
+                            isComplete ? <CheckCircleRoundedIcon checked color="success" fontSize="large"/> :
                             <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
                         }
                     </ListItemButton>

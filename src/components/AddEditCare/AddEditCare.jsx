@@ -7,7 +7,6 @@ import CareItem from './CareItem.jsx';
 import AddCareButton from './AddCareButton.jsx';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 import { Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';

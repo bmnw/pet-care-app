@@ -5,7 +5,6 @@ import {useSelector, useDispatch} from 'react-redux';
 import PetItem from '../PetItem/PetItem.jsx';
 import Nav from '../Nav/Nav.jsx';
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
