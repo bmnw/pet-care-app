@@ -1,24 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
 import Switch from '@mui/material/Switch';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import EditAttributesSharpIcon from '@mui/icons-material/EditAttributesSharp';
-import FeedSharpIcon from '@mui/icons-material/FeedSharp';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
+import CheckBoxRoundedIcon from '@mui/icons-material/CheckBoxRounded';
 import ListItemButton from '@mui/material/ListItemButton';
-import IconButton from '@mui/material/IconButton';
-import SummarizeRoundedIcon from '@mui/icons-material/SummarizeRounded';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
+import {GoDash} from 'react-icons/go';
 const ReminderItem = ({reminder, isComplete}) => {
 
     const dispatch = useDispatch();
@@ -45,11 +38,11 @@ const ReminderItem = ({reminder, isComplete}) => {
 
     return <>   
                 <ListItem>
-                    <ListItemIcon>
-                        <ArrowForwardIosSharpIcon />
-                    </ListItemIcon>
-                    <ListItemButton  onClick={handleClickOpen} sx={{width: 160}}>
-                        <ListItemText>
+                    {/* <ListItemIcon> */}
+                        <GoDash fontSize="large" />
+                    {/* </ListItemIcon> */}
+                    <ListItemButton  onClick={handleClickOpen} sx={{width: 200}}>
+                        <ListItemText primaryTypographyProps={{fontSize: 18}}>
                             {reminder.description}
                         </ListItemText>
                     </ListItemButton>
@@ -58,23 +51,11 @@ const ReminderItem = ({reminder, isComplete}) => {
                     </ListItemButton>
                     <ListItemButton sx={{width: 75}}>
                         {
-                            isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large"/> :
+                            isComplete ? <CheckBoxRoundedIcon checked color="success" fontSize="large"/> :
                             <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
                         }
                     </ListItemButton>
                 </ListItem>
-                {/* <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                    <Paper elevation={10} sx={{display: 'flex', alignItems:'center', justifyContent: 'flex-end', minHeight: 50, width: 300, padding: 1, marginBottom: 2}}>
-                        <Typography onClick={handleClickOpen} sx={{marginRight: 3}}>
-                            {reminder.description}
-                        </Typography>
-                        <Button onClick={handleClickOpen} sx={{marginRight: 2}}><FeedSharpIcon fontSize="large"/></Button>
-                        {
-                            isComplete ? <EditAttributesSharpIcon checked color="success" fontSize="large"/> :
-                            <Switch color="success" size="large" onClick={() => taskComplete(reminder.id, reminder.pet_id)}/>
-                        }
-                    </Paper>
-                </Box>                */}
                 <Dialog
                     open={open}
                     onClose={handleClickClose}

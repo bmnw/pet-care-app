@@ -5,19 +5,14 @@ import Typography from '@mui/material/Typography';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import ListItemButton from '@mui/material/ListItemButton';
-import SummarizeRoundedIcon from '@mui/icons-material/SummarizeRounded';
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
-import CircleRoundedIcon from '@mui/icons-material/CircleRounded';
-import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
+import {GoDash} from 'react-icons/go';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const CareItem = ({item, petid}) => {
@@ -60,11 +55,11 @@ const CareItem = ({item, petid}) => {
 
     return  <div style={{marginLeft: 15}}>
                 <ListItem>
-                    <ListItemIcon>
-                        <RemoveRoundedIcon fontSize="small" />
-                    </ListItemIcon>
-                    <ListItemButton onClick={handleClickOpen} sx={{width: 160}}>
-                        <ListItemText>
+                    {/* <ListItemIcon> */}
+                        <GoDash fontSize="large" />
+                    {/* </ListItemIcon> */}
+                    <ListItemButton onClick={handleClickOpen} sx={{width: 200}}>
+                        <ListItemText primaryTypographyProps={{fontSize: 18}}>
                             {item.description}
                         </ListItemText>
                     </ListItemButton>
@@ -85,9 +80,6 @@ const CareItem = ({item, petid}) => {
                     <DialogTitle sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                         {`Details for ${item.description}`}
                         <ThemeProvider theme={colorTheme}>
-                            {/* <Button color="orange" variant="contained" size="medium" onClick={() => setShowForm(!showForm)}>
-                                <EditSharpIcon/>
-                            </Button> */}
                             <Fab sx={{marginLeft: 1}} color="orange" onClick={() => setShowForm(!showForm)}>
                                 <EditIcon />
                             </Fab>
