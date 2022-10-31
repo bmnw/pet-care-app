@@ -27,6 +27,8 @@ import {GiMedicines} from 'react-icons/gi';
 import {FaBath} from 'react-icons/fa';
 import CareDescriptionFormItem from './CareDescriptionFormItem.jsx';
 import CareFrequencyFormItem from './CareFrequencyFormItem.jsx';
+import CareStartDateFormItem from './CareStartDateFormItem.jsx';
+import CareDetailsFormItem from './CareDetailsFormItem.jsx';
 
 
 const AddCareForm = ({showForm, setShowForm}) => {
@@ -121,28 +123,11 @@ const AddCareForm = ({showForm, setShowForm}) => {
                     handleChange={handleChange}
                 />
                 <br />
-                <ThemeProvider theme={colorTheme}>
-                    <Box>
-                        <LocalizationProvider dateAdapter={AdapterMoment}>
-                            <MobileDatePicker
-                                label="Start Date"
-                                // imputFormat="YYYY/MM/DD"
-                                value={startDate}
-                                onChange={handleDateChange}
-                                renderInput={(params) => <
-                                                            Textfield 
-                                                                {...params} 
-                                                                InputProps={{startAdornment: 
-                                                                                (<InputAdornment position="start"><CalendarMonthIcon/></InputAdornment>),
-                                                                            }} 
-                                                                variant="outlined"
-                                                                color="blue"
-                                                        />
-                                            }
-                            />
-                        </LocalizationProvider>
-                    </Box>
-                </ThemeProvider>
+                <CareStartDateFormItem 
+                    colorTheme={colorTheme}
+                    handleDateChange={handleDateChange}
+                    startDate={startDate}
+                />
                 <br />
                 <ThemeProvider theme={colorTheme}>
                     <Box>
@@ -165,19 +150,10 @@ const AddCareForm = ({showForm, setShowForm}) => {
                 </ThemeProvider>
 
                 <br />
-                <Box>
-                    <Typography>Care Details:</Typography>
-                    <Textfield 
-                        sx={{backgroundColor: 'white'}}
-                        value={careDetails}
-                        onChange={(event) => checkLength(event.target.value)}
-                        fullWidth 
-                        multiline
-                        rows={3}
-                        label="Optional"
-                    />
-                    <Typography>{careDetails.length}/500</Typography>
-                </Box>
+                <CareDetailsFormItem 
+                    careDetails={careDetails}
+                    checkLength={checkLength}
+                />
                 <br />
                 <ThemeProvider theme={colorTheme}>
                     <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
