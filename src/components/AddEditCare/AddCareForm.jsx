@@ -3,20 +3,22 @@ import { useDispatch } from 'react-redux';
 import {useParams} from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Textfield from '@mui/material/Textfield';
-import Select from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import { LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
-import { MobileDatePicker} from '@mui/x-date-pickers/MobileDatePicker';
 import moment from 'moment';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import InputAdornment from '@mui/material/InputAdornment';
-
+import ButtonGroup from '@mui/material/ButtonGroup';
+import {FaTooth} from 'react-icons/fa';
+import {GiComb} from 'react-icons/gi';
+import {FaPoop} from 'react-icons/fa';
+import {AiFillHeart} from 'react-icons/ai';
+import {FaWalking} from 'react-icons/fa';
+import {AiOutlineEye} from 'react-icons/ai';
+import {GiMedicines} from 'react-icons/gi';
+import {FaBath} from 'react-icons/fa';
+import CareDescriptionFormItem from './CareDescriptionFormItem.jsx';
+import CareFrequencyFormItem from './CareFrequencyFormItem.jsx';
+import CareStartDateFormItem from './CareStartDateFormItem.jsx';
+import CareDetailsFormItem from './CareDetailsFormItem.jsx';
 
 const AddCareForm = ({showForm, setShowForm}) => {
 
@@ -27,6 +29,7 @@ const AddCareForm = ({showForm, setShowForm}) => {
     const [startDate, setStartDate] = useState('');
     const [frequency, setFrequency] = useState('');
     const [careDetails, setCareDetails] = useState('');
+    const [icon, setIcon] = useState('<FaTooth/>');
 
     const colorTheme = createTheme({
         palette: {
@@ -39,6 +42,9 @@ const AddCareForm = ({showForm, setShowForm}) => {
           blue: {
             main: '#3D85C6',
             contrastText: '#F9F5F0'
+          },
+          black: {
+            main: '#000000',
           }
         }
       });
@@ -46,6 +52,11 @@ const AddCareForm = ({showForm, setShowForm}) => {
     const handleChange = (event) => {
         console.log('in handleChange', event.target.value);
         setFrequency(event.target.value);
+    }
+
+    const handleChangeIcon = (iconInput) => {
+        console.log('in handleChangeIcon', iconInput);
+        setIcon(iconInput);
     }
 
     const handleDateChange = (newDate) => {
@@ -56,7 +67,6 @@ const AddCareForm = ({showForm, setShowForm}) => {
 
     const submitCareItem = () => {
         console.log('in submitCareItems', careDescription, frequency, startDate, careDetails);
-        // validate that careDescription, frequency, and stateDate have values
         if(careDescription && frequency && startDate){
             dispatch({type: 'SUBMIT_CARE_ITEM', payload: {
                     pet_id: petid, 
@@ -91,79 +101,47 @@ const AddCareForm = ({showForm, setShowForm}) => {
 
     return  <div style={{marginLeft: 20, marginRight: 20}}>
                 <br />
-                <Box>
-                    <Typography>Description:</Typography>
-                    <Textfield 
-                            sx={{backgroundColor: 'white'}}
-                            required
-                            label="Required"
-                            value={careDescription}
-                            onChange={(event) => setCareDescription(event.target.value)}
-                            fullWidth 
-                        />
-                </Box>
+                <CareDescriptionFormItem 
+                    setCareDescription={setCareDescription}
+                    careDescription={careDescription}
+                />
                 <br />
-                <Box sx={{width: 125, bgcolor: 'white'}}>
-                    <FormControl fullWidth required>
-                        <InputLabel>Frequency</InputLabel>
-                        <Select
-                            label="Frequency"
-                            value={frequency}
-                            onChange={handleChange}
-                        >
-                            <MenuItem value="daily">DAILY</MenuItem>
-                            <MenuItem value="weekly">WEEKLY</MenuItem>
-                            <MenuItem value = "monthly">MONTHLY</MenuItem>
-                            <MenuItem value="yearly">YEARLY</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
+                <CareFrequencyFormItem 
+                    frequency={frequency}
+                    handleChange={handleChange}
+                />
                 <br />
-                <ThemeProvider theme={colorTheme}>
-                    <Box>
-                        <LocalizationProvider dateAdapter={AdapterMoment}>
-                            <MobileDatePicker
-                                label="Start Date"
-                                // imputFormat="YYYY/MM/DD"
-                                value={startDate}
-                                onChange={handleDateChange}
-                                renderInput={(params) => <
-                                                            Textfield 
-                                                                {...params} 
-                                                                InputProps={{startAdornment: 
-                                                                                (<InputAdornment position="start"><CalendarMonthIcon/></InputAdornment>),
-                                                                            }} 
-                                                                variant="outlined"
-                                                                color="blue"
-                                                        />
-                                            }
-                            />
-                        </LocalizationProvider>
-                    </Box>
-                </ThemeProvider>
+                <CareStartDateFormItem 
+                    colorTheme={colorTheme}
+                    handleDateChange={handleDateChange}
+                    startDate={startDate}
+                />
                 <br />
                 <ThemeProvider theme={colorTheme}>
                     <Box>
                         <Typography>Care Icon:</Typography>
-                        <Box sx={{display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start'}}>
+                        {icon}
+                        <br />
+                        <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                            <ButtonGroup variant="text" onClick={(event) => handleChangeIcon(event.target.value)}>
+                                <Button sx={{fontSize: 30}} color="black" value="FaTooth"><FaTooth/></Button>
+                                <Button sx={{fontSize: 30}} color="black" value="GiComb"><GiComb/></Button>
+                                <Button sx={{fontSize: 30}} color="black" value="FaPoop"><FaPoop/></Button>
+                                <Button sx={{fontSize: 30}} color="black" value="AiFillHeart"><AiFillHeart/></Button>
+                                <Button sx={{fontSize: 30}} color="black" value="FaWalking"><FaWalking/></Button>
+                                <Button sx={{fontSize: 30}} color="black" value="AiOutlineEye"><AiOutlineEye/></Button>
+                                <Button sx={{fontSize: 30}} color="black" value="GiMedicines"><GiMedicines/></Button>
+                                <Button sx={{fontSize: 30}} color="black" value="FaBath"><FaBath/></Button>
+                            </ButtonGroup>
                         </Box>
                     </Box>
                 </ThemeProvider>
 
                 <br />
-                <Box>
-                    <Typography>Care Details:</Typography>
-                    <Textfield 
-                        sx={{backgroundColor: 'white'}}
-                        value={careDetails}
-                        onChange={(event) => checkLength(event.target.value)}
-                        fullWidth 
-                        multiline
-                        rows={3}
-                        label="Optional"
-                    />
-                    <Typography>{careDetails.length}/500</Typography>
-                </Box>
+                <CareDetailsFormItem 
+                    careDetails={careDetails}
+                    checkLength={checkLength}
+                />
                 <br />
                 <ThemeProvider theme={colorTheme}>
                     <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
