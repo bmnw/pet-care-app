@@ -4,7 +4,7 @@
 
 _Duration: 2.5 weeks, working part time_
 
-I am a pet owner. I have a cat named Waffle. While I am very good at remembering the annual vet visit, I am not so good at remembering the smaller, repeated tasks that need to happen throughout the year to keep my cat happy and healthy. I built Waffle's Spot to provide myself and other pet owners with daily pet care reminders, as well as a space to record notes and instructions from vet appointments. 
+I have a cat named Waffle. While I'm very good at remembering the annual vet visit, I'm not so good at remembering the smaller, repeated tasks that need to happen throughout the year to keep my cat happy and healthy. I built Waffle's Spot to provide myself and other pet owners with daily pet care reminders, as well as a space to record notes and instructions from vet appointments. 
 
 I also have peace-of-mind knowing that I can share my pet's profile with pet-sitters when I go out of town, so they can easily see what needs to happen while I'm gone.
 
@@ -13,6 +13,8 @@ I also have peace-of-mind knowing that I can share my pet's profile with pet-sit
 <img src="public/screenshots/user-home.jpg" style="height: 300px;"/> <img src="public/screenshots/pet-profile.jpg" style="height: 300px;"/> <img src="public/screenshots/reminders.jpg" style="height: 300px;"/>
 
 <img src="public/screenshots/share-profile.jpg" style="height: 300px;"/> <img src="public/screenshots/edit-add-care.jpg" style="height: 300px;"/> <img src="public/screenshots/edit-details.jpg" style="height: 300px;"/>
+
+<img src="public/screenshots/vet-note.jpg" style="height: 300px;"/>
 
 ### Prerequisites
 
