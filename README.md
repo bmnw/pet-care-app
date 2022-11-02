@@ -1,4 +1,4 @@
-# Waffle's Spot <img src="public/images/logo-cropped-2.jpg" style="height: 100px;"/>
+# <img src="public/images/logo-cropped-2.jpg" style="height: 100px;"/> Waffle's Spot 
 
 ## Description
 
