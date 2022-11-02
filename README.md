@@ -10,15 +10,9 @@ I also have peace-of-mind knowing that I can share my pet's profile with pet-sit
 
 ## Screen Shots
 
-<img src="public/screenshots/user-home.jpg" style="height: 300px;"/> <img src="public/screenshots/pet-profile.jpg" style="height: 300px;"/>
+<img src="public/screenshots/user-home.jpg" style="height: 300px;"/> <img src="public/screenshots/pet-profile.jpg" style="height: 300px;"/> <img src="public/screenshots/reminders.jpg" style="height: 300px;"/>
 
-<img src="public/screenshots/reminders.jpg" style="height: 300px;"/>
-
-<img src="public/screenshots/share-profile.jpg" style="height: 300px;"/>
-
-<img src="public/screenshots/edit-add-care.jpg" style="height: 300px;"/>
-
-<img src="public/screenshots/edit-details.jpg" style="height: 300px;"/>
+<img src="public/screenshots/share-profile.jpg" style="height: 300px;"/> <img src="public/screenshots/edit-add-care.jpg" style="height: 300px;"/> <img src="public/screenshots/edit-details.jpg" style="height: 300px;"/>
 
 ### Prerequisites
 
