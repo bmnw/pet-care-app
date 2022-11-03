@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import {useParams} from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Textfield from '@mui/material/Textfield';
+import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
@@ -49,7 +49,7 @@ const UpdateName = ({pet, updatedName, setUpdatedName}) => {
                 <br />
                 <Box sx={{display:"flex", justifyContent:"center"}}>
                     <Typography sx={{display: "flex", alignItems: "center", width: 100}}>PET NAME:</Typography>
-                    <Textfield 
+                    <TextField 
                         sx={{backgroundColor: 'white'}}
                         required
                         value={updatedName}

@@ -1,12 +1,12 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Textfield from '@mui/material/Textfield';
+import TextField from '@mui/material/TextField';
 
 const CareDetailsFormItem = ({careDetails, checkLength}) => {
     return  <>
                 <Box>
                     <Typography>Care Details:</Typography>
-                    <Textfield 
+                    <TextField 
                         sx={{backgroundColor: 'white'}}
                         value={careDetails}
                         onChange={(event) => checkLength(event.target.value)}

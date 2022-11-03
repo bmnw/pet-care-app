@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 import Container from '@mui/material/Container';
-import Textfield from '@mui/material/Textfield';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -56,7 +56,7 @@ function LoginForm() {
         <div>
           {/* <label htmlFor="username"> */}
           <Typography>Username:</Typography>
-            <Textfield
+            <TextField
               sx={{backgroundColor: 'white'}}
               type="text"
               name="username"
@@ -70,7 +70,7 @@ function LoginForm() {
         <div>
           {/* <label htmlFor="password"> */}
             <Typography>Password:</Typography>
-            <Textfield
+            <TextField
               sx={{backgroundColor: 'white'}}
               type="password"
               name="password"

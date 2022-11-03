@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
 import Nav from '../Nav/Nav.jsx';
 import Typography from '@mui/material/Typography';
-import Textfield from '@mui/material/Textfield';
+import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
@@ -107,7 +107,7 @@ const ShareProfile  = () => {
                 <br />
                 <br />
                 <Box sx={{display:"flex", justifyContent:"center"}}>
-                    <Textfield 
+                    <TextField 
                         sx={{backgroundColor: 'white', width: 300}}
                         required
                         label="Username to share with"

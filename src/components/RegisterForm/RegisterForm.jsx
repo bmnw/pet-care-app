@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Container from '@mui/material/Container';
-import Textfield from '@mui/material/Textfield';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -52,7 +52,7 @@ function RegisterForm() {
         <div>
           {/* <label htmlFor="username"> */}
           <Typography>Username:</Typography>
-            <Textfield
+            <TextField
               sx={{backgroundColor: 'white'}}
               type="text"
               name="username"
@@ -66,7 +66,7 @@ function RegisterForm() {
         <div>
           {/* <label htmlFor="password"> */}
           <Typography>Password:</Typography>
-            <Textfield
+            <TextField
               type="password"
               sx={{backgroundColor: 'white'}}
               name="password"

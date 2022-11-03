@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import Nav from '../Nav/Nav.jsx';
 import Container from '@mui/material/Container';
-import Textfield from '@mui/material/Textfield';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -77,7 +77,7 @@ const AddPet = () => {
                     <br />
                     <Box sx={{display: 'flex', justifyContent: 'center'}}>
                         <Typography sx={{display: 'flex', alignItems:'center', width: 100}}>PET NAME:</Typography> 
-                        <Textfield 
+                        <TextField 
                                     sx={{backgroundColor: 'white'}}
                                     required
                                     label="Required"

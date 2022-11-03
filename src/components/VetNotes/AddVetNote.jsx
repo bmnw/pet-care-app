@@ -4,7 +4,7 @@ import {useHistory, useParams} from 'react-router-dom';
 import Nav from '../Nav/Nav.jsx';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Textfield from '@mui/material/Textfield';
+import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -103,7 +103,7 @@ const AddVetNote = () => {
                                         value={date}
                                         onChange={handleDateChange}
                                         renderInput={(params) => <
-                                                                    Textfield 
+                                                                    TextField 
                                                                         {...params} 
                                                                         InputProps={{startAdornment: 
                                                                                         (<InputAdornment position="start"><CalendarMonthIcon/></InputAdornment>),
@@ -120,7 +120,7 @@ const AddVetNote = () => {
                     <br />
                     <Box sx={{display: 'flex'}}>
                         <Typography sx={{display:"flex", alignItems:"center", width: 50}}>VET:</Typography>
-                        <Textfield 
+                        <TextField 
                                 sx={{backgroundColor: 'white'}}
                                 required
                                 value={vet}
@@ -131,7 +131,7 @@ const AddVetNote = () => {
                     <br />
                     <Box>
                         <Typography>NOTE:</Typography>
-                        <Textfield 
+                        <TextField 
                                 sx={{backgroundColor: 'white'}}
                                 required
                                 value={note}

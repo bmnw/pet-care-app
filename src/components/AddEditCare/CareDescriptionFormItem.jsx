@@ -1,12 +1,12 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Textfield from '@mui/material/Textfield';
+import TextField from '@mui/material/TextField';
 
 const CareDescriptionFormItem = ({careDescription, setCareDescription}) => {
     return  <>
                 <Box>
                     <Typography>Description:</Typography>
-                    <Textfield 
+                    <TextField 
                             sx={{backgroundColor: 'white'}}
                             required
                             label="Required"

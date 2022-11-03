@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Textfield from '@mui/material/Textfield';
+import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const EditCareDetailsForm = ({item, petid, showForm, setShowForm}) => {
@@ -60,7 +60,7 @@ const EditCareDetailsForm = ({item, petid, showForm, setShowForm}) => {
                 <Box>
                     <br />
                     <Typography>Edit Care Details:</Typography>
-                    <Textfield 
+                    <TextField 
                         sx={{backgroundColor: 'white'}}
                         value={careDetails}
                         onChange={(event) => checkLength(event.target.value)}
