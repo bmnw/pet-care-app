@@ -8,6 +8,8 @@ I have a cat named Waffle. While I'm very good at remembering the annual vet vis
 
 I also have peace-of-mind knowing that I can share my pet's profile with pet-sitters when I go out of town, so they can easily see what needs to happen while I'm gone.
 
+To view and use Waffle's Spot, please visit: [Waffle's Spot](https://fathomless-river-15306.herokuapp.com/#/home)
+
 ## Screen Shots
 
 <img src="public/screenshots/user-home.jpg" style="height: 300px;"/> <img src="public/screenshots/pet-profile.jpg" style="height: 300px;"/> <img src="public/screenshots/reminders.jpg" style="height: 300px;"/>
