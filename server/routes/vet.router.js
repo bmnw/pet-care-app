@@ -66,5 +66,4 @@ router.delete('/:noteid', (req, res) => {
     }
 });
 
-
 module.exports = router;
