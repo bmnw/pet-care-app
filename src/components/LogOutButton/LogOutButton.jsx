@@ -32,13 +32,9 @@ function LogOutButton(props) {
   return (
     <ThemeProvider theme={colorTheme}>
       <Button
-        // This button shows up in multiple locations and is styled differently
-        // because it's styled differently depending on where it is used, the className
-        // is passed to it from it's parents through React props
         sx={{width: 100, text: 'white'}}
         variant="contained"
         color="white"
-        
         onClick={() => dispatch({ type: 'LOGOUT', toLogin: toLogin})}
       >
         Log Out

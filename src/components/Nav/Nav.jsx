@@ -53,21 +53,11 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            {/* <Link className="navLink" to="/user">
-              Home
-            </Link> */}
-
-            {/* <Link className="navLink" to="/info">
-              Info Page
-            </Link> */}
-              <LogOutButton className="btn" />
+            <LogOutButton className="btn" />
           </>
         )}
         {!user.id && (
           // If there's no user, show login/registration links
-          // <Link className="navLink" to="/login">
-          //   <Typography>Login / Register</Typography>
-          // </Link>
           <>
             <ThemeProvider theme={colorTheme}>
               <Button sx={{text: 'white', width: 100}} variant="contained" color="white" className="btn" onClick={() => history.push('/home')}>
@@ -77,9 +67,6 @@ function Nav() {
           </>
 
         )}
-        {/* <Link to="/about">
-          <AiOutlineInfoCircle fontSize="25" color="black"/>
-        </Link> */}
       </div>
     </div>
   );
