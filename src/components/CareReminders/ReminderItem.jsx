@@ -38,9 +38,7 @@ const ReminderItem = ({reminder, isComplete}) => {
 
     return <>   
                 <ListItem>
-                    {/* <ListItemIcon> */}
-                        <GoDash fontSize="large" />
-                    {/* </ListItemIcon> */}
+                    <GoDash fontSize="large" />
                     <ListItemButton  onClick={handleClickOpen} sx={{width: 200}}>
                         <ListItemText primaryTypographyProps={{fontSize: 18}}>
                             {reminder.description}
