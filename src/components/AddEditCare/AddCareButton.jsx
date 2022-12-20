@@ -26,11 +26,6 @@ const AddCareButton = () => {
       });
 
     return  <>  
-                {/* <ThemeProvider theme={colorTheme}>
-                    <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                            <Button onClick={() => setShowForm(!showForm)} variant="contained" size="large" color="orange">ADD CARE ITEM</Button>
-                    </Box>
-                </ThemeProvider> */}
                 <ThemeProvider theme={colorTheme}>
                   <Box sx={{display: 'flex', justifyContent: 'center'}}>
                     <Fab color="orange" variant="extended" onClick={() => setShowForm(!showForm)}>
