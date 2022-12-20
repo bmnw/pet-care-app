@@ -51,20 +51,6 @@ router.post('/', async (req, res) => {
     } else {
         res.sendStatus(403); // forbidden
     }
-    // if(req.isAuthenticated()) {
-    //     const insertUserPetQuery =  `INSERT INTO "user_pet" ("user_id", "pet_id")
-    //                                 VALUES ($1, $2);`
-    //     pool.query(insertUserPetQuery, [req.body.user_id, req.body.pet_id])
-    //         .then(result => {
-    //             res.sendStatus(200);
-    //         })
-    //         .catch(error => {
-    //             console.log('error in share POST route', error);
-    //             res.sendStatus(500);
-    //         });
-    // } else {
-    //     res.sendStatus(403);
-    // }
 });
 
 module.exports = router;
