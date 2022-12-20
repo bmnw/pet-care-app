@@ -4,7 +4,6 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function RegisterForm() {
@@ -50,7 +49,6 @@ function RegisterForm() {
         )}
         <br />
         <div>
-          {/* <label htmlFor="username"> */}
           <Typography>Username:</Typography>
             <TextField
               sx={{backgroundColor: 'white'}}
@@ -60,11 +58,9 @@ function RegisterForm() {
               required
               onChange={(event) => setUsername(event.target.value)}
             />
-          {/* </label> */}
         </div>
         <br />
         <div>
-          {/* <label htmlFor="password"> */}
           <Typography>Password:</Typography>
             <TextField
               type="password"
@@ -74,7 +70,6 @@ function RegisterForm() {
               required
               onChange={(event) => setPassword(event.target.value)}
             />
-          {/* </label> */}
         </div>
         <br />
         <div>
