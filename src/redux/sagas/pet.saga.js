@@ -45,7 +45,7 @@ function* addPet (action) {
         console.log('error in addPet saga', error);
         alert('Something went wrong adding your pet.');
     }
-} // end addPet saga
+}
 
 function* updatePetName (action) {
     console.log('in updatePetName saga', action.payload.id);

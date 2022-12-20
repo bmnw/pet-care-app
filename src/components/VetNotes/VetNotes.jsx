@@ -55,13 +55,6 @@ const VetNotes = () => {
                         <Button sx={{marginRight: 1, width: 150}} variant="contained" size="large" color="white" onClick={(event) => history.push(`/petprofile/${petid}`)}>
                             PET PROFILE
                         </Button>
-                        {/* <Fab variant="extended" color="white" onClick={(event) => history.push(`/petprofile/${petid}`)}>
-                            
-                            Pet Profile
-                        </Fab> */}
-                        {/* <Button sx={{marginLeft: 1, width: 150}} variant="contained" size="large" color="orange" onClick={(event) => history.push(`/add-vet-note/${petid}`)}>
-                            NEW NOTE
-                        </Button> */}
                         <Fab variant="extended" color="orange" onClick={(event) => history.push(`/add-vet-note/${petid}`)}>
                             <AddIcon sx={{ mr: 1 }}/>
                             New Note

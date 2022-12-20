@@ -114,35 +114,6 @@ router.delete('/:petid', async (req, res) => {
     }
 });
 
-// router.delete('/:petid', (req, res) => {
-//     console.log('in pet DELETE /:petid', req.params.petid);
-//     console.log('is authenticated?', req.isAuthenticated());
-//     console.log('user', req.user);
-//     if(req.isAuthenticated()) {
-//         const userPetQueryText =    `DELETE FROM "user_pet"
-//                                     WHERE "pet_id" = $1 AND "user_id" = $2;`
-//         pool.query(userPetQueryText, [req.params.petid, req.user.id])
-//             .then(result => {
-//                 const petQueryText =    `DELETE FROM "pet"
-//                                         WHERE "pet"."id" = $1;`
-//                 pool.query(petQueryText, [req.params.petid])
-//                     .then(result => {
-//                         res.sendStatus(200);
-//                     })
-//                     .catch(error => {
-//                         console.log('error in delete from pet', error);
-//                         res.sendStatus(500);
-//                     })
-//             })
-//             .catch(error => {
-//                 console.log('error in delete from user_pet', error);
-//                 res.sendStatus(500);
-//             });
-//     } else {
-//         res.sendStatus(403);
-//     }
-// });
-
 // PUT to update pet name
 router.put('/:petid', async (req, res) => {
     console.log('in pet PUT /:petid', req.params.petid, req.body);
@@ -173,26 +144,5 @@ router.put('/:petid', async (req, res) => {
         res.sendStatus(403); // forbidden
     }
 });
-
-// router.put('/:petid', (req, res) => {
-//     console.log('in pet PUT /:petid', req.params.petid, req.body);
-//     console.log('is authenticated?', req.isAuthenticated());
-//     console.log('user', req.user);
-//     if(req.isAuthenticated()) {
-//         const petQueryText =    `UPDATE "pet" SET
-//                                 "pet_name" = $1
-//                                 WHERE "pet"."id" = $2;`
-//         pool.query(petQueryText, [req.body.pet_name, req.params.petid])
-//             .then(result => {
-//                 res.sendStatus(200);
-//             })
-//             .catch(error => {
-//                 console.log('error in updating pet name', error);
-//                 res.sendStatus(500);
-//             });
-//     } else {
-//         res.sendStatus(403);
-//     }
-// });
 
 module.exports = router;

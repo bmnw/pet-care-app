@@ -55,9 +55,7 @@ const CareItem = ({item, petid}) => {
 
     return  <div style={{marginLeft: 15}}>
                 <ListItem>
-                    {/* <ListItemIcon> */}
-                        <GoDash fontSize="large" />
-                    {/* </ListItemIcon> */}
+                    <GoDash fontSize="large" />
                     <ListItemButton onClick={handleClickOpen} sx={{width: 200}}>
                         <ListItemText primaryTypographyProps={{fontSize: 18}}>
                             {item.description}

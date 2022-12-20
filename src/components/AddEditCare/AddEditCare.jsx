@@ -80,11 +80,9 @@ const AddEditCare = () => {
                 }
                 </List>
                 <br />
-                {/* <AddCareButton /> */}
                 <ThemeProvider theme={colorTheme}>
                     <Box sx={{display: 'flex', justifyContent: 'center'}}>
                         <Button 
-                            // sx={{width: 200}} 
                             color="white"
                             size="large" 
                             variant="contained" 

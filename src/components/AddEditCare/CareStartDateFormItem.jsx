@@ -5,7 +5,7 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker} from '@mui/x-date-pickers/MobileDatePicker';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 
 const CareStartDateFormItem = ({colorTheme, startDate, handleDateChange}) => {
     return  <>
@@ -14,7 +14,6 @@ const CareStartDateFormItem = ({colorTheme, startDate, handleDateChange}) => {
                         <LocalizationProvider dateAdapter={AdapterMoment}>
                             <MobileDatePicker
                                 label="Start Date"
-                                // imputFormat="YYYY/MM/DD"
                                 value={startDate}
                                 onChange={handleDateChange}
                                 renderInput={(params) => <

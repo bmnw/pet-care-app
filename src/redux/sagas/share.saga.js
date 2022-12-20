@@ -24,7 +24,6 @@ function* shareProfile (action) {
     }
 }
 
-
 function* shareSaga() {
     yield takeLatest('FETCH_ALL_USERNAMES', fetchAllUsernames);
     yield takeLatest('SHARE_PROFILE', shareProfile);

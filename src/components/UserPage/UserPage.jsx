@@ -61,7 +61,6 @@ function UserPage() {
                 <AddIcon sx={{ mr: 1}} />
                 Add Pet
               </Fab>
-              {/* <Button onClick={handleClick} variant="contained" color="orange" size="large">ADD PET</Button> */}
             </ThemeProvider>
           </Grid>
           <br />
@@ -81,5 +80,4 @@ function UserPage() {
   );
 }
 
-// this allows us to use <App /> in index.js
 export default UserPage;

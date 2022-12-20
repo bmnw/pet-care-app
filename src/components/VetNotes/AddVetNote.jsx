@@ -71,7 +71,6 @@ const AddVetNote = () => {
         } else {
             alert('Date, vet/clinic name, and note text are required.');
         }
-        // dispatch({type: 'SUBMIT_VET_NOTE', payload: {pet_id: petid, date: date, vet: vet, note: note}, toVetNotes: toVetNotes});
     } // end submitVetNote
 
     const toVetNotes = (petIdInput) => {
@@ -99,7 +98,6 @@ const AddVetNote = () => {
                                 <LocalizationProvider dateAdapter={AdapterMoment}>
                                     <MobileDatePicker
                                         label="Date"
-                                        // imputFormat="YYYY/MM/DD"
                                         value={date}
                                         onChange={handleDateChange}
                                         renderInput={(params) => <
