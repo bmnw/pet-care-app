@@ -145,25 +145,4 @@ router.put('/:petid', async (req, res) => {
     }
 });
 
-// router.put('/:petid', (req, res) => {
-//     console.log('in pet PUT /:petid', req.params.petid, req.body);
-//     console.log('is authenticated?', req.isAuthenticated());
-//     console.log('user', req.user);
-//     if(req.isAuthenticated()) {
-//         const petQueryText =    `UPDATE "pet" SET
-//                                 "pet_name" = $1
-//                                 WHERE "pet"."id" = $2;`
-//         pool.query(petQueryText, [req.body.pet_name, req.params.petid])
-//             .then(result => {
-//                 res.sendStatus(200);
-//             })
-//             .catch(error => {
-//                 console.log('error in updating pet name', error);
-//                 res.sendStatus(500);
-//             });
-//     } else {
-//         res.sendStatus(403);
-//     }
-// });
-
 module.exports = router;
