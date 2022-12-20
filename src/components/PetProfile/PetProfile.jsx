@@ -93,16 +93,8 @@ const PetProfile = () => {
                                     <IosShareRoundedIcon sx={{ mr: 1 }}/>
                                     Share
                                 </Fab>
-                                {/* <Button 
-                                    color="orange" size="large" variant="contained" sx={{width: 130, height: 45}} onClick={() => history.push(`/share-profile/${petid}`)}>
-                                    <IosShareRoundedIcon />
-                                    Share
-                                </Button> */}
                             </Grid>
                             </ThemeProvider>
-                            {/* <Grid item>
-                                <Button onClick={() => history.push('/user')} className="profile-back-btn" variant="contained" size="large" color="orange">ALL PETS</Button>
-                            </Grid> */}
                         </ThemeProvider>
                  
                     </Grid>
@@ -119,12 +111,6 @@ const PetProfile = () => {
                             <Grid item>
                                 <Button onClick={() => history.push('/user')} sx={{width: 130}} variant="contained" size="large" color="orange">ALL PETS</Button>
                             </Grid>
-                            {/* <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                                <Button 
-                                    color="blue" size="large" variant="contained" sx={{width: 130, height: 45}} onClick={() => history.push(`/share-profile/${petid}`)}>
-                                    Share
-                                </Button>
-                            </Grid> */}
                         </ThemeProvider>
                         <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                             <RemoveProfileButton />

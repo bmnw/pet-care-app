@@ -6,9 +6,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import './PetProfile.css';
-
-
 
 const RemoveProfileButton = () => {
 
@@ -78,25 +75,6 @@ const RemoveProfileButton = () => {
                         </DialogActions>
                     </Dialog>
                 </ThemeProvider>
-                {/* <Button 
-                    onClick={handleClickOpen} 
-                    className="remove-profile-btn" 
-                    variant="contained" 
-                    size="small">
-                        REMOVE PROFILE
-                    </Button>
-                <Dialog
-                    open={open}
-                    onClose={handleClickClose}
-                >
-                    <DialogTitle>
-                        {"Remove this pet's profile?"}
-                    </DialogTitle>
-                    <DialogActions>
-                        <Button onClick={handleClickClose} variant="contained">No</Button>
-                        <Button onClick={() => removeProfile(petid)}>Yes</Button>
-                    </DialogActions>
-                </Dialog> */}
             </>
 }
 
