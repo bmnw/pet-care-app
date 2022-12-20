@@ -39,7 +39,6 @@ const EditCareDetailsForm = ({item, petid, showForm, setShowForm}) => {
         } else {
             alert("Please update details or click cancel.");
         }
-        // dispatch({type: 'UPDATE_CARE_DETAILS', payload: {id: itemInput, pet_id: petInput, details: careDetails}, hideForm: hideForm});
     } // end updateCareDetails
 
     const hideForm = () => {
@@ -67,15 +66,13 @@ const EditCareDetailsForm = ({item, petid, showForm, setShowForm}) => {
                         fullWidth 
                         multiline
                         rows={4}
-                        // label="Update details here"
                     />
                     <Typography>{careDetails.length}/500</Typography>
                 </Box>
                 <br />
                 <ThemeProvider theme={colorTheme}>
                     <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-                            {/* <Button color="white" sx={{width: 100, marginRight: 1}} size="large" onClick={() => setShowForm(!showForm)} variant="contained">CANCEL</Button> */}
-                            <Button color="orange" sx={{width: 100, marginLeft: 1}} size="large" onClick={() => updateCareDetails(item.id, petid)} variant="contained">SAVE</Button>
+                      <Button color="orange" sx={{width: 100, marginLeft: 1}} size="large" onClick={() => updateCareDetails(item.id, petid)} variant="contained">SAVE</Button>
                     </Box>
                 </ThemeProvider>
 

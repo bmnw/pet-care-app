@@ -14,7 +14,6 @@ const CareStartDateFormItem = ({colorTheme, startDate, handleDateChange}) => {
                         <LocalizationProvider dateAdapter={AdapterMoment}>
                             <MobileDatePicker
                                 label="Start Date"
-                                // imputFormat="YYYY/MM/DD"
                                 value={startDate}
                                 onChange={handleDateChange}
                                 renderInput={(params) => <
