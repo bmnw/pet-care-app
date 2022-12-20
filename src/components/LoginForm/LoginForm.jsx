@@ -54,7 +54,6 @@ function LoginForm() {
         )}
         <br />
         <div>
-          {/* <label htmlFor="username"> */}
           <Typography>Username:</Typography>
             <TextField
               sx={{backgroundColor: 'white'}}
@@ -64,11 +63,9 @@ function LoginForm() {
               value={username}
               onChange={(event) => setUsername(event.target.value)}
             />
-          {/* </label> */}
         </div>
         <br />
         <div>
-          {/* <label htmlFor="password"> */}
             <Typography>Password:</Typography>
             <TextField
               sx={{backgroundColor: 'white'}}
@@ -79,14 +76,12 @@ function LoginForm() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
-          {/* </label> */}
         </div>
         <br />
         <div>
           <ThemeProvider theme={colorTheme}>
             <Button onClick={login} variant="contained" color="orange">LOGIN</Button>
           </ThemeProvider>
-          {/* <Button onClick={login} variant="contained">LOGIN</Button> */}
         </div>
       </div>
     </Container>
