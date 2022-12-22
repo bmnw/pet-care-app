@@ -52,7 +52,11 @@ const AddVetNote = () => {
         console.log('in submitVetNote', date, vet, note);
         // validate that date, vet, and note have values
         if(date && vet && note){
-            dispatch({type: 'SUBMIT_VET_NOTE', payload: {pet_id: petid, date: date, vet: vet, note: note}, toVetNotes: toVetNotes});
+            dispatch({
+                type: 'SUBMIT_VET_NOTE', 
+                payload: {pet_id: petid, date: date, vet: vet, note: note}, 
+                toVetNotes: toVetNotes
+            });
         } else {
             alert('Date, vet/clinic name, and note text are required.');
         }
@@ -133,8 +137,22 @@ const AddVetNote = () => {
                 </Paper>
                 <br />
                 <Box sx={{display: 'flex', justifyContent:'space-evenly'}}>
-                    <Button onClick={() => history.push(`/vet-notes/${petid}`)} variant="contained" size="large" color="white">CANCEL</Button>
-                    <Button onClick={submitVetNote} variant="contained" size="large" color="orange">ADD NOTE</Button>
+                    <Button 
+                        onClick={() => history.push(`/vet-notes/${petid}`)} 
+                        variant="contained" 
+                        size="large" 
+                        color="white"
+                    >
+                        CANCEL
+                    </Button>
+                    <Button 
+                        onClick={submitVetNote} 
+                        variant="contained" 
+                        size="large" 
+                        color="orange"
+                    >
+                        ADD NOTE
+                    </Button>
                 </Box>
             </div>
 }
