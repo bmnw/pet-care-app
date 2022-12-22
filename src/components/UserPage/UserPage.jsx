@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function UserPage() {
 
@@ -18,19 +18,19 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   const userPets = useSelector(store => store.pet.userPets);
 
-  const colorTheme = createTheme({
-    palette: {
-      orange: {
-        main: '#E27511',
-      },
-      white: {
-        main: '#F9F5F0',
-      },
-      blue: {
-        main: '#3D85C6',
-      }
-    }
-  });
+  // const colorTheme = createTheme({
+  //   palette: {
+  //     orange: {
+  //       main: '#E27511',
+  //     },
+  //     white: {
+  //       main: '#F9F5F0',
+  //     },
+  //     blue: {
+  //       main: '#3D85C6',
+  //     }
+  //   }
+  // });
 
   useEffect(() => {
     dispatch({type: 'FETCH_PETS'});
@@ -56,12 +56,12 @@ function UserPage() {
           </Grid>
           <br />
           <Grid item>
-            <ThemeProvider theme={colorTheme}>
+            {/* <ThemeProvider theme={colorTheme}> */}
               <Fab color="orange" variant="extended" onClick={handleClick}>
                 <AddIcon sx={{ mr: 1}} />
                 Add Pet
               </Fab>
-            </ThemeProvider>
+            {/* </ThemeProvider> */}
           </Grid>
           <br />
           {

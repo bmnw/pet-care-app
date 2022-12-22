@@ -21,11 +21,11 @@ import CareReminders from '../CareReminders/CareReminders.jsx';
 import VetNotes from '../VetNotes/VetNotes.jsx';
 import AddVetNote from '../VetNotes/AddVetNote.jsx';
 import ShareProfile from '../PetProfile/ShareProfile.jsx';
-
+import './App.css';
 // imports for MUI color theme
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import './App.css';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +45,9 @@ function App() {
       },
       blue: {
         main: '#3D85C6',
+      },
+      black: {
+        main: '#000000',
       }
     }
   });
