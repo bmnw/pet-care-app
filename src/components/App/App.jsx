@@ -25,8 +25,6 @@ import './App.css';
 // imports for MUI color theme
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-
-
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(store => store.user);
