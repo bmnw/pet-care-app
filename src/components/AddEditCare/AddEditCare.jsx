@@ -8,8 +8,7 @@ import AddCareButton from './AddCareButton.jsx';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-import { Typography } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 
 const AddEditCare = () => {
 
@@ -21,21 +20,6 @@ const AddEditCare = () => {
     const careItems = useSelector(store => store.care.petCareItems);
 
     const [updatedName, setUpdatedName] = useState('');
-
-    const colorTheme = createTheme({
-        palette: {
-          orange: {
-            main: '#E27511',
-          },
-          white: {
-            main: '#F9F5F0',
-          },
-          blue: {
-            main: '#3D85C6',
-            contrastText: '#F9F5F0'
-          }
-        }
-      });
 
     useEffect(() => {
         console.log(petid);
@@ -80,19 +64,16 @@ const AddEditCare = () => {
                 }
                 </List>
                 <br />
-                <ThemeProvider theme={colorTheme}>
-                    <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                        <Button 
-                            color="white"
-                            size="large" 
-                            variant="contained" 
-                            onClick={(event) => history.push(`/petprofile/${petid}`)}
-                        >
-                            PET PROFILE
-                        </Button> 
-                    </Box>
-                </ThemeProvider>
-             
+                <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                    <Button 
+                        color="white"
+                        size="large" 
+                        variant="contained" 
+                        onClick={(event) => history.push(`/petprofile/${petid}`)}
+                    >
+                        PET PROFILE
+                    </Button> 
+                </Box>
             </div>
 } // end AddEditCare
 

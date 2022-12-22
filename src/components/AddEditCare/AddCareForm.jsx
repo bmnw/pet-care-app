@@ -19,24 +19,6 @@ const AddCareForm = ({showForm, setShowForm}) => {
     const [frequency, setFrequency] = useState('');
     const [careDetails, setCareDetails] = useState('');
 
-    // const colorTheme = createTheme({
-    //     palette: {
-    //       orange: {
-    //         main: '#E27511',
-    //       },
-    //       white: {
-    //         main: '#F9F5F0',
-    //       },
-    //       blue: {
-    //         main: '#3D85C6',
-    //         contrastText: '#F9F5F0'
-    //       },
-    //       black: {
-    //         main: '#000000',
-    //       }
-    //     }
-    //   });
-
     const handleChange = (event) => {
         console.log('in handleChange', event.target.value);
         setFrequency(event.target.value);
@@ -104,10 +86,10 @@ const AddCareForm = ({showForm, setShowForm}) => {
                     checkLength={checkLength}
                 />
                 <br />
-                    <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-                        <Button sx={{width: 100, marginRight: 1}} onClick={() => setShowForm(!showForm)} size="large" variant="contained" color="white">CANCEL</Button>
-                        <Button sx={{width: 100, marginLeft: 1}} onClick={submitCareItem} variant="contained" size="large" color="orange">SAVE</Button>
-                    </Box>
+                <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
+                    <Button sx={{width: 100, marginRight: 1}} onClick={() => setShowForm(!showForm)} size="large" variant="contained" color="white">CANCEL</Button>
+                    <Button sx={{width: 100, marginLeft: 1}} onClick={submitCareItem} variant="contained" size="large" color="orange">SAVE</Button>
+                </Box>
             </div>
 }
 
