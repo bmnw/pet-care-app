@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+// component imports
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
@@ -21,6 +22,9 @@ import VetNotes from '../VetNotes/VetNotes.jsx';
 import AddVetNote from '../VetNotes/AddVetNote.jsx';
 import ShareProfile from '../PetProfile/ShareProfile.jsx';
 
+// imports for MUI color theme
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 import './App.css';
 
 function App() {
@@ -30,6 +34,20 @@ function App() {
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
+
+  const colorTheme = createTheme({
+    palette: {
+      orange: {
+        main: '#E27511',
+      },
+      white: {
+        main: '#F9F5F0',
+      },
+      blue: {
+        main: '#3D85C6',
+      }
+    }
+  });
 
   return (
     <Router>
