@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const CareReminders = () => {
 
@@ -18,21 +17,6 @@ const CareReminders = () => {
     const pet = useSelector(store => store.pet.petDetails);
     const reminders = useSelector(store => store.care.reminders);
     let isComplete = false;
-
-    const colorTheme = createTheme({
-        palette: {
-          orange: {
-            main: '#E27511',
-          },
-          white: {
-            main: '#F9F5F0',
-          },
-          blue: {
-            main: '#3D85C6',
-            contrastText: '#F9F5F0'
-          }
-        }
-      });
 
     useEffect(() => {
         console.log(petid);
@@ -53,13 +37,10 @@ const CareReminders = () => {
         console.log('date completed:', dateCompleted)
         if(dateCompleted === null || dateCompleted != today){
             console.log('incomplete');
-            // isComplete = false;
             return false;
         } else if (dateCompleted == today) {
             console.log('complete');
-            // isComplete = true;
             return true;
-            console.log('should be true:', isComplete);
         } else {
             console.log('neither true or false');
         }
@@ -92,18 +73,15 @@ const CareReminders = () => {
                  </List>
                 <br />
                 <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                    <ThemeProvider theme={colorTheme}>
-                        <Button 
-                            sx={{width: 200, height: 60}} 
-                            color="white" 
-                            variant="contained" 
-                            size="large"
-                            onClick={(event) => history.push(`/petprofile/${petid}`)}
-                        >
-                            PET PROFILE
-                        </Button> 
-                    </ThemeProvider>
-                   
+                    <Button 
+                        sx={{width: 200, height: 60}} 
+                        color="white" 
+                        variant="contained" 
+                        size="large"
+                        onClick={(event) => history.push(`/petprofile/${petid}`)}
+                    >
+                        PET PROFILE
+                    </Button> 
                 </Box>
             </div>
 }

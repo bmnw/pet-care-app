@@ -45,7 +45,7 @@ function App() {
       },
       blue: {
         main: '#3D85C6',
-        contrastText: '#F9F5F0'
+        // contrastText: '#F9F5F0'
       },
       black: {
         main: '#000000',

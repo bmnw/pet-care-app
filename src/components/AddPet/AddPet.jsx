@@ -11,9 +11,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './AddPet.css';
-
 
 const AddPet = () => {
 
@@ -23,20 +21,6 @@ const AddPet = () => {
     const [petName, setPetName] = useState('');
     const [petType, setPetType] = useState('');
     const [petImage, setPetImage] = useState('');
-
-    const colorTheme = createTheme({
-        palette: {
-          orange: {
-            main: '#E27511',
-          },
-          white: {
-            main: '#F9F5F0',
-          },
-          blue: {
-            main: '#3D85C6',
-          }
-        }
-      });
 
     const submitPet = () => {
         console.log('in submitPet');
@@ -104,17 +88,15 @@ const AddPet = () => {
                     <br />
                     <br />
                     <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                        <ThemeProvider theme={colorTheme}>
-                            <Button sx={{marginRight: 1}} onClick={() => history.push("/user")} className="add-pet-btn" size="large" variant="contained" color="white">
-                                CANCEL
-                            </Button>
-                            <Button sx={{marginLeft: 1}} onClick={submitPet} className="add-pet-btn" size="large" variant="contained" color="orange">
-                                ADD PET
-                            </Button>
-                        </ThemeProvider>
+                        <Button sx={{marginRight: 1}} onClick={() => history.push("/user")} className="add-pet-btn" size="large" variant="contained" color="white">
+                            CANCEL
+                        </Button>
+                        <Button sx={{marginLeft: 1}} onClick={submitPet} className="add-pet-btn" size="large" variant="contained" color="orange">
+                            ADD PET
+                        </Button>
                     </Box>
                 </Container>
             </div>
-} // end AddPet
+}
 
 export default AddPet;
