@@ -9,7 +9,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Box from '@mui/material/Box';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const ShareProfile  = () => {
 
@@ -20,21 +19,6 @@ const ShareProfile  = () => {
     const pet = useSelector(store => store.pet.petDetails);
     const existingUsernames = useSelector(store => store.share.allUsernames);
     let shareWithId = '';
-
-    const colorTheme = createTheme({
-        palette: {
-          orange: {
-            main: '#E27511',
-          },
-          white: {
-            main: '#F9F5F0',
-          },
-          blue: {
-            main: '#3D85C6',
-            contrastText: '#F9F5F0'
-          }
-        }
-      });
 
     // variable and functions for dialog
     const [open, setOpen] = useState(false);
@@ -118,16 +102,24 @@ const ShareProfile  = () => {
                 <br />
                 <br />
                 <Box sx={{display:"flex", justifyContent:"space-evenly"}}>
-                    <ThemeProvider theme={colorTheme}>
-                        <Button 
-                            color="white" size="large" variant="contained" sx={{width: 130, height: 45}} onClick={() => history.push(`/petprofile/${petid}`)}>
-                            CANCEL
-                        </Button>
-                        <Button 
-                            color="orange" size="large" variant="contained" sx={{width: 130, height: 45}} onClick={() => shareProfile(username)}>
-                            SHARE
-                        </Button>
-                    </ThemeProvider>
+                    <Button 
+                        color="white" 
+                        size="large" 
+                        variant="contained" 
+                        sx={{width: 130, height: 45}} 
+                        onClick={() => history.push(`/petprofile/${petid}`)}
+                    >
+                        CANCEL
+                    </Button>
+                    <Button 
+                        color="orange" 
+                        size="large" 
+                        variant="contained" 
+                        sx={{width: 130, height: 45}} 
+                        onClick={() => shareProfile(username)}
+                    >
+                        SHARE
+                    </Button>
                 </Box>
                 <Dialog
                     open={open}

@@ -2,30 +2,15 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
 import { useSelector } from 'react-redux';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import './Nav.css';
 
 function Nav() {
   const user = useSelector((store) => store.user);
   const history = useHistory();
-
-  const colorTheme = createTheme({
-    palette: {
-      orange: {
-        main: '#E27511',
-      },
-      white: {
-        main: '#F9F5F0',
-      },
-      blue: {
-        main: '#3D85C6',
-        contrastText: '#F9F5F0'
-      }
-    }
-  });
 
   return (
     <div className="nav">
@@ -36,9 +21,13 @@ function Nav() {
             style={{width: 100, height: 75, border: 'solid'}}
             />
           </Grid>
-          <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}><h2 className="nav-title">Waffle's Spot</h2></Grid>
+          <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+            <h2 className="nav-title">
+              Waffle's Spot
+            </h2>
+          </Grid>
         </Grid> 
-        <Grid item sx={{color: 'black'}}>
+        <Grid item className="nav-username">
           {
             user.username ? (`Hey ${user.username}!`) : ('Hey stranger!')
           }
@@ -59,11 +48,9 @@ function Nav() {
         {!user.id && (
           // If there's no user, show login/registration links
           <>
-            <ThemeProvider theme={colorTheme}>
-              <Button sx={{text: 'white', width: 100}} variant="contained" color="white" className="btn" onClick={() => history.push('/home')}>
-                Login
-              </Button>
-            </ThemeProvider>
+            <Button sx={{text: 'white', width: 100}} variant="contained" color="white" className="btn" onClick={() => history.push('/home')}>
+              Login
+            </Button>
           </>
 
         )}

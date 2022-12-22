@@ -4,30 +4,13 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const EditCareDetailsForm = ({item, petid, showForm, setShowForm}) => {
 
     const dispatch = useDispatch();
     const [careDetails, setCareDetails] = useState('');
 
-    const colorTheme = createTheme({
-        palette: {
-          orange: {
-            main: '#E27511',
-          },
-          white: {
-            main: '#F9F5F0',
-          },
-          blue: {
-            main: '#3D85C6',
-            contrastText: '#F9F5F0'
-          }
-        }
-      });
-
       useEffect(() => {
-        console.log('page load');
         setCareDetails(item.details);
       }, []);
 
@@ -56,26 +39,23 @@ const EditCareDetailsForm = ({item, petid, showForm, setShowForm}) => {
     }
 
     return  <>
-                <Box>
-                    <br />
-                    <Typography>Edit Care Details:</Typography>
-                    <TextField 
-                        sx={{backgroundColor: 'white'}}
-                        value={careDetails}
-                        onChange={(event) => checkLength(event.target.value)}
-                        fullWidth 
-                        multiline
-                        rows={4}
-                    />
-                    <Typography>{careDetails.length}/500</Typography>
-                </Box>
+              <Box>
                 <br />
-                <ThemeProvider theme={colorTheme}>
-                    <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-                      <Button color="orange" sx={{width: 100, marginLeft: 1}} size="large" onClick={() => updateCareDetails(item.id, petid)} variant="contained">SAVE</Button>
-                    </Box>
-                </ThemeProvider>
-
+                <Typography>Edit Care Details:</Typography>
+                <TextField 
+                  sx={{backgroundColor: 'white'}}
+                  value={careDetails}
+                  onChange={(event) => checkLength(event.target.value)}
+                  fullWidth 
+                  multiline
+                  rows={4}
+                />
+                <Typography>{careDetails.length}/500</Typography>
+              </Box>
+              <br />
+              <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
+                <Button color="orange" sx={{width: 100, marginLeft: 1}} size="large" onClick={() => updateCareDetails(item.id, petid)} variant="contained">SAVE</Button>
+              </Box>
             </>
 }
 

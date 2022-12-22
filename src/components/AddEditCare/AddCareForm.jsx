@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import {useParams} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import moment from 'moment';
 import CareDescriptionFormItem from './CareDescriptionFormItem.jsx';
 import CareFrequencyFormItem from './CareFrequencyFormItem.jsx';
@@ -19,24 +18,6 @@ const AddCareForm = ({showForm, setShowForm}) => {
     const [startDate, setStartDate] = useState('');
     const [frequency, setFrequency] = useState('');
     const [careDetails, setCareDetails] = useState('');
-
-    const colorTheme = createTheme({
-        palette: {
-          orange: {
-            main: '#E27511',
-          },
-          white: {
-            main: '#F9F5F0',
-          },
-          blue: {
-            main: '#3D85C6',
-            contrastText: '#F9F5F0'
-          },
-          black: {
-            main: '#000000',
-          }
-        }
-      });
 
     const handleChange = (event) => {
         console.log('in handleChange', event.target.value);
@@ -96,7 +77,6 @@ const AddCareForm = ({showForm, setShowForm}) => {
                 />
                 <br />
                 <CareStartDateFormItem 
-                    colorTheme={colorTheme}
                     handleDateChange={handleDateChange}
                     startDate={startDate}
                 />
@@ -106,12 +86,10 @@ const AddCareForm = ({showForm, setShowForm}) => {
                     checkLength={checkLength}
                 />
                 <br />
-                <ThemeProvider theme={colorTheme}>
-                    <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-                        <Button sx={{width: 100, marginRight: 1}} onClick={() => setShowForm(!showForm)} size="large" variant="contained" color="white">CANCEL</Button>
-                        <Button sx={{width: 100, marginLeft: 1}} onClick={submitCareItem} variant="contained" size="large" color="orange">SAVE</Button>
-                    </Box>
-                </ThemeProvider>
+                <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
+                    <Button sx={{width: 100, marginRight: 1}} onClick={() => setShowForm(!showForm)} size="large" variant="contained" color="white">CANCEL</Button>
+                    <Button sx={{width: 100, marginLeft: 1}} onClick={submitCareItem} variant="contained" size="large" color="orange">SAVE</Button>
+                </Box>
             </div>
 }
 

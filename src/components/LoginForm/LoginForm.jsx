@@ -5,27 +5,12 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
   const dispatch = useDispatch();
-  
-  const colorTheme = createTheme({
-    palette: {
-      orange: {
-        main: '#E27511',
-      },
-      white: {
-        main: '#F9F5F0',
-      },
-      blue: {
-        main: '#3D85C6',
-      }
-    }
-  });
 
   const login = (event) => {
     event.preventDefault();
@@ -79,9 +64,7 @@ function LoginForm() {
         </div>
         <br />
         <div>
-          <ThemeProvider theme={colorTheme}>
-            <Button onClick={login} variant="contained" color="orange">LOGIN</Button>
-          </ThemeProvider>
+          <Button onClick={login} variant="contained" color="orange">LOGIN</Button>
         </div>
       </div>
     </Container>

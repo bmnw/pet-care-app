@@ -13,7 +13,6 @@ import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsAct
 import PetsRoundedIcon from '@mui/icons-material/PetsRounded';
 import EditIcon from '@mui/icons-material/Edit';
 import './PetProfile.css';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const PetProfile = () => {
 
@@ -23,26 +22,10 @@ const PetProfile = () => {
 
     const pet = useSelector(store => store.pet.petDetails);
 
-    const colorTheme = createTheme({
-        palette: {
-          orange: {
-            main: '#E27511',
-          },
-          white: {
-            main: '#F9F5F0',
-          },
-          blue: {
-            main: '#3D85C6',
-            contrastText: '#F9F5F0'
-          }
-        }
-      });
-
     useEffect(() => {
         console.log(petid);
         dispatch({type: 'REFRESH_PET_DETAILS', payload: petid});
     }, []);
-
 
     return  <div>
                 <Nav />
@@ -77,26 +60,48 @@ const PetProfile = () => {
                         alignItems="center"
                         justifyContent="center"
                     >
-                        <ThemeProvider theme={colorTheme}>
-                            <Grid item>
-                                <Button startIcon={<NotificationsActiveRoundedIcon />} onClick={() => history.push(`/reminders/${petid}`)} className="profile-menu-btn" variant="contained" size="large" color="white">CARE REMINDERS</Button>
-                            </Grid>
-                            <Grid item>
-                                <Button startIcon={<PetsRoundedIcon/>} onClick={() => history.push(`/vet-notes/${petid}`)} className="profile-menu-btn" variant="contained" size="large" color="white">VET NOTES</Button>
-                            </Grid>
-                            <Grid item>
-                                <Button startIcon={<EditIcon/>} onClick={() => history.push(`/add-edit/${petid}`)} className="profile-menu-btn" variant="contained" size="large" color="white">ADD CARE/EDIT</Button>
-                            </Grid>
-                            <ThemeProvider theme={colorTheme}>
-                            <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                                <Fab color="orange" variant="extended" onClick={() => history.push(`/share-profile/${petid}`)}>
-                                    <IosShareRoundedIcon sx={{ mr: 1 }}/>
-                                    Share
-                                </Fab>
-                            </Grid>
-                            </ThemeProvider>
-                        </ThemeProvider>
-                 
+                        <Grid item>
+                            <Button 
+                                startIcon={<NotificationsActiveRoundedIcon />} 
+                                onClick={() => history.push(`/reminders/${petid}`)} 
+                                className="profile-menu-btn" variant="contained" 
+                                size="large" 
+                                color="white">
+                                    CARE REMINDERS
+                                </Button>
+                        </Grid>
+                        <Grid item>
+                            <Button 
+                                startIcon={<PetsRoundedIcon/>} 
+                                onClick={() => history.push(`/vet-notes/${petid}`)} 
+                                className="profile-menu-btn" 
+                                variant="contained" 
+                                size="large" 
+                                color="white">
+                                    VET NOTES
+                                </Button>
+                        </Grid>
+                        <Grid item>
+                            <Button 
+                                startIcon={<EditIcon/>} 
+                                onClick={() => history.push(`/add-edit/${petid}`)} 
+                                className="profile-menu-btn" 
+                                variant="contained" 
+                                size="large" 
+                                color="white">
+                                    ADD CARE/EDIT
+                                </Button>
+                        </Grid>
+                        <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+                            <Fab 
+                                color="orange" 
+                                variant="extended" 
+                                onClick={() => history.push(`/share-profile/${petid}`)}
+                            >
+                                <IosShareRoundedIcon sx={{ mr: 1 }}/>
+                                Share
+                            </Fab>
+                        </Grid>
                     </Grid>
                     <br />
                     <br />
@@ -107,11 +112,16 @@ const PetProfile = () => {
                         direction="row"
                         justifyContent="space-evenly"
                     >
-                        <ThemeProvider theme={colorTheme}>
-                            <Grid item>
-                                <Button onClick={() => history.push('/user')} sx={{width: 130}} variant="contained" size="large" color="orange">ALL PETS</Button>
-                            </Grid>
-                        </ThemeProvider>
+                        <Grid item>
+                            <Button 
+                                onClick={() => history.push('/user')} 
+                                sx={{width: 130}} 
+                                variant="contained" 
+                                size="large" 
+                                color="orange">
+                                    ALL PETS
+                                </Button>
+                        </Grid>
                         <Grid item sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                             <RemoveProfileButton />
                         </Grid>

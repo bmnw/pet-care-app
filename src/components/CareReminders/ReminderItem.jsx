@@ -28,7 +28,6 @@ const ReminderItem = ({reminder, isComplete}) => {
     }
 
     useEffect(() => {
-        console.log('ReminderItem page load');
     }, [reminder]);
 
     const taskComplete = (careItemId, petId) => {

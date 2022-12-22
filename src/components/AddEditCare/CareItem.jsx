@@ -13,26 +13,10 @@ import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import {GoDash} from 'react-icons/go';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const CareItem = ({item, petid}) => {
 
     const dispatch = useDispatch();
-
-    const colorTheme = createTheme({
-        palette: {
-          orange: {
-            main: '#E27511',
-          },
-          white: {
-            main: '#F9F5F0',
-          },
-          blue: {
-            main: '#3D85C6',
-            contrastText: '#F9F5F0'
-          }
-        }
-      });
 
     // variable for dialog edit form conditional rendering
     const [showForm, setShowForm] = useState(false);
@@ -64,11 +48,9 @@ const CareItem = ({item, petid}) => {
                     <ListItemButton onClick={handleClickOpen}>
                         <MoreHorizRoundedIcon fontSize="large" />
                     </ListItemButton>
-                    <ThemeProvider theme={colorTheme}>
-                        <ListItemButton onClick={(event) => deleteCareItem(item.id)}>
-                            <DeleteIcon color="blue" fontSize="large" />
-                        </ListItemButton>
-                    </ThemeProvider>
+                    <ListItemButton onClick={(event) => deleteCareItem(item.id)}>
+                        <DeleteIcon color="blue" fontSize="large" />
+                    </ListItemButton>
                 </ListItem>
                 <Dialog
                     open={open}
@@ -77,11 +59,9 @@ const CareItem = ({item, petid}) => {
                 >
                     <DialogTitle sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                         {`Details for ${item.description}`}
-                        <ThemeProvider theme={colorTheme}>
-                            <Fab sx={{marginLeft: 1}} color="orange" onClick={() => setShowForm(!showForm)}>
-                                <EditIcon />
-                            </Fab>
-                        </ThemeProvider>
+                        <Fab sx={{marginLeft: 1}} color="orange" onClick={() => setShowForm(!showForm)}>
+                            <EditIcon />
+                        </Fab>
                     </DialogTitle>
                     <DialogContent>
                         {
