@@ -3,12 +3,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin: 0 0 30px;
   background-color: #f4bc87;
   overflow: hidden;
   padding: 10px;
   border-bottom: solid 3px #e27511;
+  color: black;
 }
 
 .nav a {
@@ -19,8 +19,11 @@
   font-size: 27px;
   font-weight: 500;
   color: black;
-  /* padding-left: 10px; */
   margin: 0;
+}
+
+.nav-username {
+  color: black;
 }
 
 .navLink {
