@@ -8,7 +8,6 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const VetNotes = () => {
 
@@ -18,21 +17,6 @@ const VetNotes = () => {
 
     const pet = useSelector(store => store.pet.petDetails);
     const vetNotes = useSelector(store => store.vet.vetNotes);
-
-    const colorTheme = createTheme({
-        palette: {
-          orange: {
-            main: '#E27511',
-          },
-          white: {
-            main: '#F9F5F0',
-          },
-          blue: {
-            main: '#3D85C6',
-            contrastText: '#F9F5F0'
-          }
-        }
-      });
 
     useEffect(() => {
         console.log(petid);
@@ -50,18 +34,25 @@ const VetNotes = () => {
                     })
                 }
                 <br />
-                <ThemeProvider theme={colorTheme}>
-                    <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-                        <Button sx={{marginRight: 1, width: 150}} variant="contained" size="large" color="white" onClick={(event) => history.push(`/petprofile/${petid}`)}>
-                            PET PROFILE
-                        </Button>
-                        <Fab variant="extended" color="orange" onClick={(event) => history.push(`/add-vet-note/${petid}`)}>
-                            <AddIcon sx={{ mr: 1 }}/>
-                            New Note
-                        </Fab>
-                    </Box>
-                </ThemeProvider>
-             
+                <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
+                    <Button 
+                        sx={{marginRight: 1, width: 150}} 
+                        variant="contained" 
+                        size="large" 
+                        color="white" 
+                        onClick={(event) => history.push(`/petprofile/${petid}`)}
+                    >
+                        PET PROFILE
+                    </Button>
+                    <Fab 
+                        variant="extended" 
+                        color="orange" 
+                        onClick={(event) => history.push(`/add-vet-note/${petid}`)}
+                    >
+                        <AddIcon sx={{ mr: 1 }}/>
+                        New Note
+                    </Fab>
+                </Box>
                 <br />
                 {
                     vetNotes.map(note => {

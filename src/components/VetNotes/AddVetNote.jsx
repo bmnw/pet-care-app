@@ -8,13 +8,14 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import InputAdornment from '@mui/material/InputAdornment';
+
+// imports for date picker
+import moment from 'moment';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker} from '@mui/x-date-pickers/MobileDatePicker';
-import moment from 'moment';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import InputAdornment from '@mui/material/InputAdornment';
 
 const AddVetNote = () => {
 
@@ -28,21 +29,6 @@ const AddVetNote = () => {
     const [vet, setVet] = useState('');
     const [note, setNote] = useState('');
 
-    const colorTheme = createTheme({
-        palette: {
-          orange: {
-            main: '#E27511',
-          },
-          white: {
-            main: '#F9F5F0',
-          },
-          blue: {
-            main: '#3D85C6',
-            contrastText: '#F9F5F0'
-          }
-        }
-      });
-
     useEffect(() => {
         console.log(petid);
         dispatch({type: 'REFRESH_PET_DETAILS', payload: petid});
@@ -55,7 +41,6 @@ const AddVetNote = () => {
     }
 
     const checkNoteLength = (noteInput) => {
-        console.log('in checkNoteLength', noteInput.length);
         if(noteInput.length <= 1000) {
             setNote(noteInput);
         } else if(noteInput.length > 1000) {
@@ -82,10 +67,16 @@ const AddVetNote = () => {
                 <Nav />
                 {
                     pet.map(detail => {
-                        return  <Grid key={detail.id} container spacing={2} direction="column" alignContent="center">
-                                    <Grid item>
-                                        <Typography variant="h5">Add vet note for {detail.pet_name}</Typography>
-                                    </Grid>
+                        return  <Grid 
+                                    key={detail.id} 
+                                    container 
+                                    spacing={2} 
+                                    direction="column" 
+                                    alignContent="center"
+                                    >
+                                        <Grid item>
+                                            <Typography variant="h5">Add vet note for {detail.pet_name}</Typography>
+                                        </Grid>
                                 </Grid>
                     })
                 }
@@ -93,7 +84,6 @@ const AddVetNote = () => {
                 <Paper elevation={10} sx={{ margin: 2, padding: 2, bgcolor: 'lightgray'}}>
                     <Box sx={{display: 'flex'}}>
                         <Typography sx={{display:"flex", alignItems:"center", width: 50}}>DATE:</Typography>
-                        <ThemeProvider theme={colorTheme}>
                             <Box>
                                 <LocalizationProvider dateAdapter={AdapterMoment}>
                                     <MobileDatePicker
@@ -113,7 +103,6 @@ const AddVetNote = () => {
                                     />
                                 </LocalizationProvider>
                             </Box>
-                        </ThemeProvider>
                     </Box>
                     <br />
                     <Box sx={{display: 'flex'}}>
@@ -143,12 +132,10 @@ const AddVetNote = () => {
                     </Box>
                 </Paper>
                 <br />
-                <ThemeProvider theme={colorTheme}>
                 <Box sx={{display: 'flex', justifyContent:'space-evenly'}}>
                     <Button onClick={() => history.push(`/vet-notes/${petid}`)} variant="contained" size="large" color="white">CANCEL</Button>
                     <Button onClick={submitVetNote} variant="contained" size="large" color="orange">ADD NOTE</Button>
                 </Box>
-                </ThemeProvider>
             </div>
 }
 
